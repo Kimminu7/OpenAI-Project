@@ -1,3 +1,4 @@
 # OpenAPI-Project
 
-### openapi 팀프로젝트 group3 
+### PhotoMania 프로젝트 
+---
