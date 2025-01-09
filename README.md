@@ -1,4 +1,4 @@
 # OpenAPI-Project
 
-### PhotoMania 프로젝트 
+### PhotoMania website 프로젝트 
 ---
