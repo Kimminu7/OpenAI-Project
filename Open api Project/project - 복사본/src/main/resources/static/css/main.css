@@ -1,0 +1,269 @@
+/* 기본 스타일 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* 패딩과 테두리가 포함된 크기로 설정 */
+}
+
+/* Header 스타일 */
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid black;
+  background-color: rgb(224, 216, 216);
+  position: fixed; /* 헤더를 화면 상단에 고정 */
+  top: 0; /* 화면 상단에 고정 */
+  left: 0; /* 왼쪽으로 고정 */
+  z-index: 1000; /* 다른 콘텐츠보다 위에 위치하도록 설정 */
+  max-width: 100%; /* 화면 크기를 넘지 않도록 설정 */
+  width: 100%; /* 100% 너비로 확장 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과로 구분 */
+}
+
+header img {
+  width: 80px;
+  height: 80px;
+}
+
+header ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* 남는 공간을 채우도록 설정 */
+}
+
+header ul div #search {
+  width: 250px;
+  height: 30px;
+  margin: 0 0 0 50px;
+}
+
+header ul div #search2 {
+  height: 30px;
+  margin: 0 10px;
+  padding: 0 10px;
+}
+
+header ul li {
+  margin: 0 75px; /* 너무 큰 마진을 줄여줍니다 */
+  text-align: center;
+  flex-shrink: 0;
+  list-style: none;
+  white-space: nowrap;
+  font-size: 20px;
+  overflow: hidden;
+}
+
+header ul li:hover {
+  color: #ff6600;
+  cursor: pointer;
+}
+
+header div {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+header div img {
+  width: 40px;
+  height: 40px;
+}
+
+/* 페이지 본문을 헤더 아래로 밀어내기 위한 간격 추가 */
+body {
+  padding-top: 80px; /* 헤더 높이만큼 여백을 추가 */
+}
+
+/* Swiper 스타일 */
+.swiper-container {
+  width: 100%;
+  height: 300px;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden; /* 부모 요소가 초과하는 부분 잘라내기 */
+  box-sizing: border-box; /* 크기 계산 방식 수정 */
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f1f1f1;
+  font-size: 24px;
+  color: #333;
+  height: 100%;
+  width: 100%; /* 슬라이드 크기를 부모 크기에 맞추기 */
+}
+
+/* 화살표 버튼 스타일 */
+.swiper-button-next, .swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ff6600;
+  z-index: 10;
+  font-size: 30px;
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+.swiper-button-next {
+  right: 10px;
+}
+
+.swiper-pagination {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  z-index: 10;
+}
+
+.swiper-pagination-bullet {
+  background-color: #ff6600;
+}
+
+nav {
+  background-color: aquamarine;
+  padding: 30px 10px; /* 상하 여백만 추가, 좌우 여백은 없앴습니다 */
+  width: 100%;
+  max-width: 100%; /* 화면 너비를 넘지 않도록 설정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box; /* 내부 요소들이 overflow되지 않도록 */
+}
+
+nav img {
+  width: 40px;
+  height: 40px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+}
+
+/* YouTube 배너 섹션 스타일 */
+.youtube-banner {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.youtube-video-container iframe {
+  max-width: 100%; /* 화면 크기에 맞춰 최대 100%로 크기 조절 */
+  height: 500px; /* 고정 높이 설정 (필요에 따라 조정) */
+  border: none; /* 테두리 제거 */
+}
+
+.youtube-banner h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* 추가된 애니메이션 및 스타일 */
+
+/* 애니메이션 효과 */
+.intro-container {
+  text-align: center;
+  padding: 150px 10px;
+  background: linear-gradient(135deg, #00bcd4, #3c9a8b, #03a9f4, #2196f3); /* 푸른색 계열 그라디언트 배경 */
+  background-size: 300% 300%; /* 그라디언트 확장 효과 */
+  animation: gradientAnimation 5s ease infinite; /* 그라디언트 애니메이션 */
+  border-bottom: 1px solid #ddd;
+}
+
+/* 그라디언트 애니메이션 */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Intro Text */
+.intro-text {
+  font-size: 50px;
+  font-weight: bold;
+  color: #fff; /* 흰색 텍스트 */
+  text-align: center;
+  margin: 0 0 30px 0;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1.5s forwards;
+}
+
+.intro-text span {
+  color: #fff;
+  font-style: italic;
+}
+
+/* 서브 텍스트 애니메이션 */
+.sub-text {
+  font-size: 20px;
+  color: black; /* 흰색 텍스트 */
+  text-align: center;
+  margin-top: 20px;
+  opacity: 0;
+  animation: fadeInUp 2s 0.5s forwards;
+}
+
+/* Fade In 애니메이션 */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Swiper 스타일 */
+.swiper-container {
+  width: 100%;
+  height: 300px;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f1f1f1;
+  font-size: 24px;
+  color: #333;
+  height: 100%;
+  width: 100%;
+}
+
+/* 푸터 스타일 */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+  margin-top: auto;
+  width: 100%;
+}
