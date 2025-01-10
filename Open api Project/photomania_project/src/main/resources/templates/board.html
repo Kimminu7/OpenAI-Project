@@ -1,10 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+    <link rel="stylesheet" th:href="@{/css/board.css}">
 </head>
 <body>
-<h1>게시판</h1>
+<header>
+    <div class="header-main">
+        <a th:href="@{/main2}">
+            <p class="logo"><input type="image" th:src="@{/images/cameraicon.png}" alt="logo"></p>
+        </a>
+    </div>
+</header>
+<div class="board-container">
+
+    <!-- 게시글 작성 폼 -->
+    <div class="create-post">
+        <h2>게시판</h2>
+        <form id="createPostForm" th:action="@{/write}" method="get">
+            <button type="submit">게시글 작성</button>
+        </form>
+    </div>
+
+    <div class="search-section">
+        <form id="searchForm">
+            <select id="searchType">
+                <option value="all">전체</option>
+                <option value="title">제목</option>
+                <option value="author">글쓴이</option>
+            </select>
+            <input type="text" id="searchQuery" placeholder="검색어를 입력하세요">
+            <button type="submit">검색</button>
+        </form>
+    </div>
+
+    <table class="board-table">
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>글쓴이</th>
+            <th>작성일</th>
+            <th>조회수</th>
+            <th>추천</th>
+        </tr>
+        </thead>
+        <tbody id="boardContent">
+        <!-- 데이터가 동적으로 추가됨 -->
+        </tbody>
+    </table>
+
+    <div class="pagination" id="pagination">
+        <!-- 페이지네이션이 동적으로 추가됨 -->
+    </div>
+</div>
+
+<script src="/js/script.js"></script>
 </body>
 </html>

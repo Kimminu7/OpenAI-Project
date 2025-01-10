@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.board-container {
+    width: 80%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-main {
+    display: flex;
+    justify-content: center; /* 로고 중앙 정렬 */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(224, 216, 216); /* 배경색 유지 */
+    border-bottom: 1px solid #ddd;
+    position: relative; /* 상대 위치 설정 */
+}
+
+.logo input[type="image"] {
+    width: 75px; /* 로고 크기 */
+    height: auto;
+}
+
+
+.create-post {
+    margin-bottom: 20px;
+}
+
+.create-post form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.create-post input, .create-post textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.create-post button {
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.create-post button:hover {
+    background: #0056b3;
+}
+
+.search-section {
+    margin-bottom: 20px;
+}
+
+.search-section form {
+    display: flex;
+    gap: 10px;
+}
+
+.search-section input[type="text"] {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.search-section button {
+    padding: 5px 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.search-section button:hover {
+    background: #0056b3;
+}
+
+.board-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.board-table th, .board-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.board-table th {
+    background: #f4f4f4;
+}
+
+.board-table tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.board-table tbody tr:hover {
+    background: #f1f1f1;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.pagination a.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.pagination a:hover {
+    text-decoration: underline;
+}

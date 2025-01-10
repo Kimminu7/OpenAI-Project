@@ -96,7 +96,7 @@ public class MemberController {
     public String find(){
         return "find";
     }
-    @GetMapping("/board")
+    @GetMapping("/member/board")
     public String board(){
         return "find";
     }
