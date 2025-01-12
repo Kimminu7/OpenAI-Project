@@ -1,11 +1,11 @@
 # OpenAI-Project
 
-### PhotoMania website 프로젝트 
+### PhotoMania 웹사이트 프로젝트 
 
-프로젝트 기간 : 2025.1.7 ~ 2025.2.21
+**프로젝트 기간**: 2025.1.7 ~ 2025.2.21
 
 **Photomania**는 사용자가 일상에서 공유하고 싶은 사진을 업로드하고, 수정하고, 공유할 수 있는 웹 애플리케이션입니다. 
-이 웹사이트는 사진 편집 기능을 제공하며, 사용자는 다양한 필터와 효과를 적용하여 자신만의 사진을 만들어낼 수 있습니다.
+이 웹사이트는 사진 업로드 기능을 제공하며, 사용자는 다른 사용자들과 일상의 공유와 소통을 할 수 있으며, 서로 공감하는 공간을 마련합니다.
 
 ## 주요 기능
 
@@ -22,19 +22,16 @@
 ## 기술 스택
 
 - **프론트엔드**: HTML, CSS, JavaScript
-- **백엔드**:
--   Java: Spring Framework, Spring Boot
-    JPA: Hibernate
-    RESTful API: Spring MVC
+- **백엔드**: 
+  - **Java**: Spring Framework, Spring Boot
+  - **JPA**: Hibernate
+  - **RESTful API**: Spring MVC
 - **데이터베이스**: MySQL
+- **버전 관리**: Git (Git Desktop)
 - **배포**: Heroku, Netlify
-- **버전관리**: Git ( Git Desktop )
 
 ## 설치 방법
 
-
-
-## 프로젝트 구조
-
-
----
+1. **레포지토리 클론**: 
+   ```bash
+   git clone https://github.com/kimminu7/photomania.git
