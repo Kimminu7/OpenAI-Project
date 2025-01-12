@@ -22,9 +22,13 @@
 ## 기술 스택
 
 - **프론트엔드**: HTML, CSS, JavaScript
-- **백엔드**: Spring, Spring Boot
+- **백엔드**:
+-   Java: Spring Framework, Spring Boot
+    JPA: Hibernate
+    RESTful API: Spring MVC
 - **데이터베이스**: MySQL
 - **배포**: Heroku, Netlify
+- **버전관리**: Git ( Git Desktop )
 
 ## 설치 방법
 
