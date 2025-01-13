@@ -86,3 +86,17 @@ document.getElementById("searchForm").addEventListener("submit", (e) => {
 
 // 초기 게시글 렌더링
 renderPosts();
+
+document.querySelector('#searchForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const searchType = document.querySelector('#searchType').value;
+    const searchQuery = document.querySelector('#searchQuery').value;
+
+    if (!searchQuery.trim()) {
+        alert('검색어를 입력하세요.');
+        return;
+    }
+
+    window.location.href = `/board?searchType=${searchType}&searchQuery=${searchQuery}`;
+});

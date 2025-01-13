@@ -1,15 +1,21 @@
 package com.example.project.service;
 
 import com.example.project.dto.BoardDTO;
+import com.example.project.dto.PageRequestDTO;
+import com.example.project.dto.PageResultDTO;
 import com.example.project.entity.BoardEntity;
 import com.example.project.repository.BoardRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
@@ -50,6 +56,7 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public void deleteBoard(Long id) {
+
         boardRepository.deleteById(id);
     }
 
@@ -59,6 +66,22 @@ public class BoardServiceImpl implements BoardService{
                 .orElseThrow(() -> new RuntimeException("게시글을 찾을 수 없습니다."));
         boardEntity.setViews(boardEntity.getViews()+1);
         boardRepository.save(boardEntity);
+    }
+
+    @Override
+    public BoardDTO getBoardDetail(Long id) {
+        BoardEntity board = boardRepository.findById(id)
+                .orElseThrow(()->new IllegalArgumentException("Invalid board Id:"+id));
+        return new BoardDTO(board);
+    }
+
+    @Override
+    public PageResultDTO<BoardDTO, BoardEntity> getList
+            (PageRequestDTO requestDTO) {
+        Pageable pageable = (Pageable) requestDTO.getPageable(Sort.by("id").descending());
+        Page<BoardEntity> result =boardRepository.findAll(pageable);
+        Function<BoardEntity,BoardDTO> fn = (entity -> toDto(entity));
+        return new PageResultDTO<>(result,fn);
     }
 
 

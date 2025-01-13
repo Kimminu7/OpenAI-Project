@@ -1,6 +1,8 @@
 package com.example.project.service;
 
 import com.example.project.dto.BoardDTO;
+import com.example.project.dto.PageRequestDTO;
+import com.example.project.dto.PageResultDTO;
 import com.example.project.entity.BoardEntity;
 
 import java.util.List;
@@ -17,6 +19,9 @@ public interface BoardService {
 
     void incrementViews(Long id);
 
+    BoardDTO getBoardDetail(Long id);
+
+    PageResultDTO<BoardDTO,BoardEntity> getList(PageRequestDTO requestDTO);
     // DTO -> Entity 변환
     default BoardEntity toEntity(BoardDTO bdto){
         return BoardEntity.builder()
