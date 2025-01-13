@@ -36,7 +36,7 @@ public interface BoardService {
                 .likes(bdto.getLikes())
                 .filename(bdto.getFilename())
                 .regDate(bdto.getRegDate())
-                .mogDate(bdto.getMogDate())
+                .modDate(bdto.getMogDate())
                 .data(bdto.getData())
                 .build();
 
@@ -53,7 +53,7 @@ public interface BoardService {
                 .likes(bentity.getLikes())
                 .filename(bentity.getFilename())
                 .regDate(bentity.getRegDate())
-                .mogDate(bentity.getMogDate())
+                .mogDate(bentity.getModDate())
                 .data(bentity.getData())
                 .build();
 
