@@ -3,7 +3,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box; /* 패딩과 테두리가 포함된 크기로 설정 */
-  font-family: "궁서체", sans-serif; /* 폰트 추가 */
 }
 
 /* 전체 페이지 높이 제한 (스크롤 방지) */
