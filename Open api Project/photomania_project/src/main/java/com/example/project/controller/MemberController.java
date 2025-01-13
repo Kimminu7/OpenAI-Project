@@ -80,6 +80,7 @@ public class MemberController {
 
     @GetMapping("/main")
     public String mainPage() {
+
         return "main";  // main.html 페이지를 반환
     }
     @PostMapping("/main")
@@ -87,10 +88,7 @@ public class MemberController {
 
         return "/main";
     }
-    @GetMapping("/main2")
-    public String Usermain(){
-        return "main2";
-    }
+
     @GetMapping("/find")
     public String find(){
         return "find";

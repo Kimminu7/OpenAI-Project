@@ -24,10 +24,24 @@ public class BoardEntity extends BaseEntity {
     private int likes;
     private String filename;
     private LocalDateTime regDate;
+<<<<<<< HEAD
     private LocalDateTime mogDate;
 
     @Lob
     private byte[] data;
+=======
+
+    private LocalDateTime modDate;
+
+    private LocalDateTime mogDate;
+
+
+    @Lob
+    private byte[] data;
+
+
+
+>>>>>>> yyb
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "member_email")
     private Member member;
