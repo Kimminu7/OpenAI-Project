@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 상세</title>
+    <link rel="stylesheet" th:href="@{/css/detail.css}">
+</head>
+<body>
+<div class="container">
+    <!-- 게시글 제목, 내용, 작성자, 조회수 등 -->
+    <div class="board-detail">
+        <h1>{{ board.title }}</h1>
+        <p class="author">작성자: {{ board.member.name }}</p>
+        <p class="content">{{ board.content }}</p>
+        <p class="views">조회수: {{ board.views }}</p>
+        <p class="date">등록일: {{ board.regDate }}</p>
+        <div class="file">
+            <p>첨부파일: <a href="#" target="_blank">{{ board.filename }}</a></p>
+        </div>
+    </div>
+
+    <!-- 댓글 작성 폼 -->
+    <div class="comment-form">
+        <h2>댓글 작성</h2>
+        <form action="/comment/{{ board.id }}" method="post">
+            <input type="hidden" name="email" value="user@example.com"> <!-- 예시 이메일 -->
+            <textarea name="content" required placeholder="댓글을 작성하세요..."></textarea>
+            <button type="submit">댓글 작성</button>
+        </form>
+    </div>
+
+    <!-- 댓글 목록 -->
+    <div class="comments">
+        <h2>댓글</h2>
+        <div class="comment-list">
+            <div th:each="comment : ${board.comments}">
+                <div class="comment-item">
+                    <p class="comment-author">{{ comment.member.name }}</p>
+                    <p class="comment-content">{{ comment.content }}</p>
+                    <p class="comment-likes">좋아요: {{ comment.likes }}</p>
+                    <div class="comment-actions">
+                        <a href="#" th:href="@{/comment/{commentId}/like(commentId=${comment.id})}">좋아요</a>
+                        <a href="#" th:href="@{/comment/{commentId}/update(commentId=${comment.id})}">수정</a>
+                        <a href="#" th:href="@{/comment/{commentId}/delete(commentId=${comment.id})}">삭제</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
