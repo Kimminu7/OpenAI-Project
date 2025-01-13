@@ -35,7 +35,7 @@ public class BoardRepositoryTest {
             if (!optionalMember.isPresent()) {
                 // Member가 존재하지 않으면 새로 저장
                 Member entity = Member.builder()
-                        .id("Title" + i)
+                        .name("Title" + i)
                         .email(email)
                         .pw("password") // 예시로 'password' 사용
                         .build();

@@ -40,9 +40,9 @@ public class LoginSucessH implements AuthenticationSuccessHandler {
             if (roleNames.contains(Role.ROLE_ADMIN.value())) {
                 response.sendRedirect("/admin/main"); // 관리자 페이지
             } else if (roleNames.contains(Role.ROLE_USER.value())) {
-                response.sendRedirect("/main2"); // 사용자 페이지
+                response.sendRedirect("/main"); // 사용자 페이지
             } else {
-                response.sendRedirect("/main2");
+                response.sendRedirect("/main");
             }
         }
 

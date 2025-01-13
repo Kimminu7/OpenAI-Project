@@ -33,7 +33,7 @@
   <div>
     <a th:href="@{/login}">
       <img th:src="@{/images/icons8-사용자-100.png}" alt="사용자 아이콘">
-      <p th:text="${#authentication != null ? #authentication.name : 'Login / Register'}"></p>
+      <p th:text="${session.member != null ? session.member.name + '/로그아웃' : '로그인 필요'}"></p>
     </a>
   </div>
 </header>

@@ -41,7 +41,7 @@ public class SecurityConfig {
                 // CSS, 이미지, JS 파일은 인증 없이 접근 가능
                 .antMatchers("/css/**", "/images/**", "/js/**").permitAll()
                 // main2 페이지는 인증된 사용자만 접근 가능
-                .antMatchers("/main2").authenticated()
+                .antMatchers("/main").authenticated()
                 // 그 외 모든 요청은 인증 필요
                 .anyRequest().authenticated()
                 .and()
