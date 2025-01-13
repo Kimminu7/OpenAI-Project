@@ -56,7 +56,7 @@
                 <td>
                     <a th:href="@{/board/{id}(id=${board.id})}" th:text="${board.title}"></a>
                 </td>
-                <td th:text="${board.author}"></td>
+                <td th:text="${board.name}"></td>
                 <td th:text="${#temporals.format(board.regDate, 'yyyy-MM-dd HH:mm')}"></td>
                 <td th:text="${board.views}"></td>
                 <td th:text="${board.likes}"></td>
