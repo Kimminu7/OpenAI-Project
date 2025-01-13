@@ -1,6 +1,9 @@
 package com.example.project.dto;
 
+<<<<<<< HEAD
+=======
 import com.example.project.entity.BaseEntity;
+>>>>>>> yyb
 import com.example.project.entity.BoardEntity;
 import lombok.*;
 
@@ -23,8 +26,12 @@ public class BoardDTO  {
     private int likes;  // 추천수
     private String filename;  // 파일 이름
     private byte[] data;
+<<<<<<< HEAD
+
+=======
     private LocalDateTime regDate;
     private LocalDateTime mogDate;
+>>>>>>> yyb
     public BoardDTO(BoardEntity board) {
     }
 }

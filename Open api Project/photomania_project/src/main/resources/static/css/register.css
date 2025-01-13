@@ -97,7 +97,6 @@ body {
 /* 통신사 선택 및 번호 입력 */
 .large-input {
     width: 70%; /* 큰 입력칸 */
-    margin-right: 10px;
 }
 
 .small-select {
