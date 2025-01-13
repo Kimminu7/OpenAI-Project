@@ -1,5 +1,6 @@
 package com.example.project.dto;
 
+import com.example.project.entity.BoardEntity;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -22,4 +23,7 @@ public class BoardDTO {
     private LocalDateTime regDate;  // 생성일자
     private LocalDateTime modDate;  // 수정일자
     private byte[] data;
+
+    public BoardDTO(BoardEntity board) {
+    }
 }

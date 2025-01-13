@@ -23,10 +23,10 @@ public class BoardEntity extends BaseEntity {
     private int views;
     private int likes;
     private String filename;
+    private LocalDateTime regDate;
+    private LocalDateTime modDate;
 
     @Lob
     private byte[] data;
 
-    private LocalDateTime regDate;
-    private LocalDateTime modDate;
 }
