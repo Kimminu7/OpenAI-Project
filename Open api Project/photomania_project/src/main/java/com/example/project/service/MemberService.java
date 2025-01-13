@@ -10,7 +10,6 @@ public interface MemberService {
 
     default Member toEntity(MemberDTO dto) {
         Member entity = Member.builder()
-                .id(dto.getId())
                 .email(dto.getEmail())
                 .name(dto.getName())
                 .dateOfBirth(dto.getBDate())
@@ -20,7 +19,6 @@ public interface MemberService {
     }
     default MemberDTO toDto(Member entity){
         MemberDTO dto = MemberDTO.builder()
-                .id(String.valueOf(entity.getId()))
                 .email(entity.getEmail())
                 .name(entity.getName())
                 .BDate(entity.getDateOfBirth())

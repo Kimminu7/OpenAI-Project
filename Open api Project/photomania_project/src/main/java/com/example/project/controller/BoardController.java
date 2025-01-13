@@ -78,8 +78,6 @@ public class BoardController {
                     .data(fileData)
                     .views(0)
                     .likes(0)
-                    .regDate(LocalDateTime.now())
-                    .modDate(LocalDateTime.now())
                     .build();
 
             // 게시글 저장

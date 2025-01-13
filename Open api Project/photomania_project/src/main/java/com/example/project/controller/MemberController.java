@@ -38,7 +38,6 @@ public class MemberController {
 
         // MemberDTO를 Member 엔티티로 변환
         Member member = new Member();
-        member.setId(memberDto.getId());
         member.setPw(encodedPassword);
         member.setName(memberDto.getName());
         member.setEmail(memberDto.getEmail());
