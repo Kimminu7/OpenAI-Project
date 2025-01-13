@@ -13,7 +13,6 @@ import java.time.LocalDate;
 @Builder
 @ToString
 public class MemberDTO {
-    private String id;               // 사용자 ID
     private String pw;         // 비밀번호
     private String name;             // 이름
     private String email;            // 이메일

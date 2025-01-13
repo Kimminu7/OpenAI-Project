@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface BoardService {
 
+
+
     BoardDTO saveBoard(BoardDTO boardDTO);
 
     List<BoardDTO> getAllBoards();
@@ -27,15 +29,15 @@ public interface BoardService {
         return BoardEntity.builder()
                 .id(bdto.getId())
                 .title(bdto.getTitle())
-                .author(bdto.getAuthor())
+                .author(bdto.getName())
                 .content(bdto.getContent())
                 .contentType(bdto.getContentType())
                 .views(bdto.getViews())
                 .likes(bdto.getLikes())
                 .filename(bdto.getFilename())
-                .data(bdto.getData())
                 .regDate(bdto.getRegDate())
-                .modDate(bdto.getModDate())
+                .mogDate(bdto.getMogDate())
+                .data(bdto.getData())
                 .build();
 
     }
@@ -44,15 +46,15 @@ public interface BoardService {
         return BoardDTO.builder()
                 .id(bentity.getId())
                 .title(bentity.getTitle())
-                .author(bentity.getAuthor())
+                .name(bentity.getMember().getName())
                 .content(bentity.getContent())
                 .contentType(bentity.getContentType())
                 .views(bentity.getViews())
                 .likes(bentity.getLikes())
                 .filename(bentity.getFilename())
-                .data(bentity.getData())
                 .regDate(bentity.getRegDate())
-                .modDate(bentity.getModDate())
+                .mogDate(bentity.getMogDate())
+                .data(bentity.getData())
                 .build();
 
     }
