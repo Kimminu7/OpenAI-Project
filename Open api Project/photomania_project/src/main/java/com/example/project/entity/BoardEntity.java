@@ -26,12 +26,7 @@ public class BoardEntity extends BaseEntity {
     private int likes;
     private String filename;
     private LocalDateTime regDate;
-<<<<<<< HEAD
     private LocalDateTime mogDate;
-=======
-    private LocalDateTime modDate;
-
->>>>>>> yyb
 
     @Lob
     private byte[] data;
