@@ -1,20 +1,21 @@
 package com.example.project.controller;
 
 import com.example.project.dto.BoardDTO;
+import com.example.project.dto.CommentResponseDTO;
 import com.example.project.dto.PageRequestDTO;
 import com.example.project.dto.PageResultDTO;
-import com.example.project.entity.BoardEntity;
+import com.example.project.entity.Board;
+import com.example.project.sec.MemberDetails;
 import com.example.project.service.BoardService;
+import com.example.project.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.thymeleaf.model.IModel;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j
@@ -23,7 +24,7 @@ import java.util.List;
 public class BoardController {
 
     private final BoardService boardService;
-
+    private final CommentService commentService;
     // 게시판 목록 페이지
     @GetMapping("/board")
     public String list(@RequestParam(value = "page", defaultValue = "1") int page,
@@ -36,7 +37,7 @@ public class BoardController {
                 .build();
 
         // 페이징 처리된 게시글 목록 조회
-        PageResultDTO<BoardDTO, BoardEntity> result = boardService.getList(pageRequestDTO);
+        PageResultDTO<BoardDTO, Board> result = boardService.getList(pageRequestDTO);
 
         // 모델에 추가
         model.addAttribute("boardList", result.getDtoList());
@@ -58,7 +59,7 @@ public class BoardController {
     public String create(@RequestParam String title,
                          @RequestParam String content,
                          @RequestParam(required = false) MultipartFile file,
-                         Model model) {
+                         Model model, @AuthenticationPrincipal MemberDetails memberDetails) {
         log.info("게시글 작성 처리: 제목={}, 내용={}", title, content);
 
         try {
@@ -78,27 +79,35 @@ public class BoardController {
                     .data(fileData)
                     .views(0)
                     .likes(0)
+                    .email(memberDetails.getUsername())
                     .build();
 
             // 게시글 저장
-            boardService.saveBoard(boardDTO);
+            BoardDTO saveDTO = boardService.saveBoard(boardDTO);
+            if(saveDTO != null) {
+                model.addAttribute("message", "게시글이 성공적으로 작성되었습니다.");
+                return "redirect:/board"; // 게시판 목록으로 리디렉션
+            }else{
+                model.addAttribute("error", "게시글 저장 중 오류가 발생했습니다.");
+                return "write"; // 오류 발생 시 다시 작성 페이지로 이동
+            }
 
-            model.addAttribute("message", "게시글이 성공적으로 작성되었습니다.");
-            return "redirect:/board"; // 게시판 목록으로 리디렉션
         } catch (Exception e) {
             log.error("게시글 작성 중 오류 발생", e);
             model.addAttribute("error", "게시글 저장 중 오류가 발생했습니다.");
             return "write"; // 오류 발생 시 다시 작성 페이지로 이동
         }
     }
+
     // 게시글 상세 조회
     @GetMapping("/board/{id}")
     public String detail(@PathVariable Long id, Model model) {
-        log.info("게시글 상세 조회: id={}", id);
-        boardService.incrementViews(id); // 조회수 증가
-        BoardDTO boardDTO = boardService.getBoardById(id);  // 게시글 조회
+        BoardDTO boardDTO = boardService.getBoardById(id); // 게시글 조회
+
         model.addAttribute("board", boardDTO);
-        return "board/detail"; // board/detail.html로 연결
+        List<CommentResponseDTO> comments = commentService.commentList(id);
+        model.addAttribute("comments", comments);
+        return "detail"; // detail.html로 이동
     }
 
     // 게시글 수정 페이지
@@ -125,10 +134,6 @@ public class BoardController {
         boardService.deleteBoard(id);
         return "redirect:/board"; // 게시판 목록으로 리디렉션
     }
-    @GetMapping("/detail/{id}")
-    public String showDetail(@PathVariable Long id, Model model) {
-        BoardDTO board = boardService.getBoardDetail(id);
-        model.addAttribute("board",board);
-        return "/detail";
-    }
+
+
 }

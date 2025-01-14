@@ -1,48 +1,44 @@
 package com.example.project.controller;
 
+import com.example.project.dto.CommentRequestDTO;
 import com.example.project.service.CommentService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/comment")
+@RequiredArgsConstructor
 public class CommentController {
 
-    @Autowired
-    private CommentService commentService;
+    private final CommentService commentService;
 
-    // 댓글 작성
-    @PostMapping("/{boardId}")
-    public String addComment(@PathVariable Long boardId,
-                             @RequestParam String email,
-                             @RequestParam String content,
-                             Model model) {
-        commentService.addComment(boardId, email, content);
-        return "redirect:/board/" + boardId;  // 게시글 상세 페이지로 리디렉션
+    //댓글 작성
+    @PostMapping("/board/{id}/comment")
+    public String writeComment(@PathVariable Long id, CommentRequestDTO commentRequestDTO, Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        commentService.writeComment(commentRequestDTO, id, userDetails.getUsername());
+
+        return "redirect:/board/" + id;
     }
 
-    // 댓글 좋아요 처리
-    @PostMapping("/{commentId}/like")
-    public String likeComment(@PathVariable Long commentId, Model model) {
-        commentService.likeComment(commentId);
-        return "redirect:/board";  // 게시판 목록 페이지로 리디렉션
+
+     //댓글 수정
+    @ResponseBody
+    @PostMapping("/board/{id}/comment/{commentId}/update")
+    public String updateComment(@PathVariable Long id, @PathVariable Long commentId, CommentRequestDTO commentRequestDTO) {
+        commentService.updateComment(commentRequestDTO, commentId);
+        return "/board/" + id;
     }
 
-    // 댓글 수정 처리
-    @PostMapping("/{commentId}/update")
-    public String updateComment(@PathVariable Long commentId,
-                                @RequestParam String newContent,
-                                Model model) {
-        commentService.updateComment(commentId, newContent);
-        return "redirect:/board";  // 수정 후 게시글 상세 페이지로 리디렉션
-    }
-
-    // 댓글 삭제 처리
-    @PostMapping("/{commentId}/delete")
-    public String deleteComment(@PathVariable Long commentId, Model model) {
+    //댓글 삭제
+    @GetMapping("/board/{id}/comment/{commentId}/remove")
+    public String deleteComment(@PathVariable Long id, @PathVariable Long commentId) {
         commentService.deleteComment(commentId);
-        return "redirect:/board";  // 삭제 후 게시글 상세 페이지로 리디렉션
+        return "redirect:/board/" + id;
     }
 }

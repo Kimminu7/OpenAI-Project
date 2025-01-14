@@ -2,12 +2,15 @@ package com.example.project.dto;
 
 
 
-import com.example.project.entity.BaseEntity;
-
-import com.example.project.entity.BoardEntity;
+import com.example.project.entity.Board;
+import com.example.project.entity.Member;
 import lombok.*;
 
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
+import com.example.project.entity.Comment;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Getter
@@ -27,11 +30,11 @@ public class BoardDTO  {
     private String filename;  // 파일 이름
     private byte[] data;
 
-
-
+    private String email;
     private LocalDateTime regDate;
     private LocalDateTime mogDate;
 
-    public BoardDTO(BoardEntity board) {
+    public BoardDTO(Board board) {
     }
+
 }

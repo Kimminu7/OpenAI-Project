@@ -30,8 +30,8 @@ public class Member extends BaseEntity{
     private String telecomProvider;  // 통신사
     @Builder.Default
     @OneToMany(mappedBy = "member",cascade=CascadeType.ALL)
-    private List<BoardEntity> boardList = new ArrayList<>();
-    public void addBoard(BoardEntity board){
+    private List<Board> boardList = new ArrayList<>();
+    public void addBoard(Board board){
         boardList.add(board);
         board.setMember(this);
     }

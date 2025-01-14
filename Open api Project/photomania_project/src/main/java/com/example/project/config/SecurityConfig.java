@@ -35,7 +35,7 @@ public class SecurityConfig {
         return http.csrf().disable()
                 .authorizeRequests()
                 // 회원가입과 로그인 페이지는 인증 없이 접근 가능
-                .antMatchers("/register", "/login","/main","/board").permitAll()
+                .antMatchers("/register", "/login","/main","/board","/detail/{id}").permitAll()
                 // 관리자 경로는 인증이 필요
                 .antMatchers("/admin/**").authenticated()
                 // CSS, 이미지, JS 파일은 인증 없이 접근 가능

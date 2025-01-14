@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,7 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @ToString(exclude = "member")
-public class BoardEntity extends BaseEntity {
+public class Board extends BaseEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,10 +25,9 @@ public class BoardEntity extends BaseEntity {
     private int views;
     private int likes;
     private String filename;
-    private LocalDateTime regDate;
-    private LocalDateTime modDate;
 
-
+    @OneToMany(mappedBy = "board",cascade = CascadeType.ALL)
+    private List<Comment> comments; // 댓글 필드 추가
 
     @Lob
     private byte[] data;
@@ -39,7 +38,5 @@ public class BoardEntity extends BaseEntity {
     @JoinColumn(name = "member_email")
     private Member member;
 
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CommentEntity> commentList = new ArrayList<>();
 
 }
