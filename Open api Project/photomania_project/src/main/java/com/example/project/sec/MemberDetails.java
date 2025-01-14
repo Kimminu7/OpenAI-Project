@@ -55,7 +55,6 @@ public class MemberDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-
         return true;
     }
 }
