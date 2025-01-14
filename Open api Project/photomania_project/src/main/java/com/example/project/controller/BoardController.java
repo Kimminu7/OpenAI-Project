@@ -102,13 +102,21 @@ public class BoardController {
     // 게시글 상세 조회
     @GetMapping("/board/{id}")
     public String detail(@PathVariable Long id, Model model) {
-        BoardDTO boardDTO = boardService.getBoardById(id); // 게시글 조회
+        // 게시글 조회 및 조회수 증가
+        boardService.incrementViews(id); // 조회수 증가 메소드 호출
+
+        // 게시글 상세 조회
+        BoardDTO boardDTO = boardService.getBoardById(id);
 
         model.addAttribute("board", boardDTO);
+
+        // 댓글 목록 조회
         List<CommentResponseDTO> comments = commentService.commentList(id);
         model.addAttribute("comments", comments);
+
         return "detail"; // detail.html로 이동
     }
+
 
     // 게시글 수정 페이지
     @GetMapping("/board/{id}/edit")
