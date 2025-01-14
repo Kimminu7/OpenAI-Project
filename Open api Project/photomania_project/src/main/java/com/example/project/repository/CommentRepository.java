@@ -1,10 +1,15 @@
 package com.example.project.repository;
 
-import com.example.project.entity.CommentEntity;
+import com.example.project.entity.Board;
+import com.example.project.entity.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-@Repository
-public interface CommentRepository extends JpaRepository<CommentEntity, Long> {
-    // 댓글 조회, 수정, 삭제 등의 메서드는 JpaRepository에서 자동으로 제공됨
+import java.util.List;
+
+public interface CommentRepository extends JpaRepository<Comment, Long> {
+
+    @Query("select c from Comment as c where c.board.id = :id ")
+    List<Comment> findByBoardId(@Param("id") Long id);
 }

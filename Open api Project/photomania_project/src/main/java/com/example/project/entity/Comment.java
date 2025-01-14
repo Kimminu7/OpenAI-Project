@@ -1,0 +1,42 @@
+package com.example.project.entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+@Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "comment")
+public class Comment extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String content;
+
+    @ManyToOne
+    @JoinColumn(name = "BOARD_ID")
+    private Board board;
+
+    @ManyToOne
+    @JoinColumn(name = "MEMBER_email")
+    private Member member;
+
+    public void update(String content) {
+
+        this.content = content;
+    }
+
+    public String getAuthorEmail() {
+        return this.member != null ? this.member.getEmail() : null; // 작성자의 이메일을 반환
+    }
+}

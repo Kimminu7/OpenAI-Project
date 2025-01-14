@@ -3,7 +3,7 @@ package com.example.project.service;
 import com.example.project.dto.BoardDTO;
 import com.example.project.dto.PageRequestDTO;
 import com.example.project.dto.PageResultDTO;
-import com.example.project.entity.BoardEntity;
+import com.example.project.entity.Board;
 
 import java.util.List;
 
@@ -23,10 +23,10 @@ public interface BoardService {
 
     BoardDTO getBoardDetail(Long id);
 
-    PageResultDTO<BoardDTO,BoardEntity> getList(PageRequestDTO requestDTO);
+    PageResultDTO<BoardDTO, Board> getList(PageRequestDTO requestDTO);
     // DTO -> Entity 변환
-    default BoardEntity toEntity(BoardDTO bdto){
-        return BoardEntity.builder()
+    default Board toEntity(BoardDTO bdto){
+        return Board.builder()
                 .id(bdto.getId())
                 .title(bdto.getTitle())
                 .name(bdto.getName())
@@ -35,18 +35,21 @@ public interface BoardService {
                 .views(bdto.getViews())
                 .likes(bdto.getLikes())
                 .filename(bdto.getFilename())
+<<<<<<< HEAD
                 .regDate(bdto.getRegDate())
                 .mogDate(bdto.getMogDate())
+=======
+>>>>>>> yyb
                 .data(bdto.getData())
                 .build();
 
     }
     //Entity -> DTO 변환
-    default BoardDTO toDto(BoardEntity bentity){
+    default BoardDTO toDto(Board bentity){
         return BoardDTO.builder()
                 .id(bentity.getId())
                 .title(bentity.getTitle())
-                .name(bentity.getName())
+                .name(bentity.getMember().getName())
                 .content(bentity.getContent())
                 .contentType(bentity.getContentType())
                 .views(bentity.getViews())
