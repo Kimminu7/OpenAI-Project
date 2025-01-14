@@ -9,8 +9,6 @@ import java.util.List;
 
 public interface BoardService {
 
-
-
     BoardDTO saveBoard(BoardDTO boardDTO);
 
     List<BoardDTO> getAllBoards();
@@ -35,11 +33,8 @@ public interface BoardService {
                 .views(bdto.getViews())
                 .likes(bdto.getLikes())
                 .filename(bdto.getFilename())
-<<<<<<< HEAD
                 .regDate(bdto.getRegDate())
                 .mogDate(bdto.getMogDate())
-=======
->>>>>>> yyb
                 .data(bdto.getData())
                 .build();
 

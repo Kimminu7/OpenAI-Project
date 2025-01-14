@@ -1,21 +1,12 @@
 package com.example.project.dto;
 
-<<<<<<< HEAD
 import com.example.project.entity.BaseEntity;
-import com.example.project.entity.BaseEntity;
-import com.example.project.entity.BoardEntity;
 import lombok.*;
-=======
-
-
 import com.example.project.entity.Board;
 import com.example.project.entity.Member;
-import lombok.*;
-
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 import com.example.project.entity.Comment;
->>>>>>> yyb
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -36,11 +27,7 @@ public class BoardDTO  {
     private int likes;  // 추천수
     private String filename;  // 파일 이름
     private byte[] data;
-<<<<<<< HEAD
-=======
-
     private String email;
->>>>>>> yyb
     private LocalDateTime regDate;
     private LocalDateTime mogDate;
 
