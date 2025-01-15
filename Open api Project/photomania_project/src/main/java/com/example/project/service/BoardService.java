@@ -33,8 +33,6 @@ public interface BoardService {
                 .views(bdto.getViews())
                 .likes(bdto.getLikes())
                 .filename(bdto.getFilename())
-                .regDate(bdto.getRegDate())
-                .mogDate(bdto.getMogDate())
                 .data(bdto.getData())
                 .build();
 

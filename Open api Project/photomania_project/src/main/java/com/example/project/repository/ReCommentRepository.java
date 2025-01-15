@@ -6,14 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@EnableJpaRepositories
 public interface ReCommentRepository extends JpaRepository<ReComment, Long> {
 
     // 원 댓글 ID(parentComment) 객체를 기준으로 삭제되지 않은 대댓글 조회
-    @Query("select r from ReComment r where r.parentComment = :parentComment ")
+    @Query("select r from ReComment r where r.parentComment = :parentComment")
     List<ReComment> findByParentComment(@Param("parentComment") Comment parentComment);
 }

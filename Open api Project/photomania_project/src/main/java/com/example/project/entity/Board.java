@@ -20,14 +20,13 @@ public class Board extends BaseEntity {
     private Long id;
     private String title;
     private String name;
+
+
     private String content;
     private String contentType;
     private int views;
     private int likes;
     private String filename;
-    private LocalDateTime regDate;
-    private LocalDateTime mogDate;
-
     @OneToMany(mappedBy = "board",cascade = CascadeType.ALL)
     private List<Comment> comments; // 댓글 필드 추가
 

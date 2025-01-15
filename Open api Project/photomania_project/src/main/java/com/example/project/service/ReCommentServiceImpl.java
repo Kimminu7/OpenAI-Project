@@ -40,7 +40,7 @@ public class ReCommentServiceImpl implements ReCommentService {
         ReComment reComment = ReComment.builder()
                 .board(parentComment.getBoard())  // 원 댓글의 게시판을 대댓글에 연결
                 .member(member)
-                .content(requestDTO.getContent())
+                .content(requestDTO.getRecontent())
                 .parentComment(parentComment)  // 부모 댓글을 참조
                 .createdDate(LocalDateTime.now())
                 .build();
