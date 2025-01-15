@@ -35,9 +35,6 @@ public class Comment extends BaseEntity {
     @Column(name = "parent_comment_id")
     private Long parentCommentId; // 원 댓글 ID (대댓글 구분용)
 
-    @Column(name = "is_deleted", nullable = false)
-    private boolean isDeleted = false; // 삭제 여부, 기본값은 false
-
     // 댓글 내용 업데이트 메서드
     public void update(String content) {
         this.content = content;
@@ -48,7 +45,4 @@ public class Comment extends BaseEntity {
         return this.member != null ? this.member.getEmail() : null;
     }
 
-    public void delete() {
-        this.isDeleted = true;
-    }
 }
