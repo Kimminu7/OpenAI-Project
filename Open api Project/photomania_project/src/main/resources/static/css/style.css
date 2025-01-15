@@ -51,6 +51,7 @@ body {
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    border : 1px solid ;
 }
 
 /* 입력창 스타일 */

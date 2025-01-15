@@ -54,7 +54,6 @@ public class BoardController {
         return "write"; // write.html로 연결
     }
 
-    // 게시글 작성 처리
     @PostMapping("/board")
     public String create(@RequestParam String title,
                          @RequestParam String content,
@@ -84,10 +83,10 @@ public class BoardController {
 
             // 게시글 저장
             BoardDTO saveDTO = boardService.saveBoard(boardDTO);
-            if(saveDTO != null) {
+            if (saveDTO != null) {
                 model.addAttribute("message", "게시글이 성공적으로 작성되었습니다.");
                 return "redirect:/board"; // 게시판 목록으로 리디렉션
-            }else{
+            } else {
                 model.addAttribute("error", "게시글 저장 중 오류가 발생했습니다.");
                 return "write"; // 오류 발생 시 다시 작성 페이지로 이동
             }
