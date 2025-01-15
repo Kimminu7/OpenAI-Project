@@ -35,10 +35,10 @@
     <!-- 댓글 목록 -->
     <div class="comments">
         <h3>댓글</h3>
-        <div th:each="comment : ${comments}">
+        <div th:each="comment, stat : ${comments}">
             <div>
-                <!-- 댓글 ID 출력 -->
-                <p>댓글 ID: <span th:text="${comment.id}"></span></p>
+                <!-- 댓글 번호 출력 -->
+                <p >댓글 번호: <span th:text="${stat.index + 1}" ></span></p>
 
                 <!-- 댓글 작성자 이름 출력 -->
                 <p>작성자: <span th:text="${comment.authorName}"></span></p>
@@ -48,11 +48,30 @@
 
                 <!-- 댓글 작성일 출력 -->
                 <p>작성일: <span th:text="${comment.createdDate}"></span></p>
+
+                <!-- 대댓글 작성 폼 -->
+                <div class="reply-form">
+                    <form th:action="@{'/board/' + ${board.id} + '/comment/' + ${comment.id} + '/reply'}" method="post">
+                        <input type="hidden" name="boardId" th:value="${board.id}">
+                        <input type="hidden" name="parentCommentId" th:value="${comment.id}">
+                        <textarea name="content" placeholder="대댓글을 작성하세요"></textarea>
+                        <button type="submit">대댓글 작성</button>
+                    </form>
+                </div>
+
+                <!-- 대댓글 목록 -->
+                <div class="replies">
+                    <div th:each="reply : ${comment.replies}">
+                        <p>대댓글: <span th:text="${reply.content}"></span></p>
+                        <p>작성자: <span th:text="${reply.authorName}"></span></p>
+                        <p>작성일: <span th:text="${reply.createdDate}"></span></p>
+                    </div>
+                </div>
             </div>
             <hr>
         </div>
     </div>
 </div>
-<script src="/js/commment.js"></script>
+<script src="/js/comment.js"></script>
 </body>
 </html>

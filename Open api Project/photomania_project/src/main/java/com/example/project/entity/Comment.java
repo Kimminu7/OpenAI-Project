@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -31,12 +32,26 @@ public class Comment extends BaseEntity {
     @JoinColumn(name = "MEMBER_email")
     private Member member;
 
-    public void update(String content) {
+    @Column(name = "parent_comment_id")
+    private Long parentCommentId; // 원 댓글 ID (대댓글 구분용)
 
+    @Column(name = "is_deleted", nullable = false)
+    private boolean isDeleted = false; // 삭제 여부, 기본값은 false
+
+    @OneToMany(mappedBy = "comment",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reply> replies;
+
+    // 댓글 내용 업데이트 메서드
+    public void update(String content) {
         this.content = content;
     }
 
+    // 작성자의 이메일 반환 메서드
     public String getAuthorEmail() {
-        return this.member != null ? this.member.getEmail() : null; // 작성자의 이메일을 반환
+        return this.member != null ? this.member.getEmail() : null;
+    }
+
+    public void delete() {
+        this.isDeleted = true;
     }
 }

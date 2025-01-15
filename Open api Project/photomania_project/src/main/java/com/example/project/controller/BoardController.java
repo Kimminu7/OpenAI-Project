@@ -1,13 +1,11 @@
 package com.example.project.controller;
 
-import com.example.project.dto.BoardDTO;
-import com.example.project.dto.CommentResponseDTO;
-import com.example.project.dto.PageRequestDTO;
-import com.example.project.dto.PageResultDTO;
+import com.example.project.dto.*;
 import com.example.project.entity.Board;
 import com.example.project.sec.MemberDetails;
 import com.example.project.service.BoardService;
 import com.example.project.service.CommentService;
+import com.example.project.service.ReCommentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -25,6 +23,7 @@ public class BoardController {
 
     private final BoardService boardService;
     private final CommentService commentService;
+    private final ReCommentService reCommentService;
     // 게시판 목록 페이지
     @GetMapping("/board")
     public String list(@RequestParam(value = "page", defaultValue = "1") int page,
@@ -107,16 +106,31 @@ public class BoardController {
         // 게시글 상세 조회
         BoardDTO boardDTO = boardService.getBoardById(id);
 
+<<<<<<< HEAD
         model.addAttribute("board", boardDTO);
 
         // 댓글 목록 조회
+=======
+        // 댓글 조회 (대댓글 포함)
+>>>>>>> yyb
         List<CommentResponseDTO> comments = commentService.commentList(id);
+
+        // 각 댓글에 대해 대댓글 목록 추가
+        for (CommentResponseDTO comment : comments) {
+            List<ReCommentResponseDTO> replies = reCommentService.getReComments(comment.getId());
+            comment.setReplies(replies); // 댓글 객체에 대댓글 추가
+        }
+
+        model.addAttribute("board", boardDTO);
         model.addAttribute("comments", comments);
 
         return "detail"; // detail.html로 이동
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> yyb
     // 게시글 수정 페이지
     @GetMapping("/board/{id}/edit")
     public String editForm(@PathVariable Long id, Model model) {
