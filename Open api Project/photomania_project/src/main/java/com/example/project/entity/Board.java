@@ -25,8 +25,6 @@ public class Board extends BaseEntity {
     private int views;
     private int likes;
     private String filename;
-    private LocalDateTime regDate;
-    private LocalDateTime mogDate;
 
     @OneToMany(mappedBy = "board",cascade = CascadeType.ALL)
     private List<Comment> comments; // 댓글 필드 추가
