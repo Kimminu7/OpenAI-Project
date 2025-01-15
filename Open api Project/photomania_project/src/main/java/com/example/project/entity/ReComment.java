@@ -41,5 +41,4 @@ public class ReComment {
     @Column(nullable = false)
     private LocalDateTime createdDate;
 
-    private boolean isDeleted = false; // 대댓글 삭제 여부
 }

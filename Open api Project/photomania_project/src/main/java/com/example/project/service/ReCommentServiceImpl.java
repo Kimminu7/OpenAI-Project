@@ -54,8 +54,7 @@ public class ReCommentServiceImpl implements ReCommentService {
                 savedReComment.getContent(),
                 member.getName(),  // 작성자의 이름
                 savedReComment.getMember().getEmail(),
-                savedReComment.getCreatedDate(),
-                savedReComment.isDeleted()
+                savedReComment.getCreatedDate()
         );
     }
 
@@ -76,8 +75,7 @@ public class ReCommentServiceImpl implements ReCommentService {
                         reComment.getContent(),
                         reComment.getMember().getName(),  // 작성자 이름
                         reComment.getMember().getEmail(),
-                        reComment.getCreatedDate(),
-                        reComment.isDeleted()
+                        reComment.getCreatedDate()
                 ))
                 .collect(Collectors.toList());
     }

@@ -20,6 +20,6 @@ public class ReCommentResponseDTO {
     private boolean isDeleted; // 대댓글 삭제 여부
     private List<ReCommentResponseDTO> replies;
 
-    public ReCommentResponseDTO(Long id, Long id1, String content, String name, String email, LocalDateTime createdDate, boolean deleted) {
+    public ReCommentResponseDTO(Long id, Long id1, String content, String name, String email, LocalDateTime createdDate) {
     }
 }
