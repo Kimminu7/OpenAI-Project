@@ -1,16 +1,15 @@
 package com.example.project.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,14 +31,20 @@ public class Comment extends BaseEntity {
     @JoinColumn(name = "MEMBER_email")
     private Member member;
 
-    @Column(name = "parent_comment_id")
-    private Long parentCommentId; // 원 댓글 ID (대댓글 구분용)
+    @Builder.Default
+    @OneToMany(mappedBy = "parentCommentId",cascade=CascadeType.ALL)
+    private List<Comment> replyList = new ArrayList<>();
+
+
+    @ManyToOne
+    @JoinColumn(name = "COMMENT_PARENT_ID")
+    private Comment parentCommentId; // 원 댓글 ID (대댓글 구분용)
 
     @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted = false; // 삭제 여부, 기본값은 false
 
-    @OneToMany(mappedBy = "comment",cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Reply> replies;
+
+
 
     // 댓글 내용 업데이트 메서드
     public void update(String content) {

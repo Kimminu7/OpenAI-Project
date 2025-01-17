@@ -20,6 +20,6 @@ public class CommentResponseDTO {
     private String authorEmail; // 댓글 작성자 이메일
     private LocalDateTime createdDate; // 작성 날짜
     private boolean isDeleted; // 삭제 여부
-    private List<ReCommentResponseDTO> replies;
 
+    private List<ReCommentResponseDTO> recomments;
 }

@@ -38,7 +38,7 @@
         <div th:each="comment, stat : ${comments}">
             <div>
                 <!-- 댓글 번호 출력 -->
-                <p >댓글 번호: <span th:text="${stat.index + 1}" ></span></p>
+                <p>댓글 번호: <span th:text="${stat.index + 1}"></span></p>
 
                 <!-- 댓글 작성자 이름 출력 -->
                 <p>작성자: <span th:text="${comment.authorName}"></span></p>
@@ -51,7 +51,7 @@
 
                 <!-- 대댓글 작성 폼 -->
                 <div class="reply-form">
-                    <form th:action="@{'/board/' + ${board.id} + '/comment/' + ${comment.id} + '/reply'}" method="post">
+                    <form th:action="@{'/board/' + ${board.id} + '/comment/' + ${comment.id} + '/recomment'}" method="post">
                         <input type="hidden" name="boardId" th:value="${board.id}">
                         <input type="hidden" name="parentCommentId" th:value="${comment.id}">
                         <textarea name="content" placeholder="대댓글을 작성하세요"></textarea>
@@ -60,11 +60,11 @@
                 </div>
 
                 <!-- 대댓글 목록 -->
-                <div class="replies">
-                    <div th:each="reply : ${comment.replies}">
-                        <p>대댓글: <span th:text="${reply.content}"></span></p>
-                        <p>작성자: <span th:text="${reply.authorName}"></span></p>
-                        <p>작성일: <span th:text="${reply.createdDate}"></span></p>
+                <div class="replies" style="margin-left: 20px;">
+                    <div th:each="reComment : ${comment.recomments}">
+                        <p>대댓글: <span th:text="${reComment.content}"></span></p>
+                        <p>작성자: <span th:text="${reComment.authorName}"></span></p>
+                        <p>작성일: <span th:text="${reComment.createdDate}"></span></p>
                     </div>
                 </div>
             </div>

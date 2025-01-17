@@ -114,12 +114,6 @@ public class BoardController {
 
         List<CommentResponseDTO> comments = commentService.commentList(id);
 
-        // 각 댓글에 대해 대댓글 목록 추가
-        for (CommentResponseDTO comment : comments) {
-            List<ReCommentResponseDTO> replies = reCommentService.getReComments(comment.getId());
-            comment.setReplies(replies); // 댓글 객체에 대댓글 추가
-        }
-
         model.addAttribute("board", boardDTO);
         model.addAttribute("comments", comments);
 
