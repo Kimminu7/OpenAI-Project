@@ -10,7 +10,9 @@
 <!-- Header -->
 <header class="header-main">
     <div class="logo">
-        <input type="image" src="/images/cameraIcon.png" alt="로고">
+        <a th:href="@{/board}">
+            <p class="logo"><input type="image" th:src="@{/images/cameraicon.png}" alt="logo"></p>
+        </a>
     </div>
     <select class="sel">
         <option value="ko">한국어</option>
