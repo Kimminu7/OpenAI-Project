@@ -31,10 +31,19 @@
     </div>
   </ul>
   <div>
-    <a th:href="@{/login}">
-      <img th:src="@{/images/icons8-사용자-100.png}" alt="사용자 아이콘">
-      <p th:text="${session.member != null ? session.member.name + '/로그아웃' : '로그인 필요'}"></p>
-    </a>
+    <th:block th:if="${session.member != null}">
+      <a th:href="@{/logout}">
+        <img th:src="@{/images/icons8-사용자-100.png}" alt="사용자 아이콘">
+        <p th:text="${session.member.name + '/로그아웃'}"></p>
+      </a>
+    </th:block>
+    <th:block th:if="${session.member == null}">
+      <a th:href="@{/login}">
+        <img th:src="@{/images/icons8-사용자-100.png}" alt="사용자 아이콘">
+        <p th:text="${'로그인 필요'}"></p>
+      </a>
+    </th:block>
+
   </div>
 </header>
 
