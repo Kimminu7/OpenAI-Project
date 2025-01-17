@@ -31,12 +31,14 @@
     </div>
   </ul>
   <div>
+    <!--  로그아웃 버튼   -->
     <th:block th:if="${session.member != null}">
       <a th:href="@{/logout}">
         <img th:src="@{/images/icons8-사용자-100.png}" alt="사용자 아이콘">
         <p th:text="${session.member.name + '/로그아웃'}"></p>
       </a>
     </th:block>
+    <!--  로그인 버튼 th:if 문 unless(그렇지않다면) -->
     <th:block th:if="${session.member == null}">
       <a th:href="@{/login}">
         <img th:src="@{/images/icons8-사용자-100.png}" alt="사용자 아이콘">
