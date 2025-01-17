@@ -21,6 +21,8 @@ public interface BoardService {
 
     BoardDTO getBoardDetail(Long id);
 
+    void incrementLikes(Long boardId);
+
     PageResultDTO<BoardDTO, Board> getList(PageRequestDTO requestDTO);
     // DTO -> Entity 변환
     default Board toEntity(BoardDTO bdto){

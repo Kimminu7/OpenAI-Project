@@ -16,10 +16,18 @@
         <p class="content" th:text="${board.content}"></p>
         <p class="views">조회수: <span th:text="${board.views}"></span></p>
         <p class="date">등록일: <span th:text="${board.regDate}"></span></p>
+        <p class="likes">좋아요: <span th:text="${board.likes}"></span></p>
+
+        <!-- 좋아요 버튼 -->
+        <form th:action="@{'/board/' + ${board.id} + '/like'}" method="post">
+            <button type="submit">좋아요</button>
+        </form>
+
         <div class="file">
             <p>첨부파일: <a th:href="@{${board.filename}}" target="_blank" th:text="${board.filename}"></a></p>
         </div>
     </div>
+
 
     <!-- 댓글 작성 폼 -->
     <div class="comment-form">

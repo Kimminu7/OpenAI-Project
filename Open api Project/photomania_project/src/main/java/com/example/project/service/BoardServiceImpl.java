@@ -52,15 +52,6 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public BoardDTO getBoardById(Long id) {
-        Board boardEntity = boardRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("게시글을 찾을 수 없습니다."));
-
-        return toDto(boardEntity);  // Entity -> DTO 변환
-    }
-
-
-    @Override
     public void deleteBoard(Long id) {
 
         boardRepository.deleteById(id);
@@ -90,5 +81,32 @@ public class BoardServiceImpl implements BoardService{
         return new PageResultDTO<>(result,fn);
     }
 
+    // 좋아요 증가 처리
+    public void incrementLikes(Long boardId) {
+        Board board = boardRepository.findById(boardId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid board ID"));
 
+        // 좋아요 수 증가
+        board.setLikes(board.getLikes() + 1);
+        boardRepository.save(board);  // 저장
+    }
+
+    // 게시글 조회 및 조회수 증가
+    public BoardDTO getBoardById(Long id) {
+        Board board = boardRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid board ID"));
+
+        // 조회수 증가
+        board.setViews(board.getViews() + 1);
+        boardRepository.save(board);
+
+        return BoardDTO.builder()
+                .id(board.getId())
+                .title(board.getTitle())
+                .content(board.getContent())
+                .filename(board.getFilename())
+                .views(board.getViews())
+                .likes(board.getLikes())
+                .build();
+    }
 }

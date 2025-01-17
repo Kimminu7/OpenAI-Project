@@ -52,7 +52,16 @@ public class BoardController {
         model.addAttribute("board", new BoardDTO());
         return "write"; // write.html로 연결
     }
+    @PostMapping("/board/{id}/like")
+    public String like(@PathVariable Long id, Model model) {
+        log.info("좋아요 처리: id={}", id);
 
+        // 좋아요 수 증가
+        boardService.incrementLikes(id);
+
+        // 게시글 상세 조회 페이지로 리디렉션
+        return "redirect:/board/" + id;
+    }
     @PostMapping("/board")
     public String create(@RequestParam String title,
                          @RequestParam String content,
