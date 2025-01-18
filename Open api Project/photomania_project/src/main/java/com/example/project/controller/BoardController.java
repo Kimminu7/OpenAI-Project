@@ -3,11 +3,13 @@ package com.example.project.controller;
 import com.example.project.dto.*;
 import com.example.project.entity.Board;
 import com.example.project.sec.MemberDetails;
+import com.example.project.service.BoardLikeService;
 import com.example.project.service.BoardService;
 import com.example.project.service.CommentService;
 import com.example.project.service.ReCommentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,8 @@ public class BoardController {
     private final BoardService boardService;
     private final CommentService commentService;
     private final ReCommentService reCommentService;
+    private final BoardLikeService boardLikeService;
+
     // 게시판 목록 페이지
     @GetMapping("/board")
     public String list(@RequestParam(value = "page", defaultValue = "1") int page,
@@ -52,16 +56,29 @@ public class BoardController {
         model.addAttribute("board", new BoardDTO());
         return "write"; // write.html로 연결
     }
+
+
+    // 게시물 좋아요 처리
     @PostMapping("/board/{id}/like")
-    public String like(@PathVariable Long id, Model model) {
+    public String like(@PathVariable Long id, @AuthenticationPrincipal MemberDetails memberDetails, Model model) {
         log.info("좋아요 처리: id={}", id);
 
-        // 좋아요 수 증가
-        boardService.incrementLikes(id);
+        String memberEmail = memberDetails.getUsername();
 
-        // 게시글 상세 조회 페이지로 리디렉션
-        return "redirect:/board/" + id;
+        // 좋아요 토글 처리
+        boolean likeStatus = boardLikeService.toggleLike(id, memberEmail);
+
+        // 게시글 정보 다시 가져오기 (좋아요 상태를 반영)
+        BoardDTO boardDTO = boardService.getBoardById(id);
+
+        // 모델에 좋아요 상태와 게시글 정보를 추가
+        model.addAttribute("board", boardDTO);
+        model.addAttribute("likeStatus", likeStatus);  // 좋아요 상태를 전달
+
+        return "detail";  // 같은 페이지로 리디렉션 없이 데이터만 갱신
     }
+
+
     @PostMapping("/board")
     public String create(@RequestParam String title,
                          @RequestParam String content,

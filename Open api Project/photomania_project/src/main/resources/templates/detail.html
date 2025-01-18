@@ -18,16 +18,17 @@
         <p class="date">등록일: <span th:text="${board.regDate}"></span></p>
         <p class="likes">좋아요: <span th:text="${board.likes}"></span></p>
 
-        <!-- 좋아요 버튼 -->
+        <!-- 좋아요 버튼, 상태에 따라 텍스트 변경 -->
         <form th:action="@{'/board/' + ${board.id} + '/like'}" method="post">
-            <button type="submit">좋아요</button>
+            <!-- 좋아요 여부에 따라 버튼 텍스트 변경 -->
+            <button type="submit" th:text="${likeStatus != null ? (likeStatus ? '좋아요 취소' : '좋아요') : '좋아요'}">좋아요</button>
+
         </form>
 
         <div class="file">
             <p>첨부파일: <a th:href="@{${board.filename}}" target="_blank" th:text="${board.filename}"></a></p>
         </div>
     </div>
-
 
     <!-- 댓글 작성 폼 -->
     <div class="comment-form">
@@ -46,7 +47,7 @@
         <div th:each="comment, stat : ${comments}">
             <div>
                 <!-- 댓글 번호 출력 -->
-                <p >댓글 번호: <span th:text="${stat.index + 1}" ></span></p>
+                <p>댓글 번호: <span th:text="${stat.index + 1}"></span></p>
 
                 <!-- 댓글 작성자 이름 출력 -->
                 <p>작성자: <span th:text="${comment.authorName}"></span></p>
