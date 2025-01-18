@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class BoardServiceImpl implements BoardService{
+public class BoardServiceImpl implements BoardService {
     private final BoardRepository boardRepository;
     private final MemberRepository memberRepository;
 
@@ -29,7 +29,7 @@ public class BoardServiceImpl implements BoardService{
     public BoardDTO saveBoard(BoardDTO boardDTO) {
         BoardDTO resultDTO = null;
         Optional<Member> optionalMember = memberRepository.findByEmail(boardDTO.getEmail());
-        if(optionalMember.isPresent()) {
+        if (optionalMember.isPresent()) {
             Member member = optionalMember.get();
             Board boardEntity = toEntity(boardDTO);
             boardEntity.setName(member.getName());
@@ -53,7 +53,6 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public void deleteBoard(Long id) {
-
         boardRepository.deleteById(id);
     }
 
@@ -61,24 +60,25 @@ public class BoardServiceImpl implements BoardService{
     public void incrementViews(Long id) {
         Board boardEntity = boardRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("게시글을 찾을 수 없습니다."));
-        boardEntity.setViews(boardEntity.getViews()+1);
-        boardRepository.save(boardEntity);
+
+        // 조회수 증가
+        boardEntity.setViews(boardEntity.getViews() + 1);
+        boardRepository.save(boardEntity); // 변경 사항 저장
     }
 
     @Override
     public BoardDTO getBoardDetail(Long id) {
         Board board = boardRepository.findById(id)
-                .orElseThrow(()->new IllegalArgumentException("Invalid board Id:"+id));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid board Id: " + id));
         return new BoardDTO(board);
     }
 
     @Override
-    public PageResultDTO<BoardDTO, Board> getList
-            (PageRequestDTO requestDTO) {
+    public PageResultDTO<BoardDTO, Board> getList(PageRequestDTO requestDTO) {
         Pageable pageable = (Pageable) requestDTO.getPageable(Sort.by("id").descending());
-        Page<Board> result =boardRepository.findAll(pageable);
-        Function<Board,BoardDTO> fn = (entity -> toDto(entity));
-        return new PageResultDTO<>(result,fn);
+        Page<Board> result = boardRepository.findAll(pageable);
+        Function<Board, BoardDTO> fn = (entity -> toDto(entity));
+        return new PageResultDTO<>(result, fn);
     }
 
     // 좋아요 증가 처리
@@ -88,17 +88,14 @@ public class BoardServiceImpl implements BoardService{
 
         // 좋아요 수 증가
         board.setLikes(board.getLikes() + 1);
-        boardRepository.save(board);  // 저장
+        boardRepository.save(board); // 저장
     }
 
-    // 게시글 조회 및 조회수 증가
+    // 게시글 조회 (조회수 증가 제외)
+    @Override
     public BoardDTO getBoardById(Long id) {
         Board board = boardRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid board ID"));
-
-        // 조회수 증가
-        board.setViews(board.getViews() + 1);
-        boardRepository.save(board);
 
         return BoardDTO.builder()
                 .id(board.getId())
