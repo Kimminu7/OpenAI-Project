@@ -71,12 +71,21 @@ public class BoardController {
         // 게시글 정보 다시 가져오기 (좋아요 상태를 반영)
         BoardDTO boardDTO = boardService.getBoardById(id);
 
-        // 모델에 좋아요 상태와 게시글 정보를 추가
+        // 댓글 목록 조회 (대댓글 포함)
+        List<CommentResponseDTO> comments = commentService.commentList(id);
+        for (CommentResponseDTO comment : comments) {
+            List<ReCommentResponseDTO> replies = reCommentService.getReComments(comment.getId());
+            comment.setReplies(replies); // 댓글 객체에 대댓글 추가
+        }
+
+        // 모델에 좋아요 상태와 게시글 정보, 댓글 목록 추가
         model.addAttribute("board", boardDTO);
         model.addAttribute("likeStatus", likeStatus);  // 좋아요 상태를 전달
+        model.addAttribute("comments", comments);  // 댓글 목록을 전달
 
-        return "detail";  // 같은 페이지로 리디렉션 없이 데이터만 갱신
+        return "detail";  // 리디렉션 없이 같은 페이지로 데이터를 갱신
     }
+
 
 
     @PostMapping("/board")
