@@ -141,7 +141,6 @@ public class BoardController {
         // 게시글 상세 조회
         BoardDTO boardDTO = boardService.getBoardById(id);
 
-<<<<<<< HEAD
         // 게시글 정보 전달
         model.addAttribute("board", boardDTO);
 
