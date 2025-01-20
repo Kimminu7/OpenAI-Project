@@ -20,8 +20,7 @@ public class Board extends BaseEntity {
     private Long id;
     private String title;
     private String name;
-
-
+    
     private String content;
     private String contentType;
     private int views;
