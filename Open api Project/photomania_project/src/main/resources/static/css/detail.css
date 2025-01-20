@@ -63,6 +63,22 @@ body {
     text-decoration: underline;
 }
 
+/* 좋아요 버튼 */
+button.like-button {
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+button.like-button:hover {
+    background-color: #dcd3f7; /* 보라색 톤 */
+    border-color: #a084dc;
+}
+
 /* 댓글 작성 폼 */
 .comment-form {
     background-color: #fff;

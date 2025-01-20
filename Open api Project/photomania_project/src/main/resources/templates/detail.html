@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 상세</title>
+    <!-- 분리된 CSS 파일 연결 -->
     <link rel="stylesheet" th:href="@{/css/detail.css}">
 </head>
 <body>
@@ -27,9 +28,9 @@
 
         <!-- 좋아요 버튼, 상태에 따라 텍스트 변경 -->
         <form th:action="@{'/board/' + ${board.id} + '/like'}" method="post">
-            <!-- 좋아요 여부에 따라 버튼 텍스트 변경 -->
-            <button type="submit" th:text="${likeStatus != null ? (likeStatus ? '좋아요 취소' : '좋아요') : '좋아요'}">좋아요</button>
-
+            <button type="submit" class="like-button"
+                    th:text="${likeStatus != null ? (likeStatus ? '좋아요 취소 🖤' : '좋아요 ❤️') : '좋아요 ❤️'}">
+            </button>
         </form>
 
         <div class="file">
@@ -41,7 +42,6 @@
     <div class="comment-form">
         <h2>댓글 작성</h2>
         <form th:action="@{'/board/' + ${board.id} + '/comment'}" method="post">
-            <!-- boardId를 폼에 포함시켜서 서버로 전달 -->
             <input type="hidden" name="boardId" th:value="${board.id}">
             <textarea name="content" placeholder="댓글을 작성하세요"></textarea>
             <button type="submit">댓글 작성</button>
@@ -53,16 +53,9 @@
         <h3>댓글</h3>
         <div th:each="comment, stat : ${comments}">
             <div>
-                <!-- 댓글 번호 출력 -->
                 <p>댓글 번호: <span th:text="${stat.index + 1}"></span></p>
-
-                <!-- 댓글 작성자 이름 출력 -->
                 <p>작성자: <span th:text="${comment.authorName}"></span></p>
-
-                <!-- 댓글 내용 출력 -->
                 <p th:text="${comment.content}">댓글 내용</p>
-
-                <!-- 댓글 작성일 출력 -->
                 <p>작성일: <span th:text="${comment.createdDate}"></span></p>
 
                 <!-- 대댓글 작성 폼 -->
