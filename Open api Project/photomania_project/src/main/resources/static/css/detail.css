@@ -11,6 +11,22 @@ body {
     margin: 0 auto;
 }
 
+.header-main {
+    display: flex;
+    justify-content: flex-start; /* 로고 왼쪽 정렬 */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(224, 216, 216); /* 배경색 유지 */
+    border-bottom: 1px solid #ddd;
+    position: relative; /* 상대 위치 설정 */
+}
+
+.logo input[type="image"] {
+    width: 75px; /* 로고 크기 */
+    height: auto;
+    margin-right: 20px; /* 로고와 다른 요소 사이에 여백 추가 */
+}
+
 /* 게시글 상세 영역 */
 .board-detail {
     background-color: #fff;
