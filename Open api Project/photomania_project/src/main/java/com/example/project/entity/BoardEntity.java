@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Getter
@@ -13,39 +12,25 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @ToString(exclude = "member")
-public class Board extends BaseEntity {
-
+public class BoardEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String name;
-
+    private String author;
     private String content;
     private String contentType;
     private int views;
     private int likes;
     private String filename;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-    private boolean isDeleted;
->>>>>>> yyb
-
->>>>>>> yyb
-    @OneToMany(mappedBy = "board",cascade = CascadeType.ALL)
-    private List<Comment> comments; // 댓글 필드 추가
+    private LocalDateTime regDate;
+    private LocalDateTime mogDate;
 
     @Lob
     private byte[] data;
 
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "member_email")
     private Member member;
-
-    public void delete(){
-        this.isDeleted =true;
-    }
-
 }

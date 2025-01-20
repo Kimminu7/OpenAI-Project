@@ -184,7 +184,7 @@ public class BoardController {
     }
 
     // 게시글 삭제 처리
-    @PostMapping("/board/{id}/delete")
+    @DeleteMapping("/board/{id}/delete")
     public String delete(@PathVariable Long id) {
         log.info("게시글 삭제 처리: id={}", id);
         boardService.deleteBoard(id);

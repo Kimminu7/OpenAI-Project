@@ -56,6 +56,7 @@ public class SecurityConfig {
                 .deleteCookies("JSESSIONID") // 쿠키 삭제
                 .permitAll()
                 .and()
+
                 .build();
     }
 }
