@@ -141,6 +141,7 @@ public class BoardController {
         // 게시글 상세 조회
         BoardDTO boardDTO = boardService.getBoardById(id);
 
+<<<<<<< HEAD
         // 게시글 정보 전달
         model.addAttribute("board", boardDTO);
 
@@ -150,6 +151,15 @@ public class BoardController {
             List<ReCommentResponseDTO> replies = reCommentService.getReComments(comment.getId());
             comment.setReplies(replies);
         }
+=======
+        model.addAttribute("board", boardDTO);
+
+        // 댓글 목록 조회
+
+        // 댓글 조회 (대댓글 포함)
+
+        List<CommentResponseDTO> comments = commentService.commentList(id);
+>>>>>>> yyb
 
         model.addAttribute("comments", comments);
 
@@ -157,6 +167,12 @@ public class BoardController {
     }
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> yyb
     // 게시글 수정 페이지
     @GetMapping("/board/{id}/edit")
     public String editForm(@PathVariable Long id, Model model) {
