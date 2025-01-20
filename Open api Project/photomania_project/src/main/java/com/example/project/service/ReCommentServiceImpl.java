@@ -5,6 +5,7 @@ import com.example.project.dto.ReCommentResponseDTO;
 import com.example.project.entity.Board;
 import com.example.project.entity.Comment;
 import com.example.project.entity.Member;
+import com.example.project.entity.ReComment;
 import com.example.project.repository.BoardRepository;
 import com.example.project.repository.CommentRepository;
 import com.example.project.repository.MemberRepository;
@@ -13,6 +14,8 @@ import com.example.project.service.ReCommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,18 +34,16 @@ public class ReCommentServiceImpl implements ReCommentService {
         ReCommentResponseDTO reCommentResponseDTO = null;
 
         // 대댓글 생성
-<<<<<<< HEAD
         ReComment reComment = ReComment.builder()
                 .board(parentComment.getBoard())  // 원 댓글의 게시판을 대댓글에 연결
                 .member(member)
                 .content(requestDTO.getRecontent())
                 .parentComment(parentComment)  // 부모 댓글을 참조
                 .createdDate(LocalDateTime.now())
-=======
+
         Comment comment = Comment.builder()
                 .content(requestDTO.getContent())
                 .isDeleted(false)
->>>>>>> yyb
                 .build();
 
         Optional<Member> optionalMember = memberRepository.findByEmail(email);
@@ -50,7 +51,6 @@ public class ReCommentServiceImpl implements ReCommentService {
             Member member = optionalMember.get();
             comment.setMember(member);
 
-<<<<<<< HEAD
         return new ReCommentResponseDTO(
                 savedReComment.getId(),
                 savedReComment.getBoard().getId(),
@@ -107,7 +107,6 @@ public class ReCommentServiceImpl implements ReCommentService {
         List<Comment> recomments = reCommentRepository.findByParentCommentIdAndIsDeletedFalse(parentCommentId);
         return recomments.stream()
                 .map(this::mapToResponseDTO)
->>>>>>> yyb
                 .collect(Collectors.toList());
     }
 
@@ -127,7 +126,6 @@ public class ReCommentServiceImpl implements ReCommentService {
         // 대댓글 삭제
         Comment comment = reCommentRepository.findByIdAndIsDeletedFalse(reCommentId)
                 .orElseThrow(() -> new IllegalArgumentException("ReComment not found"));
-
         comment.setDeleted(true);
         reCommentRepository.save(comment);
     }
