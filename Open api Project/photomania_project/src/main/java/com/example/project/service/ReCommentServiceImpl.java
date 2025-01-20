@@ -9,10 +9,10 @@ import com.example.project.repository.BoardRepository;
 import com.example.project.repository.CommentRepository;
 import com.example.project.repository.MemberRepository;
 import com.example.project.repository.ReCommentRepository;
+import com.example.project.service.ReCommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,7 +27,7 @@ public class ReCommentServiceImpl implements ReCommentService {
     private final BoardRepository boardRepository;
 
     @Override
-    public ReCommentResponseDTO createReComment(String email,Long id,ReCommentRequestDTO requestDTO) {
+    public ReCommentResponseDTO createReComment(String email, Long id, ReCommentRequestDTO requestDTO) {
         ReCommentResponseDTO reCommentResponseDTO = null;
 
         // 대댓글 생성
@@ -36,23 +36,23 @@ public class ReCommentServiceImpl implements ReCommentService {
                 .isDeleted(false)
                 .build();
 
-        Optional <Member> optionalMember = memberRepository.findByEmail(email);
-        if (optionalMember.isPresent()){
+        Optional<Member> optionalMember = memberRepository.findByEmail(email);
+        if (optionalMember.isPresent()) {
             Member member = optionalMember.get();
             comment.setMember(member);
 
             Optional<Board> optionalBoard = boardRepository.findById(id);
-            if(optionalBoard.isPresent()){
+            if (optionalBoard.isPresent()) {
                 Board board = optionalBoard.get();
                 comment.setBoard(board);
 
-                Optional <Comment> optionalComment = commentRepository.findById(requestDTO.getParentCommentId());
-                if(optionalComment.isPresent()){
-                    Comment pc = optionalComment.get();
-                    comment.setParentCommentId(pc);
+                Optional<Comment> optionalComment = commentRepository.findById(requestDTO.getParentCommentId());
+                if (optionalComment.isPresent()) {
+                    Comment parentComment = optionalComment.get();
+                    comment.setParentCommentId(parentComment);
                 }
 
-                // 저장 후 반환
+                // 대댓글 저장 후 반환
                 Comment savedReComment = reCommentRepository.save(comment);
                 reCommentResponseDTO = mapToResponseDTO(savedReComment);
             }
@@ -99,7 +99,7 @@ public class ReCommentServiceImpl implements ReCommentService {
                 comment.getContent(),
                 comment.getMember().getName(),
                 comment.getMember().getEmail(),
-                comment.getModDate(),
+                comment.getModDate(),  // createdDate로 수정
                 comment.isDeleted()
         );
     }

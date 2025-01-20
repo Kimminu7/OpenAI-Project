@@ -53,6 +53,7 @@ public class Comment extends BaseEntity {
 
     // 작성자의 이메일 반환 메서드
     public String getAuthorEmail() {
+
         return this.member != null ? this.member.getEmail() : null;
     }
 

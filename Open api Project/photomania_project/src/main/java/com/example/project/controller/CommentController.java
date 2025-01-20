@@ -22,7 +22,7 @@ public class CommentController {
     private final ReCommentService reCommentService;
 
     // 댓글 작성
-    @PostMapping("/{id}/comment")
+    @PostMapping("/board/{id}/comment")
     public String writeComment(@PathVariable Long id, CommentRequestDTO commentRequestDTO, Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         commentService.writeComment(commentRequestDTO, id, userDetails.getUsername());
@@ -45,8 +45,7 @@ public class CommentController {
     }
 
     // 대댓글 작성
-    @PostMapping("/board/{id}/recomment")
-    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/board/{id}/comment/{pid}/recomment")
     public String createReComment(@PathVariable Long id, ReCommentRequestDTO requestDTO, Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         reCommentService.createReComment(userDetails.getUsername(), id, requestDTO);
