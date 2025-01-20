@@ -25,4 +25,5 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
     // 삭제되지 않은 댓글을 ID 기준으로 조회
     @Query("select c from Comment c where c.id = :id and c.isDeleted = false")
     Optional<Comment> findByIdAndIsDeletedFalse(@Param("id") Long id);
+    
 }
