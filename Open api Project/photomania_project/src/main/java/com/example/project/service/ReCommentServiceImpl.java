@@ -21,8 +21,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ReCommentServiceImpl implements ReCommentService {
 
-    private final ReCommentRepository reCommentRepository;
-    private final CommentRepository commentRepository;
+    private final CommentRepository commentRepository; // ReCommentRepository 대신 CommentRepository 사용
     private final MemberRepository memberRepository;
     private final BoardRepository boardRepository;
 
@@ -53,7 +52,7 @@ public class ReCommentServiceImpl implements ReCommentService {
                 }
 
                 // 대댓글 저장 후 반환
-                Comment savedReComment = reCommentRepository.save(comment);
+                Comment savedReComment = commentRepository.save(comment); // CommentRepository 사용
                 reCommentResponseDTO = mapToResponseDTO(savedReComment);
             }
         }
@@ -64,7 +63,7 @@ public class ReCommentServiceImpl implements ReCommentService {
     @Override
     public List<ReCommentResponseDTO> getReCommentsByParentCommentId(Long parentCommentId) {
         // 부모 댓글 ID에 해당하는 대댓글 조회
-        List<Comment> recomments = reCommentRepository.findByParentCommentIdAndIsDeletedFalse(parentCommentId);
+        List<Comment> recomments = commentRepository.findByParentCommentIdAndIsDeletedFalse(parentCommentId);
         return recomments.stream()
                 .map(this::mapToResponseDTO)
                 .collect(Collectors.toList());
@@ -73,29 +72,29 @@ public class ReCommentServiceImpl implements ReCommentService {
     @Override
     public ReCommentResponseDTO updateReComment(Long reCommentId, ReCommentRequestDTO requestDTO) {
         // 대댓글 수정
-        Comment comment = reCommentRepository.findByIdAndIsDeletedFalse(reCommentId)
+        Comment comment = commentRepository.findByIdAndIsDeletedFalse(reCommentId)
                 .orElseThrow(() -> new IllegalArgumentException("ReComment not found"));
 
         comment.update(requestDTO.getContent());
-        Comment updatedReComment = reCommentRepository.save(comment);
+        Comment updatedReComment = commentRepository.save(comment); // CommentRepository 사용
         return mapToResponseDTO(updatedReComment);
     }
 
     @Override
     public void deleteReComment(Long reCommentId) {
         // 대댓글 삭제
-        Comment comment = reCommentRepository.findByIdAndIsDeletedFalse(reCommentId)
+        Comment comment = commentRepository.findByIdAndIsDeletedFalse(reCommentId)
                 .orElseThrow(() -> new IllegalArgumentException("ReComment not found"));
 
         comment.setDeleted(true);
-        reCommentRepository.save(comment);
+        commentRepository.save(comment); // CommentRepository 사용
     }
 
     // ReComment 객체를 ReCommentResponseDTO로 변환
     private ReCommentResponseDTO mapToResponseDTO(Comment comment) {
         return new ReCommentResponseDTO(
                 comment.getId(),
-                comment.getParentCommentId().getId(),
+                comment.getParentCommentId() != null ? comment.getParentCommentId().getId() : null, // 부모 ID 확인
                 comment.getContent(),
                 comment.getMember().getName(),
                 comment.getMember().getEmail(),

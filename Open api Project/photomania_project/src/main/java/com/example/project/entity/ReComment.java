@@ -39,4 +39,5 @@ public class ReComment extends BaseEntity{
     @Column(nullable = false)
     private LocalDateTime createdDate;
 
+    private boolean isDeleted; // 삭제 여부를 나타내는 필드 추가
 }

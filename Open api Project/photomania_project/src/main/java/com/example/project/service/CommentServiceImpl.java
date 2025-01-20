@@ -76,7 +76,7 @@ public class CommentServiceImpl implements CommentService{
     @Override
     public List<CommentResponseDTO> getAllComments(Long boardId) {
         // 게시글에 대한 댓글 조회
-        List<Comment> comments = commentRepository.findByParentCommentId(boardId);
+        List<Comment> comments = commentRepository.findByBoardId(boardId); // 수정된 부분
 
         // 댓글과 대댓글을 DTO로 변환하여 반환
         return comments.stream()
@@ -97,4 +97,5 @@ public class CommentServiceImpl implements CommentService{
                 })
                 .collect(Collectors.toList());
     }
+
 }
