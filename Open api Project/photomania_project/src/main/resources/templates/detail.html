@@ -21,6 +21,13 @@
         </div>
     </div>
 
+    <!-- 게시글 삭제 버튼 -->
+    <form th:action="@{'/board/'+ ${board.id} + '/delete'}" method="post">
+        <input type="hidden" name="_method" value="delete"/>
+        <!-- 현재 로그인한 사용자의 이메일과 작성자의 이메일이 일치할 때만 삭제 버튼을 보여줌 -->
+        <button type="submit" onclick="return confirm('정말 삭제하시겠습니까?')">게시글 삭제</button>
+    </form>
+
     <!-- 댓글 작성 폼 -->
     <div class="comment-form">
         <h2>댓글 작성</h2>

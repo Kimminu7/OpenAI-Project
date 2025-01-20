@@ -59,6 +59,7 @@ public class SecurityConfig {
                 .logoutSuccessUrl("/main") // 로그아웃 후 main 페이지로 리디렉션
                 .permitAll()
                 .and()
+
                 .build();
     }
 

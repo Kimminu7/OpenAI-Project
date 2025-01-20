@@ -62,7 +62,11 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public void deleteBoard(Long id) {
+        // 게시글을 찾고 없으면 예외 발생
+        Board board = boardRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Board not found"));
 
+        // 해당 게시글 삭제
         boardRepository.deleteById(id);
     }
 
