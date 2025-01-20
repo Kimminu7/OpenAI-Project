@@ -73,11 +73,6 @@ public class BoardController {
 
         // 댓글 목록 조회 (대댓글 포함)
         List<CommentResponseDTO> comments = commentService.commentList(id);
-        for (CommentResponseDTO comment : comments) {
-            List<ReCommentResponseDTO> replies = reCommentService.getReComments(comment.getId());
-            comment.setReplies(replies); // 댓글 객체에 대댓글 추가
-        }
-
         // 모델에 좋아요 상태와 게시글 정보, 댓글 목록 추가
         model.addAttribute("board", boardDTO);
         model.addAttribute("likeStatus", likeStatus);  // 좋아요 상태를 전달
@@ -145,21 +140,11 @@ public class BoardController {
         model.addAttribute("board", boardDTO);
 
         // 댓글 목록 조회
-        List<CommentResponseDTO> comments = commentService.commentList(id);
-        for (CommentResponseDTO comment : comments) {
-            List<ReCommentResponseDTO> replies = reCommentService.getReComments(comment.getId());
-            comment.setReplies(replies);
-        }
-
-        model.addAttribute("board", boardDTO);
-
-        // 댓글 목록 조회
 
         // 댓글 조회 (대댓글 포함)
-
         List<CommentResponseDTO> comments = commentService.commentList(id);
 
-
+        model.addAttribute("board", boardDTO);
         model.addAttribute("comments", comments);
 
         return "detail"; // detail.html로 이동
