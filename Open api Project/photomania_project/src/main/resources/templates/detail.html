@@ -23,7 +23,7 @@
         <p class="author">작성자: <span th:text="${board.name}"></span></p>
         <p class="content" th:text="${board.content}"></p>
         <p class="views">조회수: <span th:text="${board.views}"></span></p>
-        <p class="date">등록일: <span th:text="${board.regDate}"></span></p>
+        <p class="date">등록일: <span th:text="${#temporals.format(board.regDate, 'yyyy-MM-dd HH:mm:ss')}"></span></p>
         <p class="likes">좋아요: <span th:text="${board.likes}"></span></p>
 
         <!-- 좋아요 버튼, 상태에 따라 텍스트 변경 -->

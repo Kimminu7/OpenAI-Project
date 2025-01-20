@@ -136,28 +136,26 @@ public class BoardController {
     @GetMapping("/board/{id}")
     public String detail(@PathVariable Long id, Model model) {
         // 게시글 조회 및 조회수 증가
-        boardService.incrementViews(id); // 조회수 증가 메소드 호출
+        boardService.incrementViews(id); // 조회수 증가
 
         // 게시글 상세 조회
         BoardDTO boardDTO = boardService.getBoardById(id);
 
+        // 게시글 정보 전달
         model.addAttribute("board", boardDTO);
 
         // 댓글 목록 조회
-        // 댓글 조회 (대댓글 포함)
         List<CommentResponseDTO> comments = commentService.commentList(id);
-
-        // 각 댓글에 대해 대댓글 목록 추가
         for (CommentResponseDTO comment : comments) {
             List<ReCommentResponseDTO> replies = reCommentService.getReComments(comment.getId());
-            comment.setReplies(replies); // 댓글 객체에 대댓글 추가
+            comment.setReplies(replies);
         }
 
-        model.addAttribute("board", boardDTO);
         model.addAttribute("comments", comments);
 
         return "detail"; // detail.html로 이동
     }
+
 
     // 게시글 수정 페이지
     @GetMapping("/board/{id}/edit")

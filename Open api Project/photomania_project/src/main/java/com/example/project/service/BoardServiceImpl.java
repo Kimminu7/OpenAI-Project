@@ -104,6 +104,7 @@ public class BoardServiceImpl implements BoardService {
                 .filename(board.getFilename())
                 .views(board.getViews())
                 .likes(board.getLikes())
+                .regDate(board.getRegDate())
                 .build();
     }
 }
