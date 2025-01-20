@@ -35,11 +35,11 @@ public class ReCommentServiceImpl implements ReCommentService {
 
         // 대댓글 생성
         ReComment reComment = ReComment.builder()
-                .board(parentComment.getBoard())  // 원 댓글의 게시판을 대댓글에 연결
+                .board(parentCommand.getBoard())  // 원 댓글의 게시판을 대댓글에 연결
                 .member(member)
                 .content(requestDTO.getRecontent())
                 .parentComment(parentComment)  // 부모 댓글을 참조
-                .createdDate(LocalDateTime.now())
+                .createdDate(LocalDateTime.now());
 
         Comment comment = Comment.builder()
                 .content(requestDTO.getContent())
@@ -80,7 +80,7 @@ public class ReCommentServiceImpl implements ReCommentService {
                         reComment.getMember().getEmail(),
                         reComment.getCreatedDate()
                 ))
-=======
+
             Optional<Board> optionalBoard = boardRepository.findById(id);
             if (optionalBoard.isPresent()) {
                 Board board = optionalBoard.get();

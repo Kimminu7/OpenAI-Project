@@ -59,12 +59,12 @@
     <div class="comments">
         <h3>댓글</h3>
         <div th:each="comment, stat : ${comments}">
-<<<<<<< HEAD
+
             <div>
                 <p>댓글 번호: <span th:text="${stat.index + 1}"></span></p>
                 <p>작성자: <span th:text="${comment.authorName}"></span></p>
                 <p th:text="${comment.content}">댓글 내용</p>
-=======
+
             <div class="comment">
                 <!-- 댓글 번호 -->
                 <p>댓글 번호: <span th:text="${stat.index + 1}"></span></p>
@@ -76,7 +76,7 @@
                 <p th:text="${comment.content}">댓글 내용</p>
 
                 <!-- 댓글 작성일 -->
->>>>>>> yyb
+
                 <p>작성일: <span th:text="${comment.createdDate}"></span></p>
 
                 <!-- 대댓글 작성 폼 -->
@@ -105,5 +105,6 @@
     </div>
 </div>
 <script src="/js/comment.js"></script>
+</div>
 </body>
 </html>

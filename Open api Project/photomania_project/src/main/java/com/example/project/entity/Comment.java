@@ -43,12 +43,6 @@ public class Comment extends BaseEntity {
     @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted = false; // 삭제 여부, 기본값은 false
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> yyb
     // 댓글 내용 업데이트 메서드
     public void update(String content) {
         this.content = content;
@@ -61,11 +55,8 @@ public class Comment extends BaseEntity {
         return this.member != null ? this.member.getEmail() : null;
     }
 
-<<<<<<< HEAD
-=======
     public void delete() {
 
         this.isDeleted = true;
     }
->>>>>>> yyb
 }
