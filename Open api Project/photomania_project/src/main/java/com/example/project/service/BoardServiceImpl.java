@@ -106,6 +106,7 @@ public class BoardServiceImpl implements BoardService {
 
         return BoardDTO.builder()
                 .id(board.getId())
+                .name(board.getName())
                 .title(board.getTitle())
                 .content(board.getContent())
                 .filename(board.getFilename())
