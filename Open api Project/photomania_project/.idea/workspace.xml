@@ -4,124 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e02851c-c213-45de-8594-ced692280b23" name="Changes" comment="" />
+    <list default="true" id="5a2b8f79-a441-4817-8fd0-9ff4f353bd4c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="CompilerWorkspaceConfiguration">
-    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="PhotoMania" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="AnnotationType" />
-        <option value="HTML File" />
-        <option value="Class" />
-        <option value="Interface" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
-}</component>
-  <component name="ProjectId" id="2rK4MVVLrkJZ77j6KfSlKUHfrF4" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2rvo1HJsZgVWc2KmYBvpDPacDiN" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.ProjectApplication (1).executor": "Run",
-    "Application.ProjectApplication.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Gradle.BoardApplicationTests.executor": "Run",
-    "Gradle.BoardRepositoryTest.executor": "Run",
-    "Gradle.BoardRepositoryTest.insertBoard.executor": "Debug",
-    "Gradle.Download Sources.executor": "Run",
-    "Gradle.project [:ProjectApplication.main()].executor": "Debug",
-    "JUnit.BoardRepositoryTest.insertBoard.executor": "Debug",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.ProjectApplication.executor": "Run",
+    "git-widget-placeholder": "godkim",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/rock9/OneDrive/문서/OpenAPI-Project/photomania_project",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+    "last_opened_file_path": "C:/Users/rock9/OneDrive/문서/OpenAPI-Project/Open api Project/photomania_project"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\open ai\SpringBoot_lab\project\src\main\resources\templates" />
-      <recent name="C:\Users\User\Desktop\springboot\project - 복사본 (3)\src\main\resources\templates" />
-      <recent name="C:\open ai\SpringBoot_lab\project\src\main\resources\static\css" />
-      <recent name="C:\open ai\SpringBoot_lab\project\src\main\java\com\example\project" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\OWNER\Documents\GitHub\OpenAPI-Project\Open api Project\photomania_project\src\main\resources\templates" />
-      <recent name="C:\Users\User\Desktop\springboot\project - 복사본 (3)\src\main\resources\templates" />
-      <recent name="C:\open ai\SpringBoot_lab\project\src\main\resources\static\js" />
-      <recent name="C:\open ai\SpringBoot_lab\project\src\main\resources\static" />
-      <recent name="C:\open ai\SpringBoot_lab\project\src\main\resources\static\css" />
-    </key>
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="com.example.project.sec" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example.project" />
-      <recent name="com.example.project.entity" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.ProjectApplication">
+  <component name="RunManager">
     <configuration name="ProjectApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.project.ProjectApplication" />
       <module name="PhotoMania.main" />
@@ -135,129 +52,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BoardApplicationTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.example.project.BoardApplicationTests&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="BoardRepositoryTest.insertBoard" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.example.project.BoardRepositoryTest.insertBoard&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="BoardRepositoryTest.insertBoard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="project.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.project.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.project" />
-      <option name="MAIN_CLASS_NAME" value="com.example.project.BoardRepositoryTest" />
-      <option name="METHOD_NAME" value="insertBoard" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="PhotoMania" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="PhotoMania" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
-    <configuration name="ProjectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="project.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.project.ProjectApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.ProjectApplication" />
-      <item itemvalue="Gradle.BoardApplicationTests" />
-      <item itemvalue="Gradle.BoardRepositoryTest.insertBoard" />
-      <item itemvalue="JUnit.BoardRepositoryTest.insertBoard" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ProjectApplication" />
-        <item itemvalue="JUnit.BoardRepositoryTest.insertBoard" />
-        <item itemvalue="Gradle.BoardRepositoryTest.insertBoard" />
-        <item itemvalue="Gradle.BoardApplicationTests" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0e02851c-c213-45de-8594-ced692280b23" name="Changes" comment="" />
-      <created>1736294384780</created>
+      <changelist id="5a2b8f79-a441-4817-8fd0-9ff4f353bd4c" name="Changes" comment="" />
+      <created>1737448693215</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1736294384780</updated>
-      <workItem from="1736342265259" duration="2679000" />
-      <workItem from="1736344956284" duration="1463000" />
+      <updated>1737448693215</updated>
     </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>
