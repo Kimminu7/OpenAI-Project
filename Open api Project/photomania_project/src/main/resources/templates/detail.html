@@ -22,19 +22,20 @@
     </div>
 
     <!-- 게시글 삭제 버튼 -->
+    <th:block th:if="${session.member?.email==board.email}">
     <form th:action="@{'/board/'+ ${board.id} + '/delete'}" method="post">
-        <input type="hidden" name="_method" value="delete"/>
-        <!-- 현재 로그인한 사용자의 이메일과 작성자의 이메일이 일치할 때만 삭제 버튼을 보여줌 -->
-        <button type="submit" onclick="return confirm('정말 삭제하시겠습니까?')">게시글 삭제</button>
+        <button type="submit"  onclick="return confirm('정말 삭제하시겠습니까?')">게시글 삭제</button>
     </form>
-
+    </th:block>
     <!-- 댓글 작성 폼 -->
     <div class="comment-form">
         <h2>댓글 작성</h2>
+        <th:block th:if="${session.member?.email != null}">
         <form th:action="@{'/board/' + ${board.id} + '/comment'}" method="post">
             <input type="hidden" name="boardId" th:value="${board.id}">
             <textarea name="content" placeholder="댓글을 작성하세요"></textarea>
             <button type="submit">댓글 작성</button>
+        </th:block>
         </form>
     </div>
 
@@ -57,11 +58,13 @@
 
                 <!-- 대댓글 작성 폼 -->
                 <div class="reply-form">
+                    <th:block th:if="${session.member?.email != null}">
                     <form th:action="@{'/board/' + ${board.id} + '/comment/' + ${comment.id} + '/recomment'}" method="post">
                         <input type="hidden" name="boardId" th:value="${board.id}">
                         <input type="hidden" name="parentCommentId" th:value="${comment.id}">
                         <textarea name="content" placeholder="대댓글을 작성하세요"></textarea>
                         <button type="submit">대댓글 작성</button>
+                    </th:block>
                     </form>
                 </div>
 
@@ -69,7 +72,7 @@
                 <div class="replies" style="margin-left: 20px;">
                     <div th:each="reComment : ${comment.recomments}">
                         <div class="recomment">
-                            <p>대댓글: <span th:text="${reComment.content}"></span></p>
+                            <p>대댓글 내용: <span th:text="${reComment.content}"></span></p>
                             <p>작성자: <span th:text="${reComment.authorName}"></span></p>
                             <p>작성일: <span th:text="${reComment.createdDate}"></span></p>
                         </div>

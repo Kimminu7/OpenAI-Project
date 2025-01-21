@@ -2,6 +2,8 @@ package com.example.project.controller;
 
 import com.example.project.dto.*;
 import com.example.project.entity.Board;
+import com.example.project.entity.BoardEntity;
+import com.example.project.entity.Member;
 import com.example.project.sec.MemberDetails;
 import com.example.project.service.BoardService;
 import com.example.project.service.CommentService;
@@ -24,25 +26,23 @@ public class BoardController {
     private final BoardService boardService;
     private final CommentService commentService;
     private final ReCommentService reCommentService;
+
     // 게시판 목록 페이지
     @GetMapping("/board")
     public String list(@RequestParam(value = "page", defaultValue = "1") int page,
                        @RequestParam(value = "size", defaultValue = "10") int size,
                        Model model) {
-        // PageRequestDTO 생성
         PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
                 .page(page)
                 .size(size)
                 .build();
 
-        // 페이징 처리된 게시글 목록 조회
         PageResultDTO<BoardDTO, Board> result = boardService.getList(pageRequestDTO);
 
-        // 모델에 추가
         model.addAttribute("boardList", result.getDtoList());
         model.addAttribute("pageResult", result);
 
-        return "board"; // board.html로 연결
+        return "board";
     }
 
     // 게시글 작성 페이지
@@ -50,7 +50,7 @@ public class BoardController {
     public String createForm(Model model) {
         log.info("게시글 작성 페이지로 이동");
         model.addAttribute("board", new BoardDTO());
-        return "write"; // write.html로 연결
+        return "write";
     }
 
     @PostMapping("/board")
@@ -61,7 +61,6 @@ public class BoardController {
         log.info("게시글 작성 처리: 제목={}, 내용={}", title, content);
 
         try {
-            // 파일 데이터를 처리
             byte[] fileData = null;
             String filename = null;
             if (file != null && !file.isEmpty()) {
@@ -69,7 +68,6 @@ public class BoardController {
                 filename = file.getOriginalFilename();
             }
 
-            // BoardDTO 생성
             BoardDTO boardDTO = BoardDTO.builder()
                     .title(title)
                     .content(content)
@@ -80,74 +78,74 @@ public class BoardController {
                     .email(memberDetails.getUsername())
                     .build();
 
-            // 게시글 저장
             BoardDTO saveDTO = boardService.saveBoard(boardDTO);
             if (saveDTO != null) {
                 model.addAttribute("message", "게시글이 성공적으로 작성되었습니다.");
-                return "redirect:/board"; // 게시판 목록으로 리디렉션
+                return "redirect:/board";
             } else {
                 model.addAttribute("error", "게시글 저장 중 오류가 발생했습니다.");
-                return "write"; // 오류 발생 시 다시 작성 페이지로 이동
+                return "write";
             }
-
         } catch (Exception e) {
             log.error("게시글 작성 중 오류 발생", e);
             model.addAttribute("error", "게시글 저장 중 오류가 발생했습니다.");
-            return "write"; // 오류 발생 시 다시 작성 페이지로 이동
+            return "write";
         }
     }
 
     // 게시글 상세 조회
     @GetMapping("/board/{id}")
-    public String detail(@PathVariable Long id, Model model) {
-        // 게시글 조회 및 조회수 증가
-        boardService.incrementViews(id); // 조회수 증가 메소드 호출
+    public String detail(@PathVariable Long id, Model model, @AuthenticationPrincipal MemberDetails memberDetails) {
+        boardService.incrementViews(id);
 
-        // 게시글 상세 조회
         BoardDTO boardDTO = boardService.getBoardById(id);
-
-        model.addAttribute("board", boardDTO);
-
-        // 댓글 목록 조회
-
-        // 댓글 조회 (대댓글 포함)
-
         List<CommentResponseDTO> comments = commentService.commentList(id);
+
+
+        boolean isAuthor = memberDetails != null && memberDetails.getUsername().equals(boardDTO.getEmail());
 
         model.addAttribute("board", boardDTO);
         model.addAttribute("comments", comments);
+        model.addAttribute("isAuthor", isAuthor);
 
-        return "detail"; // detail.html로 이동
+
+        return "detail";
     }
-
-
-
-
 
     // 게시글 수정 페이지
     @GetMapping("/board/{id}/edit")
-    public String editForm(@PathVariable Long id, Model model) {
-        log.info("게시글 수정 페이지로 이동: id={}", id);
+    public String editForm(@PathVariable Long id, Model model, @AuthenticationPrincipal MemberDetails memberDetails) {
         BoardDTO boardDTO = boardService.getBoardById(id);
+
+        if (!memberDetails.getUsername().equals(boardDTO.getEmail())) {
+            throw new IllegalArgumentException("수정 권한이 없습니다.");
+        }
+
         model.addAttribute("board", boardDTO);
-        return "board/form"; // board/form.html 재활용
+        return "board/form";
     }
 
     // 게시글 수정 처리
     @PostMapping("/board/{id}/edit")
-    public String update(@PathVariable Long id, @ModelAttribute BoardDTO boardDTO) {
-        log.info("게시글 수정 처리: id={}, {}", id, boardDTO);
-        boardService.saveBoard(boardDTO); // 게시글 수정도 saveBoard로 처리
-        return "redirect:/board/" + id; // 수정된 게시글 상세로 리디렉션
+    public String update(@PathVariable Long id, @ModelAttribute BoardDTO boardDTO, @AuthenticationPrincipal MemberDetails memberDetails) {
+        if (!memberDetails.getUsername().equals(boardDTO.getEmail())) {
+            throw new IllegalArgumentException("수정 권한이 없습니다.");
+        }
+
+        boardService.saveBoard(boardDTO);
+        return "redirect:/board/" + id;
     }
 
     // 게시글 삭제 처리
-    @DeleteMapping("/board/{id}/delete")
-    public String delete(@PathVariable Long id) {
-        log.info("게시글 삭제 처리: id={}", id);
+    @PostMapping("/board/{id}/delete")
+    public String delete(@PathVariable Long id, @AuthenticationPrincipal MemberDetails memberDetails) {
+        BoardDTO boardDTO = boardService.getBoardById(id);
+
+        if (!memberDetails.getUsername().equals(boardDTO.getEmail())) {
+            throw new IllegalArgumentException("삭제 권한이 없습니다.");
+        }
+
         boardService.deleteBoard(id);
-        return "redirect:/board"; // 게시판 목록으로 리디렉션
+        return "redirect:/board";
     }
-
-
 }
