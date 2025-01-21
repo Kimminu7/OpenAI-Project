@@ -1,0 +1,127 @@
+/* 기본 스타일 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 전체 배경 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f6f7; /* 배경색 유지 */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 헤더 */
+.header-main {
+    display: flex;
+    justify-content: center; /* 로고 중앙 정렬 */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(224, 216, 216); /* 배경색 유지 */
+    border-bottom: 1px solid #ddd;
+    position: relative; /* 상대 위치 설정 */
+}
+
+/* 언어 선택 드롭다운 */
+.sel {
+    position: absolute; /* 절대 위치 */
+    top: 10px;
+    right: 20px;
+    width: 80px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* 로고 이미지 */
+.logo input[type="image"] {
+    width: 75px; /* 로고 크기 */
+    height: auto;
+}
+
+/* 로그인 컨테이너 */
+.login-gn {
+    width: 400px; /* 너비 고정 */
+    margin: 50px auto; /* 중앙 정렬 */
+    padding: 30px;
+    background-color: #fff; /* 배경색 유지 */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    border : 1px solid ;
+}
+
+/* 입력창 스타일 */
+.login-form p {
+    margin: 15px 0; /* 입력창 간격 */
+}
+/* 로그인 입력창 */
+.login-gn h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-form input {
+    width: 100%; /* 입력창 너비 가득 채우기 */
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* 로그인 상태 유지 체크박스 */
+.login-keep {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.input-keep {
+    margin-right: 5px; /* 체크박스와 텍스트 간격 */
+}
+
+/* 로그인 버튼 */
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+main{
+    flex: 1;
+}
+
+/* 하단 링크 */
+main ul {
+    display: flex;
+    justify-content: center; /* 중앙 정렬 */
+    padding: 15px 0;
+    font-size: 14px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+}
+
+main ul a {
+    margin: 0 10px;
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+main ul a:hover {
+    text-decoration: underline; /* 마우스 오버 시 밑줄 */
+}
+footer{
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color:white;
+    margin-top: auto;
+    width: 100%;
+}
