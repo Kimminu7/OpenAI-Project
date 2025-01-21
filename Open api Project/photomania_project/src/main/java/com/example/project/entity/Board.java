@@ -27,9 +27,14 @@ public class Board extends BaseEntity {
     private int likes;
     private String filename;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
     private boolean isDeleted;
 
+=======
+    private boolean isDeleted;
+
+>>>>>>> Stashed changes
 =======
     private boolean isDeleted;
 

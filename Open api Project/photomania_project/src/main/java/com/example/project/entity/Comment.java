@@ -60,6 +60,10 @@ public class Comment extends BaseEntity {
         this.isDeleted = true;
     }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes

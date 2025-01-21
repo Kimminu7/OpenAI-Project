@@ -7,6 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.repository.query.Param;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -27,6 +31,9 @@ public interface ReCommentRepository extends JpaRepository<ReComment, Long> {
 
 
     public interface ReCommentRepository extends JpaRepository<Comment, Long> {
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     // 부모 댓글 ID에 해당하는 대댓글을 삭제되지 않은 상태로 조회
     List<Comment> findByParentCommentIdAndIsDeletedFalse(Long parentCommentId);
