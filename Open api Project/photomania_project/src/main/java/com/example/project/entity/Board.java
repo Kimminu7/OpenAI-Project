@@ -26,19 +26,9 @@ public class Board extends BaseEntity {
     private int views;
     private int likes;
     private String filename;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
     private boolean isDeleted;
 
-=======
-    private boolean isDeleted;
 
->>>>>>> Stashed changes
-=======
-    private boolean isDeleted;
-
->>>>>>> Stashed changes
     @OneToMany(mappedBy = "board",cascade = CascadeType.ALL)
     private List<Comment> comments; // 댓글 필드 추가
 
