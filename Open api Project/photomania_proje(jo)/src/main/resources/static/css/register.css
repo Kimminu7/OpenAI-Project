@@ -26,7 +26,7 @@ body {
 }
 
 /* 로고 이미지 (반으로 줄이기) */
-.logo input[type="image"] {
+.logo a img {
     width: 75px; /* 원래 크기의 반 */
     height: auto;
 }
@@ -97,7 +97,6 @@ body {
 /* 통신사 선택 및 번호 입력 */
 .large-input {
     width: 70%; /* 큰 입력칸 */
-    margin-right: 10px;
 }
 
 .small-select {

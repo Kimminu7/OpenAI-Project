@@ -9,18 +9,17 @@
 header {
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
+  justify-content: space-between; /* 양쪽 끝 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  padding: 10px 20px;
   border-bottom: 1px solid black;
   background-color: rgb(224, 216, 216);
-  position: fixed; /* 헤더를 화면 상단에 고정 */
-  top: 0; /* 화면 상단에 고정 */
-  left: 0; /* 왼쪽으로 고정 */
-  z-index: 1000; /* 다른 콘텐츠보다 위에 위치하도록 설정 */
-  max-width: 100%; /* 화면 크기를 넘지 않도록 설정 */
-  width: 100%; /* 100% 너비로 확장 */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과로 구분 */
+  position: fixed; /* 상단 고정 */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* 다른 콘텐츠보다 위에 위치 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  height: 80px; /* 고정된 높이 */
 }
 
 header img {
@@ -33,9 +32,16 @@ header ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  justify-content: center;
+  flex-grow: 1; /* 남는 공간 채우기 */
+  justify-content: center; /* 메뉴 중앙 정렬 */
   align-items: center;
-  flex-grow: 1; /* 남는 공간을 채우도록 설정 */
+}
+
+header ul li {
+  margin: 0 75px; /* 간격 조정 */
+  font-size: 18px;
+  text-align: center;
+  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
 }
 
 header ul div #search {
@@ -50,26 +56,10 @@ header ul div #search2 {
   padding: 0 10px;
 }
 
-header ul li {
-  margin: 0 75px; /* 너무 큰 마진을 줄여줍니다 */
-  text-align: center;
-  flex-shrink: 0;
-  list-style: none;
-  white-space: nowrap;
-  font-size: 20px;
-  overflow: hidden;
-}
-
-header ul li:hover {
-  color: #ff6600;
-  cursor: pointer;
-}
-
 header div {
   display: flex;
-  text-align: center;
   align-items: center;
-  justify-content: center;
+  gap: 10px; /* 아이콘과 텍스트 간격 */
 }
 
 header div img {
@@ -77,9 +67,24 @@ header div img {
   height: 40px;
 }
 
+header div a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+header div a:hover {
+  background-color: #f0f0f0; /* 호버 효과 */
+}
+
 /* 페이지 본문을 헤더 아래로 밀어내기 위한 간격 추가 */
 body {
-  padding-top: 80px; /* 헤더 높이만큼 여백을 추가 */
+  padding-top: 80px; /* 헤더 높이만큼 여백 추가 */
 }
 
 /* Swiper 스타일 */
@@ -103,7 +108,6 @@ body {
   width: 100%; /* 슬라이드 크기를 부모 크기에 맞추기 */
 }
 
-/* 화살표 버튼 스타일 */
 .swiper-button-next, .swiper-button-prev {
   position: absolute;
   top: 50%;
@@ -132,29 +136,6 @@ body {
   background-color: #ff6600;
 }
 
-nav {
-  background-color: aquamarine;
-  padding: 30px 10px; /* 상하 여백만 추가, 좌우 여백은 없앴습니다 */
-  width: 100%;
-  max-width: 100%; /* 화면 너비를 넘지 않도록 설정 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box; /* 내부 요소들이 overflow되지 않도록 */
-}
-
-nav img {
-  width: 40px;
-  height: 40px;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #333;
-  color: white;
-}
-
 /* YouTube 배너 섹션 스타일 */
 .youtube-banner {
   margin-top: 30px;
@@ -163,7 +144,7 @@ footer {
 
 .youtube-video-container iframe {
   max-width: 100%; /* 화면 크기에 맞춰 최대 100%로 크기 조절 */
-  height: 500px; /* 고정 높이 설정 (필요에 따라 조정) */
+  height: 500px; /* 고정 높이 설정 */
   border: none; /* 테두리 제거 */
 }
 
@@ -174,8 +155,6 @@ footer {
 }
 
 /* 추가된 애니메이션 및 스타일 */
-
-/* 애니메이션 효과 */
 .intro-container {
   text-align: center;
   padding: 150px 10px;
@@ -185,7 +164,6 @@ footer {
   border-bottom: 1px solid #ddd;
 }
 
-/* 그라디언트 애니메이션 */
 @keyframes gradientAnimation {
   0% {
     background-position: 0% 50%;
@@ -198,7 +176,6 @@ footer {
   }
 }
 
-/* Intro Text */
 .intro-text {
   font-size: 50px;
   font-weight: bold;
@@ -215,17 +192,15 @@ footer {
   font-style: italic;
 }
 
-/* 서브 텍스트 애니메이션 */
 .sub-text {
   font-size: 20px;
-  color: black; /* 흰색 텍스트 */
+  color: black; /* 텍스트 색상 */
   text-align: center;
   margin-top: 20px;
   opacity: 0;
   animation: fadeInUp 2s 0.5s forwards;
 }
 
-/* Fade In 애니메이션 */
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -237,33 +212,27 @@ footer {
   }
 }
 
-/* Swiper 스타일 */
-.swiper-container {
-  width: 100%;
-  height: 300px;
-  margin-top: 20px;
-  position: relative;
-  overflow: hidden;
-  box-sizing: border-box;
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap; /* 헤더 요소 줄바꿈 허용 */
+    height: auto; /* 높이를 자동으로 조정 */
+  }
+
+  header ul {
+    flex-wrap: wrap; /* 메뉴 줄바꿈 허용 */
+    justify-content: flex-start; /* 메뉴 왼쪽 정렬 */
+    gap: 10px;
+  }
+
+  header div {
+    margin-top: 10px; /* 위쪽 여백 추가 */
+  }
 }
 
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f1f1f1;
-  font-size: 24px;
-  color: #333;
-  height: 100%;
-  width: 100%;
-}
-
-/* 푸터 스타일 */
 footer {
   text-align: center;
   padding: 20px;
   background-color: #333;
   color: white;
-  margin-top: auto;
-  width: 100%;
 }

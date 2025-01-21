@@ -25,16 +25,24 @@
     <li>이벤트</li>
     <li><a th:href="@{/find}">탐색</a></li>
     <li><a th:href="@{/board}">게시판</a></li>
-    <div>
-      <input type="text" name="query" id="search" placeholder="검색어를 입력하세요.">
-      <input type="submit" id="search2" value="검색">
-    </div>
+
   </ul>
   <div>
-    <a th:href="@{/login}">
-      <img th:src="@{/images/icons8-사용자-100.png}" alt="사용자 아이콘">
-      <p th:text="${#authentication != null ? #authentication.name : 'Login / Register'}"></p>
-    </a>
+    <!--  로그아웃 버튼   -->
+    <th:block th:if="${session.member != null}">
+      <a th:href="@{/logout}">
+        <img th:src="@{/images/icons8-사용자-100.png}" alt="사용자 아이콘">
+        <p th:text="${session.member.name + '/로그아웃'}"></p>
+      </a>
+    </th:block>
+    <!--  로그인 버튼 th:if 문 unless(그렇지않다면) -->
+    <th:block th:if="${session.member == null}">
+      <a th:href="@{/login}">
+        <img th:src="@{/images/icons8-사용자-100.png}" alt="사용자 아이콘">
+        <p th:text="${'로그인 필요'}"></p>
+      </a>
+    </th:block>
+
   </div>
 </header>
 

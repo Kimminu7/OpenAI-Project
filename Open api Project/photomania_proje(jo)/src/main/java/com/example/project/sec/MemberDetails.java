@@ -2,7 +2,6 @@ package com.example.project.sec;
 
 import com.example.project.entity.Member;
 import lombok.Data;
-import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -21,6 +20,7 @@ public class MemberDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+
         return List.of();
     }
 
@@ -30,10 +30,10 @@ public class MemberDetails implements UserDetails {
         return member.getPw();
     }
 
-
+    @Override
     public String getUsername() {
 
-        return member.getId();
+        return member.getEmail();
     }
 
     @Override
@@ -55,7 +55,6 @@ public class MemberDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-
         return true;
     }
 }

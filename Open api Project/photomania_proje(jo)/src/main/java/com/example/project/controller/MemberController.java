@@ -38,7 +38,6 @@ public class MemberController {
 
         // MemberDTO를 Member 엔티티로 변환
         Member member = new Member();
-        member.setId(memberDto.getId());
         member.setPw(encodedPassword);
         member.setName(memberDto.getName());
         member.setEmail(memberDto.getEmail());
@@ -81,6 +80,7 @@ public class MemberController {
 
     @GetMapping("/main")
     public String mainPage() {
+
         return "main";  // main.html 페이지를 반환
     }
     @PostMapping("/main")
@@ -88,10 +88,7 @@ public class MemberController {
 
         return "/main";
     }
-    @GetMapping("/main2")
-    public String Usermain(){
-        return "main2";
-    }
+
     @GetMapping("/find")
     public String find(){
         return "find";

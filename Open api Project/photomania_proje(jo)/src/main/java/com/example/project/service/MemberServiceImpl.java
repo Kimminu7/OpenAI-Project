@@ -18,7 +18,7 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public String register(MemberDTO dto) {
-        if(memberRepository.findById(dto.getId()).isPresent()){
+        if(memberRepository.findById(dto.getEmail()).isPresent()){
             return null;
         }
 

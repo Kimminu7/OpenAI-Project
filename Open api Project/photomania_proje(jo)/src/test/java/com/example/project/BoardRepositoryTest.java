@@ -1,17 +1,12 @@
 package com.example.project;
 
 
-import com.example.project.entity.BoardEntity;
 import com.example.project.entity.Member;
 import com.example.project.repository.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 
 import java.util.Optional;
 import java.util.stream.IntStream;
@@ -35,7 +30,7 @@ public class BoardRepositoryTest {
             if (!optionalMember.isPresent()) {
                 // Member가 존재하지 않으면 새로 저장
                 Member entity = Member.builder()
-                        .id("Title" + i)
+                        .name("Title" + i)
                         .email(email)
                         .pw("password") // 예시로 'password' 사용
                         .build();

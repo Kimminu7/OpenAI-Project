@@ -16,7 +16,7 @@ body {
 
 .header-main {
     display: flex;
-    justify-content: center; /* 로고 중앙 정렬 */
+    justify-content: flex-start; /* 로고 왼쪽 정렬 */
     align-items: center;
     padding: 10px 20px;
     background-color: rgb(224, 216, 216); /* 배경색 유지 */
@@ -27,6 +27,7 @@ body {
 .logo input[type="image"] {
     width: 75px; /* 로고 크기 */
     height: auto;
+    margin-right: 20px; /* 로고와 다른 요소 사이에 여백 추가 */
 }
 
 
@@ -127,4 +128,15 @@ body {
 
 .pagination a:hover {
     text-decoration: underline;
+}
+
+.pagination {
+    list-style: none; /* 리스트 스타일을 없앱니다 */
+    padding: 0; /* 기본 패딩을 제거합니다 */
+    margin: 0; /* 기본 마진을 제거합니다 */
+}
+
+.pagination li {
+    display: inline; /* 리스트 항목을 인라인으로 표시합니다 */
+    margin-right: 5px; /* 항목 간의 간격을 설정합니다 */
 }

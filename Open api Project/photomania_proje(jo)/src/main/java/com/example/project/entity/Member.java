@@ -5,6 +5,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -13,13 +15,10 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Builder
-@ToString
-public class Member {
+@ToString(exclude ="boardList")
+public class Member extends BaseEntity{
     @Id
-    private String id;
-
-    @Column(unique = true, nullable = false)
-    private String email;            // 이메일
+    private String email;
     private String phoneNumber;      // 전화번호
 
     @Column(nullable = false)
@@ -29,4 +28,11 @@ public class Member {
     private String gender;           // 성별
     private String nationality;      // 내/외국인 상태
     private String telecomProvider;  // 통신사
+    @Builder.Default
+    @OneToMany(mappedBy = "member",cascade=CascadeType.ALL)
+    private List<Board> boardList = new ArrayList<>();
+    public void addBoard(Board board){
+        boardList.add(board);
+        board.setMember(this);
+    }
 }
