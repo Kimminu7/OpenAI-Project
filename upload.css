@@ -1,0 +1,60 @@
+/* 기본 스타일 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 전체 배경 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f6f7; /* 배경색 유지 */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 헤더 */
+.header-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(224, 216, 216);
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+/* 로고 이미지 (반으로 줄이기) */
+.logo input[type="image"] {
+    width: 75px; /* 원래 크기의 반 */
+    height: auto;
+}
+.upload-gn{
+    width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.upload-box{
+    width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    height: 300px;
+    border: 1px solid gray;
+    box-shadow: 2px 3px 9px hsl(0, 0%, 47%);
+    padding: 10px;
+}
+
+/* 푸터 */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: auto;
+    width: 100%;
+}
