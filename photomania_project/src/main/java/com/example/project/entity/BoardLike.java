@@ -22,4 +22,6 @@ public class BoardLike {
 
     @Column(name = "member_email", nullable = false)
     private String memberEmail;
+
+
 }

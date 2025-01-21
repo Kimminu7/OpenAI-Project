@@ -40,6 +40,7 @@ public class Comment extends BaseEntity {
     @JoinColumn(name = "COMMENT_PARENT_ID")
     private Comment parentCommentId; // 원 댓글 ID (대댓글 구분용)
 
+    @Builder.Default
     @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted = false; // 삭제 여부, 기본값은 false
 

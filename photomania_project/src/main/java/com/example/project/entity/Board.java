@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -42,5 +43,9 @@ public class Board extends BaseEntity {
     public void delete(){
         this.isDeleted =true;
     }
+
+    @Builder.Default
+    @OneToMany(mappedBy = "board",cascade=CascadeType.ALL)
+    private List<BoardLike> likeList = new ArrayList<>();
 
 }
