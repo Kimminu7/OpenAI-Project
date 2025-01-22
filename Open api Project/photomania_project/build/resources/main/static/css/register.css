@@ -1,0 +1,144 @@
+/* 기본 스타일 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 전체 배경 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f6f7;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 헤더 */
+.header-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(224, 216, 216);
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+
+/* 로고 이미지 (반으로 줄이기) */
+.logo input[type="image"] {
+    width: 75px; /* 원래 크기의 반 */
+    height: auto;
+}
+
+/* 언어 선택 드롭다운 */
+.sel {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    width: 80px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* 회원가입 컨테이너 */
+.signup-gn {
+    width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.signup-gn h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 입력창 스타일 */
+.signup-form p {
+    margin: 15px 0;
+}
+
+.signup-form input,
+.signup-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* 성별 및 국적 선택 버튼 */
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.btn {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: #f8f9fa;
+}
+
+.btn:hover {
+    background-color: #e7e7e7;
+}
+
+/* 통신사 선택 및 번호 입력 */
+.large-input {
+    width: 70%; /* 큰 입력칸 */
+}
+
+.small-select {
+    width: 30%; /* 작은 선택칸 */
+}
+
+/* 약관 체크박스 */
+.terms {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.terms input {
+    margin-right: 5px;
+}
+
+/* 회원가입 버튼 */
+.signup-form button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+}
+
+.signup-form button:hover {
+    background-color: #0056b3;
+}
+
+/* 푸터 */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: auto;
+    width: 100%;
+}

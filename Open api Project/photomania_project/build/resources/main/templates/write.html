@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시물 작성</title>
+    <link rel="stylesheet" href="/css/write.css">
+</head>
+<body>
+<!-- Header -->
+<header class="header-main">
+    <div class="logo">
+        <input type="image" src="/images/cameraIcon.png" alt="로고">
+    </div>
+    <select class="sel">
+        <option value="ko">한국어</option>
+        <option value="en">English</option>
+    </select>
+</header>
+
+<!-- Main Content -->
+<main>
+    <div class="write-container">
+        <h2>게시물 작성</h2>
+        <form class="write-form" method="POST" th:action="@{/board}">
+            <!-- 게시물 작성 관련 입력 폼 -->
+            <p>
+                <label for="title">제목</label>
+                <input type="text" id="title" name="title" placeholder="제목을 입력하세요" required />
+            </p>
+            <p>
+                <label for="content">내용</label>
+                <textarea id="content" name="content" rows="6" placeholder="내용을 입력하세요" required></textarea>
+            </p>
+            <p>
+                <label for="file">이미지 업로드</label>
+                <input type="file" id="file" name="file" />
+            </p>
+            <button type="submit">작성 완료</button>
+        </form>
+    </div>
+</main>
+</main>
+
+<!-- Footer -->
+<footer>
+    <p>© 2025 My Website. All rights reserved.</p>
+</footer>
+</body>
+</html>
