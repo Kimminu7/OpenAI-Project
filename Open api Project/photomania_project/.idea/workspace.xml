@@ -6,6 +6,34 @@
   <component name="ChangeListManager">
     <list default="true" id="5a2b8f79-a441-4817-8fd0-9ff4f353bd4c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/explore.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/find.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/꽃1.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/flower1.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/꽃2.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/flower2.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/꽃3.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/flower3.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/꽃4.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/flower4.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/꽃5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/flower5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/꽃6.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/flower6.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/도시1.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/city1.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/도시2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/city2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/도시3.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/city3.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/도시4.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/city4.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/도시5.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/city5.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/도시6.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/city6.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/동물1.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/animal1.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/동물2.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/animal2.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/동물3.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/animal3.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/동물4.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/animal4.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/동물5.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/animal5.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/동물6.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/animal6.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/자연1.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/nature1.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/자연2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/nature2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/자연3.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/nature3.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/자연4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/nature4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/자연5.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/nature5.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/자연6.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/nature6.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/explore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/find.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/explore.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/find.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,15 +57,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;godkim&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/rock9/OneDrive/문서/OpenAPI-Project/Open api Project&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ProjectApplication.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "godkim",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/rock9/OneDrive/문서/OpenAPI-Project/Open api Project"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="ProjectApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.project.ProjectApplication" />
