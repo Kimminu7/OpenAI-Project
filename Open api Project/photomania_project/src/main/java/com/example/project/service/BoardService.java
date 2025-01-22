@@ -5,11 +5,9 @@ import com.example.project.dto.PageRequestDTO;
 import com.example.project.dto.PageResultDTO;
 import com.example.project.entity.Board;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public interface BoardService {
-
 
     BoardDTO saveBoard(BoardDTO boardDTO);
 
@@ -47,14 +45,13 @@ public interface BoardService {
                 .id(bentity.getId())
                 .title(bentity.getTitle())
                 .name(bentity.getMember().getName())
-                .email(bentity.getMember().getEmail())
                 .content(bentity.getContent())
                 .contentType(bentity.getContentType())
                 .views(bentity.getViews())
                 .likes(bentity.getLikes())
                 .filename(bentity.getFilename())
-                .regDate(bentity.getRegDate().toLocalDate())  // LocalDateTime에서 LocalDate로 변환
-                .mogDate(bentity.getModDate().toLocalDate())  // LocalDateTime에서 LocalDate로 변환
+                .regDate(bentity.getRegDate())
+                .mogDate(bentity.getModDate())
                 .data(bentity.getData())
                 .build();
 

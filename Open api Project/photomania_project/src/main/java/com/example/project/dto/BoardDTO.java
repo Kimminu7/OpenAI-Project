@@ -7,8 +7,6 @@ import com.example.project.entity.Member;
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 import com.example.project.entity.Comment;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -30,8 +28,8 @@ public class BoardDTO  {
     private String filename;  // 파일 이름
     private byte[] data;
     private String email;
-    private LocalDate regDate;
-    private LocalDate mogDate;
+    private LocalDateTime regDate;
+    private LocalDateTime mogDate;
 
     public BoardDTO(Board board) {
     }
