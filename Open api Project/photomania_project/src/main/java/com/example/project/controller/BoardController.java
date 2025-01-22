@@ -48,7 +48,7 @@ public class BoardController {
     // 게시글 작성 페이지
     @GetMapping("/write")
     public String createForm(Model model) {
-        log.info("게시글 작성 페이지로 이동");
+       // log.info("게시글 작성 페이지로 이동");
         model.addAttribute("board", new BoardDTO());
         return "write";
     }
