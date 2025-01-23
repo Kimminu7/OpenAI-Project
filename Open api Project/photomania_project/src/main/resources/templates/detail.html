@@ -20,8 +20,13 @@
     <!-- 게시글 제목, 내용, 작성자, 조회수 등 -->
     <div class="board-detail">
         <h1 th:text="${board.title}"></h1>
-        <p class="author">작성자: <span th:text="${board.name}"></span></p>
+        <div class="file">
+            <img th:if="${board.filename != null}"
+                 th:src="@{/uploads/{filename}(filename=${board.filename})}"
+                 alt="첨부 이미지" style="max-width: 100%; height: auto;">
+        </div>
         <p class="content" th:text="${board.content}"></p>
+        <p class="author">작성자: <span th:text="${board.name}"></span></p>
         <p class="views">조회수: <span th:text="${board.views}"></span></p>
         <p class="date">등록일: <span th:text="${#temporals.format(board.regDate, 'yyyy-MM-dd HH:mm:ss')}"></span></p>
         <p class="likes">좋아요: <span th:text="${board.likes}"></span></p>
@@ -32,14 +37,6 @@
                     th:text="${likeStatus != null ? (likeStatus ? '좋아요 취소 🖤' : '좋아요 ❤️') : '좋아요 ❤️'}">
             </button>
         </form>
-
-        <div class="file">
-            <p>첨부파일:</p>
-            <img th:if="${board.filename != null}"
-                 th:src="@{/uploads/{filename}(filename=${board.filename})}"
-                 alt="첨부 이미지" style="max-width: 100%; height: auto;">
-        </div>
-
     </div>
 
     <!-- 게시글 삭제 버튼 -->
