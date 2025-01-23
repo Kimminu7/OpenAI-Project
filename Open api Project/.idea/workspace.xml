@@ -23,7 +23,7 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="project" type="f1a62948:ProjectNode" />
+                <item name="PhotoMania" type="f1a62948:ProjectNode" />
               </path>
             </expand>
             <select />
@@ -32,9 +32,12 @@
       </state>
     </system>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2rOPe2xfqNn2RrDjktjNtqiUCLq" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -44,8 +47,9 @@
   "keyToString": {
     "Gradle.project - 복사본 [:com.example.project.ProjectApplication.main()].executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/MASTER/Desktop/project - 복사본 (5)"
+    "last_opened_file_path": "C:/Users/rock9/OneDrive/문서/OpenAPI-Project/Open api Project/photomania_project"
   }
 }]]></component>
   <component name="RunManager">
