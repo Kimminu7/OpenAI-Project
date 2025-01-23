@@ -34,8 +34,12 @@
         </form>
 
         <div class="file">
-            <p>첨부파일: <a th:href="@{${board.filename}}" target="_blank" th:text="${board.filename}"></a></p>
+            <p>첨부파일:</p>
+            <img th:if="${board.filename != null}"
+                 th:src="@{/uploads/{filename}(filename=${board.filename})}"
+                 alt="첨부 이미지" style="max-width: 100%; height: auto;">
         </div>
+
     </div>
 
     <!-- 게시글 삭제 버튼 -->

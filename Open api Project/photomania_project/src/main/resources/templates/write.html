@@ -24,7 +24,7 @@
 <main>
     <div class="write-container">
         <h2>게시물 작성</h2>
-        <form class="write-form" method="POST" th:action="@{/board}">
+        <form class="write-form" method="POST" th:action="@{/board}" enctype="multipart/form-data">
             <!-- 게시물 작성 관련 입력 폼 -->
             <p>
                 <label for="title">제목</label>
@@ -36,7 +36,7 @@
             </p>
             <p>
                 <label for="file">이미지 업로드</label>
-                <input type="file" id="file" name="file" />
+                <input type="file" id="file" name="file" accept="image/jpg, image/jpeg, image/png, image/gif" />
             </p>
             <button type="submit">작성 완료</button>
         </form>

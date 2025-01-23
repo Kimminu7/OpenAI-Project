@@ -2,6 +2,7 @@ package com.example.project.controller;
 
 import com.example.project.dto.*;
 import com.example.project.entity.Board;
+import com.example.project.sec.FileStorageUtil;
 import com.example.project.sec.MemberDetails;
 import com.example.project.service.BoardLikeService;
 import com.example.project.service.BoardService;
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import com.example.project.sec.FileStorageUtil; // 추가
+import java.nio.file.Files; // 추가
 
 import java.util.List;
 
@@ -27,6 +30,7 @@ public class BoardController {
     private final CommentService commentService;
     private final ReCommentService reCommentService;
     private final BoardLikeService boardLikeService;
+    private final FileStorageUtil fileStorageUtil;
 
     // 게시판 목록 페이지
     @GetMapping("/board")
@@ -81,8 +85,7 @@ public class BoardController {
         return "detail";  // 리디렉션 없이 같은 페이지로 데이터를 갱신
     }
 
-
-
+    // 게시물 작성 로직 수정
     @PostMapping("/board")
     public String create(@RequestParam String title,
                          @RequestParam String content,
@@ -91,41 +94,38 @@ public class BoardController {
         log.info("게시글 작성 처리: 제목={}, 내용={}", title, content);
 
         try {
-            // 파일 데이터를 처리
-            byte[] fileData = null;
             String filename = null;
+
+            // 파일 저장 처리
             if (file != null && !file.isEmpty()) {
-                fileData = file.getBytes();
-                filename = file.getOriginalFilename();
+                log.info("파일이 존재하므로 저장을 시작합니다.");
+                filename = fileStorageUtil.saveFile(file);
+            } else {
+                log.info("파일이 존재하지 않거나 비어 있습니다.");
             }
 
             // BoardDTO 생성
             BoardDTO boardDTO = BoardDTO.builder()
                     .title(title)
                     .content(content)
-                    .filename(filename)
-                    .data(fileData)
+                    .filename(filename) // 저장된 파일 이름 설정
+                    .email(memberDetails.getUsername())
                     .views(0)
                     .likes(0)
-                    .email(memberDetails.getUsername())
                     .build();
 
-            // 게시글 저장
-            BoardDTO saveDTO = boardService.saveBoard(boardDTO);
-            if (saveDTO != null) {
-                model.addAttribute("message", "게시글이 성공적으로 작성되었습니다.");
-                return "redirect:/board"; // 게시판 목록으로 리디렉션
-            } else {
-                model.addAttribute("error", "게시글 저장 중 오류가 발생했습니다.");
-                return "write"; // 오류 발생 시 다시 작성 페이지로 이동
-            }
+            log.info("게시글 DTO 생성: {}", boardDTO);
 
+            // 게시글 저장
+            boardService.saveBoard(boardDTO);
+            return "redirect:/board"; // 게시판 목록으로 리디렉션
         } catch (Exception e) {
             log.error("게시글 작성 중 오류 발생", e);
             model.addAttribute("error", "게시글 저장 중 오류가 발생했습니다.");
-            return "write"; // 오류 발생 시 다시 작성 페이지로 이동
+            return "write";
         }
     }
+
 
     // 게시글 상세 조회
     @GetMapping("/board/{id}")
