@@ -15,7 +15,7 @@
 
 ## 데모
 
-[Photomania 데모 보기](https://photomania-demo-link.com)  
+[Photomania 데모 보기](https://photomania-demo-link.com)  ( 구현중 )
 데모를 통해 웹사이트의 기능을 직접 체험해 보세요.
 
 ## 기술 스택
