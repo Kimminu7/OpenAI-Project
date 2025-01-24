@@ -17,10 +17,8 @@
 ## 데모
 ![메인화면](https://github.com/user-attachments/assets/f2cb70ac-a07b-49c7-971f-9e14f882ff54)
 **[메인 페이지]**
-
-[Photomania 데모 보기](https://photomania-demo-link.com)  
-( 구현중 )
-데모를 통해 웹사이트의 기능을 직접 체험해 보세요.
+- 한 화면에 공지사항, 이벤트, 탐색, 게시판 , 로그인창 표시.
+- Swiper 라이브러리 이용하여, 3초마다 자동으로 왼쪽에서 우측으로 가게 동작 구현.
 
 ## 기술 스택
 
