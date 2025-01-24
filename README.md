@@ -23,7 +23,7 @@
 
 **[로그인/회원가입]**
 ![로그인/회원가입 화면](https://github.com/user-attachments/assets/36d5e4aa-7af4-4a8d-bf8e-89fbe18f1161)
-- 로그인/회원가입 화면구성 ( DB를 통해서 회원 관리 )
+- 로그인/회원가입 화면구성 ( DB를 통해서 회원 관리 ) ● 비밀번호는 암호화 처리.
 - 회원가입을한 후 로그인이 가능하고, 회원은 해당 웹 사이트의 기능 이용 가능 ( 접근O, 게시물 업로드, 탐색 페이지 접근 )
 
 **[게시판 목록]**
@@ -51,7 +51,7 @@
 
 - **프론트엔드**: HTML, CSS, JavaScript(Jquery)
 - **백엔드**: 
-  - **Java**: Spring Framework, Spring Boot
+  - **Java**: Spring Framework (Spring security) , Spring Boot
   - **JPA**: Hibernate
   - **RESTful API**: Spring MVC
 - **데이터베이스**: MySQL
