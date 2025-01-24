@@ -17,12 +17,17 @@
 ## 데모
 ![메인화면](https://github.com/user-attachments/assets/f2cb70ac-a07b-49c7-971f-9e14f882ff54)
 **[메인 페이지]**
-- 한 화면에 공지사항, 이벤트, 탐색, 게시판 , 로그인창 표시.
+- 한 화면에 공지사항, 이벤트, 탐색, 게시판 , 로그인창 표시. (헤더,푸터는 디자인 페이지마다 고정)
 - Swiper 라이브러리 이용하여, 3초마다 자동으로 왼쪽에서 우측으로 가게 동작 구현.
+- 영상은 웹 사이트 관련성을 위해서 동영상 AI 생성을 통해 동영상을 적절한 위치에 배치. 
+![로그인/회원가입 화면](https://github.com/user-attachments/assets/36d5e4aa-7af4-4a8d-bf8e-89fbe18f1161)
+
+**[로그인/회원가입 페이지]**
+- 로그인/회원가입 화면구성 
 
 ## 기술 스택
 
-- **프론트엔드**: HTML, CSS, JavaScript
+- **프론트엔드**: HTML, CSS, JavaScript(Jquery)
 - **백엔드**: 
   - **Java**: Spring Framework, Spring Boot
   - **JPA**: Hibernate
