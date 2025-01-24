@@ -15,6 +15,8 @@
 - **AI 이미지 생성**: AI 이미지 생성을 통해 여러 이미지들을 쉽게 생성하여 사용자에게 제공합니다.
 
 ## 데모
+![메인화면](https://github.com/user-attachments/assets/f2cb70ac-a07b-49c7-971f-9e14f882ff54)
+**[메인 페이지]**
 
 [Photomania 데모 보기](https://photomania-demo-link.com)  
 ( 구현중 )
