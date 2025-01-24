@@ -27,7 +27,6 @@
   - **RESTful API**: Spring MVC
 - **데이터베이스**: MySQL
 - **버전 관리**: Git (Git Desktop)
-- **배포**: Heroku, Netlify
 
 ## 설치 방법
 
