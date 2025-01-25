@@ -98,4 +98,10 @@ public class MemberController {
         return "find";
     }
 
+    @GetMapping("/Randomimage")
+    public String randomImage() {
+        return "Randomimage"; // Randomimage.html 템플릿 반환
+    }
+
+
 }

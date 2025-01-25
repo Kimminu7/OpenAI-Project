@@ -57,10 +57,6 @@ body {
     text-align: center;
 }
 
-/* .but-group button:not(:last-child) {
-    border-right: 1px solid #bbb;
-} */
-
 .but-group button:hover {
     background-color: #007BFF;
     color: #fff;
@@ -115,4 +111,30 @@ footer {
     color: #fff;
     margin-top: auto;
     font-size: 14px;
+}
+
+/* AI 버튼 컨테이너 스타일 */
+.ai-button-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* AI 버튼 스타일 */
+.ai-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.ai-button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
 }
