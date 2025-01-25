@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="./Randomstyle.css">
+    <title>Random image</title>
+</head>
+<body>
+    <header class="header-main">
+        <div class="logo">
+            <a th:href="@{/main}">
+                <p class="logo"><input type="image" th:src="./images/cameraicon.png" alt="logo"></p>
+            </a>
+            <h2>AI 이미지 생성</h2>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <button id="generateBtn">랜덤 이미지 만들기!</button>
+            <div>
+                <h2>주의사항!</h2>
+                <p><b>해당 사진을 그림판이나 한글에 캡쳐하여 저장할 것!</b></p>
+            </div>
+        </div>
+        <div id="gridContainer"></div>
+    </main>
+    <script th:src="./Randomscript.js"></script>
+    <script>
+        // 카메라 아이콘 클릭 이벤트 리스너 추가
+        document.getElementById('camera-icon').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    </script>
+    <footer>
+        &copy; 2025 Daegu Univ Open AI project, Group 3
+      </footer>
+</body>
+</html>
