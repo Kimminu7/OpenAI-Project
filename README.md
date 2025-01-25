@@ -51,14 +51,20 @@
 
 - **프론트엔드**: HTML, CSS, JavaScript(Jquery)
 - **백엔드**: 
-  - **Java**: Spring Framework (Spring security) , Spring Boot
+  - **Java**: Spring Framework (Spring security), Spring Boot, Thymeleaf
   - **JPA**: Hibernate
   - **RESTful API**: Spring MVC
 - **데이터베이스**: MySQL
 - **버전 관리**: Git (Git Desktop)
 
-## 설치 방법
+## 실행 방법
+1. main 레포지토리에 있는 파일을 다운받고, Intellij IDEA를 실행한다.
+2. IDE에서 다운받은 폴더를 경로를 ( Open api Project/photomania_project ) 지정해서 그 폴더를 연다.
+3. 이후, ( src/main/java/com.example.project/ProjectApplication ) 경로에서 프로그램을 실행한다.
+4. 웹사이트에서 URL주소창에 ( localhost:8080 ) 진입하면 웹사이트에 접속 성공한다. ( 기본경로는 서버포트가 8080임. )
 
-1. **레포지토리 클론**: 
+
+
+! **레포지토리 클론**: 
    ```bash
    git clone https://github.com/kimminu7/photomania.git
