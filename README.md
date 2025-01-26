@@ -42,6 +42,7 @@
 ![게시판 상세](https://github.com/user-attachments/assets/f86fa048-e3f8-4b12-8d17-d2287e2244f4)
 **[게시판 상세]**
 - 댓글, 답글 , 좋아요 기능 구현. [ 좋아요는 한 사용자당 한명씩 ]
+- 등록일수 입력시간에 맞게 표시.
 - 게시물 삭제 구현.
 
 ![탐색](https://github.com/user-attachments/assets/4e900adc-3178-43e0-9f1a-194bdbe6c680)
