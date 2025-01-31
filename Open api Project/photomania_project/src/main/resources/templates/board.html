@@ -8,12 +8,38 @@
 </head>
 <body>
 <header>
-    <div class="header-main">
-        <a th:href="@{/main}">
-            <p class="logo"><input type="image" th:src="@{/images/cameraicon.png}" alt="logo"></p>
+    <div class="header-container">
+        <!-- 로고 -->
+        <a th:href="@{/main}" class="logo">
+            <img th:src="@{/images/cameraicon.png}" alt="로고">
         </a>
+
+        <!-- 내비게이션 링크 -->
+        <ul class="nav-links">
+            <li><a th:href="@{/notice}">공지사항</a></li>
+            <li><a th:href="@{/events}">이벤트</a></li>
+            <li><a th:href="@{/find}">탐색</a></li>
+            <li><a th:href="@{/board}">게시판</a></li>
+        </ul>
+
+        <!-- 사용자 로그인 영역 -->
+        <div class="user-container">
+            <th:block th:if="${session.member != null}">
+                <a th:href="@{/logout}">
+                    <img th:src="@{/images/icons8-사용자-100.png}" alt="사용자 아이콘">
+                    <p th:text="${session.member.name + '/로그아웃'}"></p>
+                </a>
+            </th:block>
+            <th:block th:if="${session.member == null}">
+                <a th:href="@{/login}">
+                    <img th:src="@{/images/icons8-사용자-100.png}" alt="사용자 아이콘">
+                    <p th:text="${'로그인 필요'}"></p>
+                </a>
+            </th:block>
+        </div>
     </div>
 </header>
+
 <div class="board-container">
 
     <!-- 게시글 작성 폼 -->
@@ -38,32 +64,34 @@
     </div>
 
     <!-- 게시글 목록 테이블 -->
-    <table class="board-table">
-        <thead>
-        <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>글쓴이</th>
-            <th>작성일</th>
-            <th>조회수</th>
-            <th>추천</th>
-        </tr>
-        </thead>
-        <tbody>
-        <th:block th:each="board : ${boardList}">
+    <div class="board-table-container">
+        <table class="board-table">
+            <thead>
             <tr>
-                <td th:text="${board.id}"></td>
-                <td>
-                    <a th:href="@{/board/{id}(id=${board.id})}" th:text="${board.title}"></a>
-                </td>
-                <td th:text="${board.name}"></td>
-                <td th:text="${#temporals.format(board.regDate, 'yyyy-MM-dd HH:mm')}"></td>
-                <td th:text="${board.views}"></td>
-                <td th:text="${board.likes}"></td>
+                <th>번호</th>
+                <th>제목</th>
+                <th>글쓴이</th>
+                <th>작성일</th>
+                <th>조회수</th>
+                <th>추천</th>
             </tr>
-        </th:block>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <th:block th:each="board : ${boardList}">
+                <tr>
+                    <td th:text="${board.id}"></td>
+                    <td>
+                        <a th:href="@{/board/{id}(id=${board.id})}" th:text="${board.title}"></a>
+                    </td>
+                    <td th:text="${board.name}"></td>
+                    <td th:text="${#temporals.format(board.regDate, 'yyyy-MM-dd HH:mm')}"></td>
+                    <td th:text="${board.views}"></td>
+                    <td th:text="${board.likes}"></td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
 
     <!-- 페이지 네비게이션 -->
     <div class="pagination" id="pagination">
