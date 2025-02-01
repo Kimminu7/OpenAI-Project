@@ -16,6 +16,11 @@
 - **사용자 인증**: 이메일과 비밀번호를 통한 로그인 및 회원가입 기능을 제공.
 - **AI 이미지 생성**: AI 이미지 생성을 통해 여러 이미지들을 쉽게 생성하여 사용자에게 제공.
 
+## 구조도
+![구조도](https://github.com/user-attachments/assets/d5ba8d5c-3588-4fec-8c35-a249931d02a9)
+
+
+
 ## 데모
 **[메인 화면]** ( 로고를 클릭시, 메인페이지로 돌아가도록 구현. )
 ![메인화면](https://github.com/user-attachments/assets/f2cb70ac-a07b-49c7-971f-9e14f882ff54)
