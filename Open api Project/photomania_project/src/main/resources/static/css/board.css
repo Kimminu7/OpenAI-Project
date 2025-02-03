@@ -23,7 +23,7 @@ header .header-container {
 
 /* 로고 스타일 */
 header .logo img {
-    height: 50px;
+    height: 80px;
 }
 
 /* 내비게이션 링크 스타일 */
@@ -66,7 +66,7 @@ header .user-container .user-link {
 
 header .user-container img {
     height: 50px;
-    margin-right: 35px;
+    margin: 0 25px;
     transition: transform 0.3s ease;
 }
 
