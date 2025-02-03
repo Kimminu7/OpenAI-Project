@@ -21,8 +21,8 @@
 <header>
   <a href=""><img th:src="@{/images/cameraIcon.png}" alt="이미지x"></a>
   <ul>
-    <li>공지사항</li>
-    <li>이벤트</li>
+    <li><a href="#" onclick="alert('공지사항 페이지(미구현)')">공지사항</a></li>
+    <li><a href="#" onclick="alert('이벤트 페이지(미구현)')">이벤트</a></li>
     <li><a th:href="@{/find}">탐색</a></li>
     <li><a th:href="@{/board}">게시판</a></li>
 
@@ -99,10 +99,10 @@
 </footer>
 
 <!-- Swiper JS -->
-<script th:src="@{https://unpkg.com/swiper/swiper-bundle.min.js}"></script>
+<script th:src="@{https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js}"></script>
 
 <!-- Custom JS -->
-<script th:src="@{/JS/main.js}"></script>
+<script th:src="@{/js/main.js}"></script>
 
 </body>
 </html>

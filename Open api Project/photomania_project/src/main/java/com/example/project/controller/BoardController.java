@@ -17,6 +17,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import com.example.project.sec.FileStorageUtil; // 추가
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.servlet.http.HttpSession;
 import java.nio.file.Files; // 추가
 
 import java.util.List;
@@ -26,6 +30,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardController {
 
+    // 컨트롤러 클래스 내에서 Logger 객체 선언
+    private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
     private final BoardService boardService;
     private final CommentService commentService;
     private final ReCommentService reCommentService;
@@ -129,26 +135,29 @@ public class BoardController {
 
     // 게시글 상세 조회
     @GetMapping("/board/{id}")
-    public String detail(@PathVariable Long id, Model model) {
-        // 게시글 조회 및 조회수 증가
+    public String detail(@PathVariable Long id, HttpSession session, Model model) {
         boardService.incrementViews(id); // 조회수 증가
+        BoardDTO boardDTO = boardService.getBoardById(id); // 게시글 조회
 
-        // 게시글 상세 조회
-        BoardDTO boardDTO = boardService.getBoardById(id);
+        // 로그인한 사용자 정보 가져오기
+        MemberDTO loginMember = (MemberDTO) session.getAttribute("member");
 
-        // 게시글 정보 전달
+        // 로그 출력 (콘솔에서 확인)
+        logger.info("로그인한 사용자 정보: {}", loginMember); // 로그인한 사용자 정보 출력
+        logger.info("게시글 작성자 정보: {}", boardDTO.getMember()); // 게시글 작성자 정보 출력
+
+        // 게시물 작성자 이메일 추가
         model.addAttribute("board", boardDTO);
+        model.addAttribute("boardOwnerEmail", boardDTO.getEmail()); // 게시글 작성자 이메일
+        model.addAttribute("loginUserEmail", (loginMember != null) ? loginMember.getEmail() : null); // 로그인 사용자 이메일
 
         // 댓글 목록 조회
-
-        // 댓글 조회 (대댓글 포함)
         List<CommentResponseDTO> comments = commentService.commentList(id);
-
-        model.addAttribute("board", boardDTO);
         model.addAttribute("comments", comments);
 
-        return "detail"; // detail.html로 이동
+        return "detail";
     }
+
 
     // 게시글 수정 페이지
     @GetMapping("/board/{id}/edit")
@@ -168,12 +177,17 @@ public class BoardController {
     }
 
     // 게시글 삭제 처리
-    @DeleteMapping("/board/{id}/delete")
-    public String delete(@PathVariable Long id) {
-        log.info("게시글 삭제 처리: id={}", id);
-        boardService.deleteBoard(id);
-        return "redirect:/board"; // 게시판 목록으로 리디렉션
-    }
+    @PostMapping("/board/{id}/delete")
+    public String deleteBoard(@PathVariable Long id, HttpSession session) {
+        MemberDTO loginMember = (MemberDTO) session.getAttribute("member");
+        BoardDTO boardDTO = boardService.getBoardById(id);
 
+        if (loginMember != null && loginMember.getEmail().equals(boardDTO.getEmail())) {
+            boardService.deleteBoard(id);
+            return "redirect:/board"; // 삭제 후 게시판 목록으로 이동
+        } else {
+            return "redirect:/board/" + id; // 권한이 없을 경우 다시 상세 페이지로 이동
+        }
+    }
 
 }

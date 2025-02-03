@@ -30,8 +30,22 @@ public class BoardDTO  {
     private String email;
     private LocalDateTime regDate;
     private LocalDateTime mogDate;
+    private MemberDTO member; // 🔹 여기서 MemberDTO를 사용하고 있는지 확인 필요
 
+    // Board 엔티티를 받아서 BoardDTO로 변환하는 생성자
     public BoardDTO(Board board) {
+        this.id = board.getId();
+        this.title = board.getTitle();
+        this.name = board.getName();
+        this.content = board.getContent();
+        this.contentType = board.getContentType();
+        this.views = board.getViews();
+        this.likes = board.getLikes();
+        this.filename = board.getFilename();
+        this.regDate = board.getRegDate();
+        this.mogDate = board.getModDate();
+        this.email = board.getMember() != null ? board.getMember().getEmail() : null; // ✅ 이메일 추가
+        this.member = board.getMember() != null ? new MemberDTO(board.getMember()) : null; // ✅ MemberDTO 추가
     }
 
 }
