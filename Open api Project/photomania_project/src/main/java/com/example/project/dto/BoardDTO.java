@@ -30,6 +30,7 @@ public class BoardDTO  {
     private String email;
     private LocalDateTime regDate;
     private LocalDateTime mogDate;
+    private MemberDTO member; // 🔹 여기서 MemberDTO를 사용하고 있는지 확인 필요
 
     public BoardDTO(Board board) {
     }

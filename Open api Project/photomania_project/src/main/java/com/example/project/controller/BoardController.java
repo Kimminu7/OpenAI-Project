@@ -127,28 +127,26 @@ public class BoardController {
     }
 
 
-    // 게시글 상세 조회
     @GetMapping("/board/{id}")
-    public String detail(@PathVariable Long id, Model model) {
+    public String detail(@PathVariable Long id, Model model,
+                         @SessionAttribute(name = "member", required = false) MemberDTO sessionMember) {
         // 게시글 조회 및 조회수 증가
         boardService.incrementViews(id); // 조회수 증가
 
         // 게시글 상세 조회
         BoardDTO boardDTO = boardService.getBoardById(id);
 
-        // 게시글 정보 전달
-        model.addAttribute("board", boardDTO);
-
         // 댓글 목록 조회
-
-        // 댓글 조회 (대댓글 포함)
         List<CommentResponseDTO> comments = commentService.commentList(id);
 
+        // Model에 데이터 추가
         model.addAttribute("board", boardDTO);
         model.addAttribute("comments", comments);
+        model.addAttribute("sessionMember", sessionMember); // 🔹 추가된 부분
 
         return "detail"; // detail.html로 이동
     }
+
 
     // 게시글 수정 페이지
     @GetMapping("/board/{id}/edit")

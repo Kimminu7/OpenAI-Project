@@ -14,42 +14,80 @@ body {
 }
 
 /* 헤더 스타일 */
+/* 헤더 스타일 */
 header {
     background-color: #4a90e2;
-    padding: 10px 20px;
+    padding: 15px 20px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header .header-container {
+    display: flex;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
 }
 
-.header-container {
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-.logo img {
+/* 로고 스타일 */
+header .logo img {
     height: 80px;
 }
 
-.nav-links {
+/* 내비게이션 링크 스타일 */
+header .nav-links {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
-    flex: 1;
-    justify-content: center;
 }
 
-.nav-links li {
+header .nav-links li {
     margin: 0 15px;
 }
 
-.nav-links a {
+header .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header .nav-links a:hover {
+    color: #d0eaff;
+}
+
+/* 사용자 로그인 영역 */
+header .user-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* 오른쪽 끝으로 배치 */
+}
+
+header .user-container .user-link {
+    display: flex;
+    align-items: center;
     text-decoration: none;
     color: white;
     font-weight: bold;
 }
+
+header .user-container img {
+    height: 50px;
+    margin: 0 25px;
+    transition: transform 0.3s ease;
+}
+
+header .user-container img:hover {
+    transform: scale(1.1);
+}
+
+header .user-container span {
+    font-size: 14px;
+}
+
 
 .user-container {
     display: flex;
@@ -58,7 +96,7 @@ header {
 
 .user-container img {
     height: 50px;
-    margin-left: 35px;
+    margin: 0 25px;
 }
 
 /* 게시글 상세 페이지 스타일 */

@@ -17,8 +17,8 @@
 
         <!-- 내비게이션 링크 -->
         <ul class="nav-links">
-            <li><a th:href="@{/notice}">공지사항</a></li>
-            <li><a th:href="@{/events}">이벤트</a></li>
+            <li><a href="#" onclick="alert('공지사항 페이지(미구현)')">공지사항</a></li>
+            <li><a href="#" onclick="alert('이벤트 페이지(미구현)')">이벤트</a></li>
             <li><a th:href="@{/find}">탐색</a></li>
             <li><a th:href="@{/board}">게시판</a></li>
         </ul>
@@ -68,13 +68,14 @@
 
 <!-- 게시글 삭제 버튼 -->
 
-<th:block th:if="${session.member?.email == board.member?.email}">
+<th:block th:if="${sessionMember != null and board.member != null and sessionMember.email == board.member.email}">
     <form th:action="@{'/board/'+ ${board.id} + '/delete'}" method="post">
         <button type="submit" class="delete-button" onclick="return confirm('정말 삭제하시겠습니까?')">
             게시글 삭제
         </button>
     </form>
 </th:block>
+
 
 
 <!-- 댓글 작성 폼 -->
