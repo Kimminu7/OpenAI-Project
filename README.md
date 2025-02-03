@@ -39,26 +39,24 @@
 - 로그인 상태일때, 게시물 접근 가능, 업로드 기능도 사용 할수 있음. 
 - 해당 게시물에 좋아요, 댓글, 답글 기능까지 작성 가능. ( DB에 저장된 수치에 따라 등록일, 좋아요, 조회수 표시 )
 
-![게시물 업로드](https://github.com/user-attachments/assets/21705158-b0d3-4ccd-b914-f8deb0e5233d)
 **[게시물 업로드]**
+![게시물 업로드](https://github.com/user-attachments/assets/21705158-b0d3-4ccd-b914-f8deb0e5233d)
 - 게시물 제목, 내용은 필수적으로 작성 해야함.
 - 파일은 이미지 파일만 선택할수있게 제한. (jpg,png,jpeg 등)
 
-![게시판 상세](https://github.com/user-attachments/assets/62639436-20f9-496d-8423-6010114cb76a)
 **[게시판 상세]**
+![게시판 상세](https://github.com/user-attachments/assets/62639436-20f9-496d-8423-6010114cb76a)
 - 댓글, 답글 , 좋아요 기능 구현. [ 좋아요는 한 사용자당 한명씩 ]
 - 등록일수 입력시간에 맞게 표시.
 - 게시물 삭제는 해당 사용자의 게시물에만 보이게 함.
 
-![탐색](https://github.com/user-attachments/assets/4e900adc-3178-43e0-9f1a-194bdbe6c680)
 **[탐색]**
+![탐색](https://github.com/user-attachments/assets/4e900adc-3178-43e0-9f1a-194bdbe6c680)
 - 해당 카테고리 별로 대표적인 이미지가 나타남. (이미지를 우클릭후 직접 다운로드 받을수 있음.)
 - AI 이미지 생성 버튼을 누르면 해당 페이지로 넘어감.
 
-
-![AI 이미지 생성](https://github.com/user-attachments/assets/e64aed73-1597-46c3-abd9-e9f4ffe6a67e)
-
 **[AI 이미지 생성]**
+![AI 이미지 생성](https://github.com/user-attachments/assets/e64aed73-1597-46c3-abd9-e9f4ffe6a67e)
 - 버튼 클릭시 무작위의 이미지가 생성됨. ( 단, 이미지를 캡쳐모드로 저장할 것. )
 - 이미지 생성 갯수 제한없음.
 
