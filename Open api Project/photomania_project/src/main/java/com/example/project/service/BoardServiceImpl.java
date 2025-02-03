@@ -1,6 +1,7 @@
 package com.example.project.service;
 
 import com.example.project.dto.BoardDTO;
+import com.example.project.dto.MemberDTO;
 import com.example.project.dto.PageRequestDTO;
 import com.example.project.dto.PageResultDTO;
 import com.example.project.entity.Board;
@@ -57,7 +58,6 @@ public class BoardServiceImpl implements BoardService {
         // 게시글을 찾고 없으면 예외 발생
         Board board = boardRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Board not found"));
-
         // 해당 게시글 삭제
 
         boardRepository.deleteById(id);
@@ -113,6 +113,8 @@ public class BoardServiceImpl implements BoardService {
                 .views(board.getViews())
                 .likes(board.getLikes())
                 .regDate(board.getRegDate())
+                .email(board.getMember() != null ? board.getMember().getEmail() : null) // ✅ 작성자 이메일 추가
+                .member(board.getMember() != null ? new MemberDTO(board.getMember()) : null) // ✅ MemberDTO 변환 추가
                 .build();
     }
 }
