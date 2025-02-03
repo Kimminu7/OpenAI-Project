@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,12 +21,14 @@ public class Board extends BaseEntity {
     private Long id;
     private String title;
     private String name;
+
     private String content;
     private String contentType;
     private int views;
     private int likes;
     private String filename;
     private boolean isDeleted;
+
 
     @OneToMany(mappedBy = "board",cascade = CascadeType.ALL)
     private List<Comment> comments; // 댓글 필드 추가
@@ -40,5 +43,9 @@ public class Board extends BaseEntity {
     public void delete(){
         this.isDeleted =true;
     }
+
+    @Builder.Default
+    @OneToMany(mappedBy = "board",cascade=CascadeType.ALL)
+    private List<BoardLike> likeList = new ArrayList<>();
 
 }

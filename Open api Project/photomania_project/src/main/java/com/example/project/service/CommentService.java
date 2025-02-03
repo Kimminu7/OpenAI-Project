@@ -36,7 +36,7 @@ public interface CommentService {
                 .content(entity.getContent())
                 .authorName(entity.getMember().getName())
                 .authorEmail(entity.getAuthorEmail())
-                .createdDate(entity.getModDate().toLocalDate().atStartOfDay())
+                .createdDate(entity.getModDate())
                 .parentCommentId(entity.getParentCommentId().getId())
                 .isDeleted(entity.isDeleted())
                 .build();

@@ -17,4 +17,5 @@ public class ReCommentResponseDTO {
     private String authorEmail; // 대댓글 작성자 이메일
     private LocalDateTime createdDate; // 대댓글 작성 날짜
     private boolean isDeleted; // 대댓글 삭제 여부
+
 }

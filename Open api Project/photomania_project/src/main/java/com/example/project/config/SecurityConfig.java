@@ -14,12 +14,11 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-
-
     @Bean
     public LoginSucessH successHandler() {
         return new LoginSucessH();
     }
+
     @Bean
     public LoginFailureH failureHandler() {
         return new LoginFailureH();
@@ -32,17 +31,13 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.csrf().disable()
+        return http
+                .csrf().disable() // 개발 단계에서만 비활성화
                 .authorizeRequests()
-                // 회원가입과 로그인 페이지는 인증 없이 접근 가능
-                .antMatchers("/register", "/login","/main","/board","/board/{id}").permitAll()
-                // 관리자 경로는 인증이 필요
+                .antMatchers("/register", "/login", "/main", "/board", "/board/{id}","/board/{id}/like").permitAll()
                 .antMatchers("/admin/**").authenticated()
-                // CSS, 이미지, JS 파일은 인증 없이 접근 가능
                 .antMatchers("/css/**", "/images/**", "/js/**").permitAll()
-                // main2 페이지는 인증된 사용자만 접근 가능
                 .antMatchers("/main").authenticated()
-                // 그 외 모든 요청은 인증 필요
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -51,16 +46,17 @@ public class SecurityConfig {
                 .passwordParameter("pw")
                 .loginProcessingUrl("/dologin")
                 .successHandler(successHandler())
-                //.defaultSuccessUrl("/main2", true) // 로그인 성공 후 main2로 리디렉션
-                .failureUrl("/login?error=true") // 로그인 실패 후 리디렉션
+                .failureUrl("/login?error=true")
                 .permitAll()
                 .and()
                 .logout()
-                .logoutSuccessUrl("/main") // 로그아웃 후 main 페이지로 리디렉션
+                .logoutUrl("/logout") // 로그아웃 URL 설정
+                .logoutSuccessUrl("/main") // 로그아웃 성공 후 이동할 페이지
+                .invalidateHttpSession(true) // 세션 무효화
+                .deleteCookies("JSESSIONID") // 쿠키 삭제
                 .permitAll()
                 .and()
 
                 .build();
     }
-
 }
