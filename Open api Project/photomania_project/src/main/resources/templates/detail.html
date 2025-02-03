@@ -67,15 +67,11 @@
 </div>
 
 <!-- 게시글 삭제 버튼 -->
-
-<th:block th:if="${sessionMember != null and board.member != null and sessionMember.email == board.member.email}">
-    <form th:action="@{'/board/'+ ${board.id} + '/delete'}" method="post">
-        <button type="submit" class="delete-button" onclick="return confirm('정말 삭제하시겠습니까?')">
-            게시글 삭제
-        </button>
+<th:block th:if="${session.member != null and session.member.email != null and board.member != null and session.member.email == board.member.email}">
+    <form th:action="@{'/board/' + ${board.id} + '/delete'}" method="post">
+        <button type="submit" class="delete-button" onclick="return confirm('정말 삭제하시겠습니까?')">게시글 삭제</button>
     </form>
 </th:block>
-
 
 
 <!-- 댓글 작성 폼 -->
