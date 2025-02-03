@@ -23,7 +23,7 @@
 
 ## 데모
 **[메인 화면]** ( 로고를 클릭시, 메인페이지로 돌아가도록 구현. )
-![메인화면](https://github.com/user-attachments/assets/f2cb70ac-a07b-49c7-971f-9e14f882ff54)
+![main](https://github.com/user-attachments/assets/2c6af742-4466-4b7c-bf63-7f719d7227c7)
 - 한 화면에 공지사항, 이벤트, 탐색, 게시판 , 로그인창 표시. (헤더,푸터는 디자인 페이지마다 고정)
 - Swiper 라이브러리 이용하여, 3초마다 자동으로 좌에서 우로 동작 구현.
 - 영상은 웹 사이트 관련성을 위해서 동영상 AI 생성을 통해 동영상을 적절한 위치에 배치.
