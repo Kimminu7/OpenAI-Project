@@ -66,7 +66,7 @@
 
 - **프론트엔드**: HTML, CSS, JavaScript(Jquery)
 - **백엔드**: 
-  - **Java**: Spring Framework (Spring security), Spring Boot, Thymeleaf
+  - **Java**: Spring Framework (Spring security), Spring Boot(Tomcat), Thymeleaf
   - **JPA**: Hibernate
   - **RESTful API**: Spring MVC
 - **데이터베이스**: MySQL
