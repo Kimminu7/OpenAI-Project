@@ -34,23 +34,21 @@
 - 회원가입을한 후 로그인이 가능하고, 회원은 해당 웹 사이트의 기능 이용 가능 ( 접근O, 게시물 업로드, 탐색 페이지 접근 )
 
 **[게시판 목록]**
-
-![게시판 목록](https://github.com/user-attachments/assets/e81a7838-ad81-4341-98b2-52269f3297db)
+![게시판 목록](https://github.com/user-attachments/assets/cd422907-13f0-44e4-aa40-786b49b23129)
 - 로그아웃 상태일때, 게시판 목록만 볼 수있음. ( 업로드나 게시물을 클릭시 메인페이지로 돌아옴. )
 - 로그인 상태일때, 게시물 접근 가능, 업로드 기능도 사용 할수 있음. 
 - 해당 게시물에 좋아요, 댓글, 답글 기능까지 작성 가능. ( DB에 저장된 수치에 따라 등록일, 좋아요, 조회수 표시 )
 
 ![게시물 업로드](https://github.com/user-attachments/assets/21705158-b0d3-4ccd-b914-f8deb0e5233d)
-
 **[게시물 업로드]**
 - 게시물 제목, 내용은 필수적으로 작성 해야함.
 - 파일은 이미지 파일만 선택할수있게 제한. (jpg,png,jpeg 등)
 
-![게시판 상세](https://github.com/user-attachments/assets/f86fa048-e3f8-4b12-8d17-d2287e2244f4)
+![게시판 상세](https://github.com/user-attachments/assets/62639436-20f9-496d-8423-6010114cb76a)
 **[게시판 상세]**
 - 댓글, 답글 , 좋아요 기능 구현. [ 좋아요는 한 사용자당 한명씩 ]
 - 등록일수 입력시간에 맞게 표시.
-- 게시물 삭제 구현.
+- 게시물 삭제는 해당 사용자의 게시물에만 보이게 함.
 
 ![탐색](https://github.com/user-attachments/assets/4e900adc-3178-43e0-9f1a-194bdbe6c680)
 **[탐색]**
