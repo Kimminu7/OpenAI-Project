@@ -78,6 +78,10 @@ header .user-container img {
     transition: transform 0.3s ease;
 }
 
+header .user-container p {
+    text-align: center;
+}
+
 header .user-container img:hover {
     transform: scale(1.1);
 }
