@@ -1,7 +1,7 @@
 package com.example.project.controller;
 
 import com.example.project.dto.*;
-import com.example.project.entity.Board;
+        import com.example.project.entity.Board;
 import com.example.project.sec.FileStorageUtil;
 import com.example.project.sec.MemberDetails;
 import com.example.project.service.BoardLikeService;
@@ -15,7 +15,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+        import org.springframework.web.multipart.MultipartFile;
 import com.example.project.sec.FileStorageUtil; // 추가
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -165,15 +165,37 @@ public class BoardController {
         log.info("게시글 수정 페이지로 이동: id={}", id);
         BoardDTO boardDTO = boardService.getBoardById(id);
         model.addAttribute("board", boardDTO);
-        return "board/form"; // board/form.html 재활용
+        return "/edit"; //
     }
-
     // 게시글 수정 처리
     @PostMapping("/board/{id}/edit")
-    public String update(@PathVariable Long id, @ModelAttribute BoardDTO boardDTO) {
+    public String update(@PathVariable Long id,
+                         @ModelAttribute BoardDTO boardDTO,
+                         @RequestParam(required = false) MultipartFile file,
+                         Model model, @AuthenticationPrincipal MemberDetails memberDetails) {
         log.info("게시글 수정 처리: id={}, {}", id, boardDTO);
-        boardService.saveBoard(boardDTO); // 게시글 수정도 saveBoard로 처리
-        return "redirect:/board/" + id; // 수정된 게시글 상세로 리디렉션
+
+        try {
+            String filename = boardDTO.getFilename(); // 기존 파일명
+
+            // 새로운 파일이 업로드 되면 파일 저장 처리
+            if (file != null && !file.isEmpty()) {
+                log.info("새로운 파일이 존재하므로 저장을 시작합니다.");
+                filename = fileStorageUtil.saveFile(file);
+            }
+
+            // 게시글 수정 DTO에 파일명 추가
+            boardDTO.setFilename(filename);
+            //작성자 추가
+            boardDTO.setEmail(memberDetails.getUsername());
+            boardService.saveBoard(boardDTO); // 수정된 게시글 저장
+
+            return "redirect:/board/" + id; // 수정된 게시글 상세로 리디렉션
+        } catch (Exception e) {
+            log.error("게시글 수정 중 오류 발생", e);
+            model.addAttribute("error", "게시글 수정 중 오류가 발생했습니다.");
+            return "board/form"; // 수정 폼으로 돌아가기
+        }
     }
 
     // 게시글 삭제 처리

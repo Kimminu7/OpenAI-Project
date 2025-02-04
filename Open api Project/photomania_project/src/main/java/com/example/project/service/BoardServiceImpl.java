@@ -14,7 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -50,6 +50,23 @@ public class BoardServiceImpl implements BoardService {
         return boards.stream()
                 .map(this::toDto)  // Entity -> DTO 변환
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Board updatePost(BoardDTO updatedPost) {
+        Board updatedPostEntity = toEntity(updatedPost); // DTO → Entity 변환
+
+        // 기존 게시글 찾기
+        Board existingPost = boardRepository.findById(updatedPostEntity.getId())
+                .orElseThrow(() -> new EntityNotFoundException("게시글을 찾을 수 없습니다."));
+
+        // 필드 업데이트
+        existingPost.setTitle(updatedPostEntity.getTitle());
+        existingPost.setContent(updatedPostEntity.getContent());
+        existingPost.setFilename(updatedPostEntity.getFilename());
+        existingPost.setData(updatedPostEntity.getData());
+
+        return boardRepository.save(existingPost);
     }
 
     @Override
@@ -97,6 +114,10 @@ public class BoardServiceImpl implements BoardService {
         board.setLikes(board.getLikes() + 1);
         boardRepository.save(board); // 저장
     }
+
+
+
+
 
     // 게시글 조회 (조회수 증가 제외)
     @Override
