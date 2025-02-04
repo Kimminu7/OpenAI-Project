@@ -77,7 +77,7 @@
 - **버전 관리**: Git (Git Desktop)
 
 ## 실행 방법
-사용하고 있는 컴퓨터에 Mysql과 해당프로그램의 비밀번호 필요 ★ 
+[현재 배포x] 사용하고 있는 컴퓨터에 Mysql과 해당프로그램의 비밀번호 필요 ★ 
 => src/main/resources/application.properties 에서  spring.datasource.password = (해당 칸에 mysql 비번으로 변경) 
 1. main 레포지토리에 있는 파일을 다운받고, Intellij IDEA를 실행한다.
 2. IDE에서 다운받은 폴더를 경로를 ( Open api Project/photomania_project ) 지정해서 그 폴더를 연다.
