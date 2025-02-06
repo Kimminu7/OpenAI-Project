@@ -1,0 +1,9 @@
+name: my-spring-app
+type: web
+regions:
+  - fra  # 유럽 리전 선택 (Koyeb이 배포할 서버 위치)
+build:
+  commands:
+    - ./gradlew build  # Spring Boot 프로젝트 빌드 명령어
+run:
+  command: java -jar build/libs/*.jar  # Spring Boot 앱 실행 명령어
