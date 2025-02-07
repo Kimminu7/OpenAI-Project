@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 수정</title>
+    <link rel="stylesheet" th:href="@{/css/edit.css}">
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <a th:href="@{/main}" class="logo">
+            <img th:src="@{/images/cameraicon.png}" alt="로고">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#" onclick="alert('공지사항 페이지(미구현)')">공지사항</a></li>
+            <li><a href="#" onclick="alert('이벤트 페이지(미구현)')">이벤트</a></li>
+            <li><a th:href="@{/find}">탐색</a></li>
+            <li><a th:href="@{/board}">게시판</a></li>
+        </ul>
+        <div class="user-container">
+            <th:block th:if="${session.member != null}">
+                <a th:href="@{/logout}">
+                    <img th:src="@{/images/icons8-사용자-100.png}" alt="사용자 아이콘">
+                    <p th:text="${session.member.name + '/로그아웃'}"></p>
+                </a>
+            </th:block>
+            <th:block th:if="${session.member == null}">
+                <a th:href="@{/login}">
+                    <img th:src="@{/images/icons8-사용자-100.png}" alt="사용자 아이콘">
+                    <p th:text="${'로그인 필요'}"></p>
+                </a>
+            </th:block>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <h1>게시글 수정</h1>
+    <form th:action="@{'/board/' + ${board.id}+'/edit'}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="title">제목</label>
+            <input type="text" id="title" name="title" th:value="${board.title}" required>
+        </div>
+        <div class="form-group">
+            <label for="content">내용</label>
+            <textarea id="content" name="content" required th:text="${board.content}"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="file">첨부 이미지</label>
+            <input type="file" id="file" name="file">
+        </div>
+        <button type="submit" class="submit-button">수정 완료</button>
+    </form>
+</div>
+
+<script src="/js/comment.js"></script>
+</body>
+</html>

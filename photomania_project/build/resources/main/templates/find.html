@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Page</title>
+    <link rel="stylesheet" th:href="@{/css/find.css}">
+    <link rel="icon" th:href="@{/images/cameraicon.png}">
+    <script defer th:src="@{/js/find.js}"></script>
+</head>
+<body>
+<!-- 헤더 -->
+<header class="header-main">
+    <div class="logo">
+        <a th:href="@{/main}"><img th:src="@{/images/cameraicon.png}" alt="로고"></a>
+    </div>
+    <!-- 버튼 -->
+    <div class="but-group">
+        <button data-category="animal">동물</button>
+        <button data-category="flower">꽃</button>
+        <button data-category="city">도시</button>
+        <button data-category="nature">자연</button>
+    </div>
+</header>
+
+<!-- AI 이미지 생성 버튼 -->
+<div class="ai-button-container">
+    <a th:href="@{/Randomimage}" class="ai-button">AI 이미지 생성</a>
+</div>
+
+<!-- 메인 -->
+<main>
+    <!-- 동물이미지 -->
+    <div class="images animal active">
+        <img th:src="@{/images/animal1.jpeg}" alt="동물1">
+        <img th:src="@{/images/animal2.jpeg}" alt="동물2">
+        <img th:src="@{/images/animal3.jpeg}" alt="동물3">
+        <img th:src="@{/images/animal4.jpeg}" alt="동물4">
+        <img th:src="@{/images/animal5.jpeg}" alt="동물5">
+        <img th:src="@{/images/animal6.jpeg}" alt="동물6">
+    </div>
+    <!-- 꽃 이미지 -->
+    <div class="images flower">
+        <img th:src="@{/images/flower1.jpeg}" alt="꽃1">
+        <img th:src="@{/images/flower2.jpeg}" alt="꽃2">
+        <img th:src="@{/images/flower3.jpeg}" alt="꽃3">
+        <img th:src="@{/images/flower4.jpeg}" alt="꽃4">
+        <img th:src="@{/images/flower5.png}" alt="꽃5">
+        <img th:src="@{/images/flower6.jpeg}" alt="꽃6">
+    </div>
+    <!-- 도시 이미지 -->
+    <div class="images city">
+        <img th:src="@{/images/city1.jpeg}" alt="도시1">
+        <img th:src="@{/images/city2.png}" alt="도시2">
+        <img th:src="@{/images/city3.jpeg}" alt="도시3">
+        <img th:src="@{/images/city4.jpeg}" alt="도시4">
+        <img th:src="@{/images/city5.jpeg}" alt="도시5">
+        <img th:src="@{/images/city6.jpeg}" alt="도시6">
+    </div>
+    <!-- 자연 이미지 -->
+    <div class="images nature">
+        <img th:src="@{/images/nature1.jpeg}" alt="자연1">
+        <img th:src="@{/images/nature2.png}" alt="자연2">
+        <img th:src="@{/images/nature3.jpeg}" alt="자연3">
+        <img th:src="@{/images/nature4.png}" alt="자연4">
+        <img th:src="@{/images/nature5.jpeg}" alt="자연5">
+        <img th:src="@{/images/nature6.jpeg}" alt="자연6">
+    </div>
+</main>
+
+<!-- 푸터 -->
+<footer>
+    &copy; 2025 Daegu Univ Open AI project, Group 3
+</footer>
+</body>
+</html>
