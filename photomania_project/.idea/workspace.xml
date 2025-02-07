@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5a2b8f79-a441-4817-8fd0-9ff4f353bd4c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,19 +75,26 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;Application.ProjectApplication.executor&quot;: &quot;Run&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Gradle.Tests in 'PhotoMania'.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.photomania_project [./gradlew build].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.photomania_project [:ProjectApplication.main()].executor&quot;: &quot;Debug&quot;,
     &quot;Gradle.photomania_project [:com.example.project.ProjectApplication.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.photomania_project [bootJar].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.photomania_project [build].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.photomania_project [test].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/MASTER/Documents/GitHub/OpenAPI-Project/photomania_project&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;promo.database&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/MASTER/Documents/GitHub/OpenAPI-Project/photomania_project/build/libs&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\MASTER\Documents\GitHub\OpenAPI-Project\photomania_project\build\libs" />
+    </key>
+  </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="gradle ./gradlew build " />
@@ -109,7 +115,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="photomania_project [./gradlew build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Tests in 'PhotoMania'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -120,16 +126,15 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="./gradlew" />
-            <option value="build" />
+            <option value=":test" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="photomania_project [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -144,6 +149,28 @@
         <option name="taskNames">
           <list>
             <option value="bootJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="photomania_project [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -178,10 +205,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.photomania_project [bootJar]" />
-        <item itemvalue="Gradle.photomania_project [test]" />
-        <item itemvalue="Gradle.photomania_project [./gradlew build]" />
         <item itemvalue="Application.ProjectApplication" />
+        <item itemvalue="Gradle.photomania_project [bootJar]" />
+        <item itemvalue="Gradle.Tests in 'PhotoMania'" />
+        <item itemvalue="Gradle.photomania_project [build]" />
+        <item itemvalue="Gradle.photomania_project [test]" />
       </list>
     </recent_temporary>
   </component>
@@ -195,6 +223,17 @@
       <updated>1737448693215</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
