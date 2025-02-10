@@ -80,6 +80,11 @@ header .user-container img {
     transition: transform 0.3s ease;
 }
 
+header .user-container p {
+    text-align: center;
+}
+
+
 header .user-container img:hover {
     transform: scale(1.1);
 }
@@ -222,4 +227,20 @@ header .user-container span {
     background-color: #f1f1f1;
     padding: 10px;
     border-radius: 5px;
+}
+/* 수정 버튼 스타일 */
+.edit-button {
+    background-color: #4a90e2;  /* 기존 버튼 색상과 일치 */
+    color: white;
+    text-decoration: none;  /* 링크의 기본 밑줄 제거 */
+    padding: 10px 20px;  /* 버튼 크기 조절 */
+    border-radius: 5px;  /* 모서리 둥글게 */
+    font-weight: bold;  /* 글자 강조 */
+    display: inline-block;  /* 블록 요소로 처리하여 마진 조절 */
+    margin-top: 15px;  /* 게시글 내용과 버튼 사이의 간격 */
+    transition: background-color 0.3s ease;  /* 배경 색상 변경 애니메이션 */
+}
+
+.edit-button:hover {
+    background-color: #357ab8;  /* 호버 시 색상 변경 */
 }

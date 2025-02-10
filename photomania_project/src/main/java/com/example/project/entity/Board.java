@@ -48,4 +48,6 @@ public class Board extends BaseEntity {
     @OneToMany(mappedBy = "board",cascade=CascadeType.ALL)
     private List<BoardLike> likeList = new ArrayList<>();
 
+
+
 }

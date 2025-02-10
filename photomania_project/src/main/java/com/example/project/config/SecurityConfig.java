@@ -34,7 +34,7 @@ public class SecurityConfig {
         return http
                 .csrf().disable() // 개발 단계에서만 비활성화
                 .authorizeRequests()
-                .antMatchers("/register", "/login", "/main", "/board", "/detail/{id}").permitAll()
+                .antMatchers("/register", "/login", "/main", "/board", "/board/{id}", "/find").permitAll()
                 .antMatchers("/admin/**").authenticated()
                 .antMatchers("/css/**", "/images/**", "/js/**").permitAll()
                 .antMatchers("/main").authenticated()

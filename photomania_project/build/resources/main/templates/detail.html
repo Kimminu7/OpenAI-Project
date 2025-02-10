@@ -65,6 +65,15 @@
         </form>
     </div>
 </div>
+<!-- 수정 버튼 -->
+<th:block th:if="${session.member != null and session.member.email != null and board.member != null and session.member.email == board.member.email}">
+<!--    <form th:action="@{'/board/'+${board.id}+'/edit'}" method="post">-->
+<!--        <button type="submit" class = "edit-button" onclick="return confirm('수정 하시겠습니까?')">게시물 수정</button>-->
+<!--        -->
+<!--    </form>-->
+    <button type="submit" class = "edit-button" th:onclick="|location.href='@{'/board/'+${board.id}+'/edit'}'|">게시물 수정</button>
+</th:block>
+
 
 <!-- 게시글 삭제 버튼 -->
 <th:block th:if="${session.member != null and session.member.email != null and board.member != null and session.member.email == board.member.email}">

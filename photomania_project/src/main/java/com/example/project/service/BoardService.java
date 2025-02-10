@@ -13,6 +13,9 @@ public interface BoardService {
 
     List<BoardDTO> getAllBoards();
 
+
+    Board updatePost(BoardDTO updatedPost);
+
     BoardDTO getBoardById(Long id);
 
     void deleteBoard(Long id);
@@ -22,6 +25,7 @@ public interface BoardService {
     BoardDTO getBoardDetail(Long id);
 
     void incrementLikes(Long boardId);
+
 
     PageResultDTO<BoardDTO, Board> getList(PageRequestDTO requestDTO);
     // DTO -> Entity 변환
