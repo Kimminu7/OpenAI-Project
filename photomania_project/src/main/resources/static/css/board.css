@@ -1,0 +1,204 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* 패딩과 테두리가 포함된 크기로 설정 */
+}
+
+/* 헤더 스타일 */
+header {
+    background-color: #4a90e2;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header .header-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* 로고 스타일 */
+header .logo img {
+    height: 80px;
+}
+
+/* 내비게이션 링크 스타일 */
+header .nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header .nav-links li {
+    margin: 0 15px;
+}
+
+header .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header .nav-links a:hover {
+    color: #d0eaff;
+}
+
+/* 사용자 로그인 영역 */
+header .user-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* 오른쪽 끝으로 배치 */
+}
+
+header .user-container .user-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+header .user-container img {
+    height: 50px;
+    margin: 0 35px;
+    transition: transform 0.3s ease;
+}
+
+header .user-container img:hover {
+    transform: scale(1.1);
+}
+
+header .user-container span {
+    font-size: 14px;
+}
+
+/* 게시판 콘텐츠 스타일 */
+.board-container {
+    padding: 20px;
+}
+
+/* 게시글 작성 폼 */
+.create-post {
+    margin-bottom: 20px;
+}
+
+.create-post button {
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.create-post button:hover {
+    background-color: #357ab7;
+}
+
+/* 검색 섹션 스타일 */
+.search-section {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.search-section select,
+.search-section input {
+    padding: 8px;
+    font-size: 14px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-section button {
+    padding: 8px 15px;
+    background-color: #4a90e2;
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-section button:hover {
+    background-color: #357ab7;
+}
+
+/* 게시판 테이블 스타일 */
+.board-table-container {
+    overflow-x: auto;
+}
+
+.board-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.board-table th, .board-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+.board-table th {
+    background-color: #f3f3f3;
+    font-weight: bold;
+}
+
+.board-table td a {
+    text-decoration: none;
+    color: #4a90e2;
+    font-weight: bold;
+}
+
+.board-table td a:hover {
+    text-decoration: underline;
+}
+
+/* 페이지 네비게이션 스타일 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    list-style: none; /* 리스트 점 제거 */
+}
+
+.pagination .page-item {
+    margin: 0 5px;
+}
+
+.pagination .page-link {
+    padding: 10px 15px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.pagination .page-link:hover {
+    background-color: #357ab7;
+}
+
+.pagination .page-item.disabled .page-link {
+    background-color: #d0d0d0;
+    cursor: not-allowed;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #357ab7;
+}
