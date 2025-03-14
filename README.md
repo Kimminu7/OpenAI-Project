@@ -20,1130 +20,561 @@
 ![구조도](https://github.com/user-attachments/assets/d5ba8d5c-3588-4fec-8c35-a249931d02a9)
 
 ## 프로젝트 구조 
-C:.
-│  .gitattributes
-│  .gitignore
-│  build.gradle
-│  gradlew
-│  gradlew.bat
-│  HELP.md
-│  Procfile
-│  settings.gradle
-│  system.properties
-│
-├─.gradle
-│  │  file-system.probe
-│  │
-│  ├─8.11.1
-│  │  │  gc.properties
-│  │  │
-│  │  ├─checksums
-│  │  │      checksums.lock
-│  │  │      md5-checksums.bin
-│  │  │      sha1-checksums.bin
-│  │  │
-│  │  ├─executionHistory
-│  │  │      executionHistory.bin
-│  │  │      executionHistory.lock
-│  │  │
-│  │  ├─expanded
-│  │  ├─fileChanges
-│  │  │      last-build.bin
-│  │  │
-│  │  ├─fileHashes
-│  │  │      fileHashes.bin
-│  │  │      fileHashes.lock
-│  │  │      resourceHashesCache.bin
-│  │  │
-│  │  └─vcsMetadata
-│  ├─buildOutputCleanup
-│  │      buildOutputCleanup.lock
-│  │      cache.properties
-│  │      outputFiles.bin
-│  │
-│  └─vcs-1
-│          gc.properties
-│
-├─.idea
-│  │  .gitignore
-│  │  .name
-│  │  compiler.xml
-│  │  gradle.xml
-│  │  jarRepositories.xml
-│  │  misc.xml
-│  │  modules.xml
-│  │  photomania_project (1) -.iml
-│  │  project - 복사본 (3).iml
-│  │  uiDesigner.xml
-│  │  vcs.xml
-│  │  workspace.xml
-│  │
-│  ├─inspectionProfiles
-│  │      Project_Default.xml
-│  │
-│  └─modules
-│          PhotoMania.main.iml
-│          PhotoMania.test.iml
-│
-├─bin
-│  ├─generated-sources
-│  │  └─annotations
-│  └─generated-test-sources
-│      └─annotations
-├─build
-│  ├─classes
-│  │  └─java
-│  │      └─main
-│  │          └─com
-│  │              └─example
-│  │                  └─project
-│  │                      │  ProjectApplication.class
-│  │                      │
-│  │                      ├─config
-│  │                      │      SecurityConfig.class
-│  │                      │      WebConfig.class
-│  │                      │
-│  │                      ├─controller
-│  │                      │      BoardController.class
-│  │                      │      CommentController.class
-│  │                      │      MemberController.class
-│  │                      │
-│  │                      ├─dto
-│  │                      │      BoardDTO$BoardDTOBuilder.class
-│  │                      │      BoardDTO.class
-│  │                      │      CommentRequestDTO$CommentRequestDTOBuilder.class
-│  │                      │      CommentRequestDTO.class
-│  │                      │      CommentResponseDTO$CommentResponseDTOBuilder.class
-│  │                      │      CommentResponseDTO.class
-│  │                      │      MemberDTO$MemberDTOBuilder.class
-│  │                      │      MemberDTO.class
-│  │                      │      PageRequestDTO$PageRequestDTOBuilder.class
-│  │                      │      PageRequestDTO.class
-│  │                      │      PageResultDTO.class
-│  │                      │      ReCommentRequestDTO$ReCommentRequestDTOBuilder.class
-│  │                      │      ReCommentRequestDTO.class
-│  │                      │      ReCommentResponseDTO$ReCommentResponseDTOBuilder.class
-│  │                      │      ReCommentResponseDTO.class
-│  │                      │
-│  │                      ├─entity
-│  │                      │      BaseEntity.class
-│  │                      │      Board$BoardBuilder.class
-│  │                      │      Board.class
-│  │                      │      BoardLike.class
-│  │                      │      Comment$CommentBuilder.class
-│  │                      │      Comment.class
-│  │                      │      Member$MemberBuilder.class
-│  │                      │      Member.class
-│  │                      │      ReComment$ReCommentBuilder.class
-│  │                      │      ReComment.class
-│  │                      │      Role.class
-│  │                      │
-│  │                      ├─repository
-│  │                      │      BoardLikeRepository.class
-│  │                      │      BoardRepository.class
-│  │                      │      CommentRepository.class
-│  │                      │      MemberRepository.class
-│  │                      │      ReCommentRepository.class
-│  │                      │
-│  │                      ├─sec
-│  │                      │      FileStorageUtil.class
-│  │                      │      LoginFailureH.class
-│  │                      │      LoginSucessH.class
-│  │                      │      MemberDetails.class
-│  │                      │      MemberDetailsService.class
-│  │                      │
-│  │                      └─service
-│  │                              BoardLikeService.class
-│  │                              BoardLikeServiceImpl.class
-│  │                              BoardService.class
-│  │                              BoardServiceImpl.class
-│  │                              CommentService.class
-│  │                              CommentServiceImpl.class
-│  │                              MemberService.class
-│  │                              MemberServiceImpl.class
-│  │                              ReCommentService.class
-│  │                              ReCommentServiceImpl.class
-│  │
-│  ├─generated
-│  │  └─sources
-│  │      ├─annotationProcessor
-│  │      │  └─java
-│  │      │      ├─main
-│  │      │      └─test
-│  │      │          └─generated_tests
-│  │      └─headers
-│  │          └─java
-│  │              ├─main
-│  │              └─test
-│  ├─reports
-│  │  └─problems
-│  │          problems-report.html
-│  │
-│  ├─resources
-│  │  └─main
-│  │      │  application.properties
-│  │      │
-│  │      ├─static
-│  │      │  ├─css
-│  │      │  │      board.css
-│  │      │  │      detail.css
-│  │      │  │      edit.css
-│  │      │  │      error.css
-│  │      │  │      find.css
-│  │      │  │      main.css
-│  │      │  │      Randomstyle.css
-│  │      │  │      register.css
-│  │      │  │      style.css
-│  │      │  │      write.css
-│  │      │  │
-│  │      │  ├─images
-│  │      │  │      animal1.jpeg
-│  │      │  │      animal2.jpeg
-│  │      │  │      animal3.jpeg
-│  │      │  │      animal4.jpeg
-│  │      │  │      animal5.jpeg
-│  │      │  │      animal6.jpeg
-│  │      │  │      camera.png
-│  │      │  │      cameraIcon.png
-│  │      │  │      city1.jpeg
-│  │      │  │      city2.png
-│  │      │  │      city3.jpeg
-│  │      │  │      city4.jpeg
-│  │      │  │      city5.jpeg
-│  │      │  │      city6.jpeg
-│  │      │  │      dog.jpeg
-│  │      │  │      dog2.jpeg
-│  │      │  │      dog3.jpeg
-│  │      │  │      fire.png
-│  │      │  │      flower1.jpeg
-│  │      │  │      flower2.jpeg
-│  │      │  │      flower3.jpeg
-│  │      │  │      flower4.jpeg
-│  │      │  │      flower5.png
-│  │      │  │      flower6.jpeg
-│  │      │  │      icons8-돋보기-48.png
-│  │      │  │      icons8-사용자-100.png
-│  │      │  │      nature1.jpeg
-│  │      │  │      nature2.png
-│  │      │  │      nature3.jpeg
-│  │      │  │      nature4.png
-│  │      │  │      nature5.jpeg
-│  │      │  │      nature6.jpeg
-│  │      │  │      newicon.png
-│  │      │  │      소개video.mp4
-│  │      │  │
-│  │      │  ├─js
-│  │      │  │      board.js
-│  │      │  │      comment.js
-│  │      │  │      find.js
-│  │      │  │      jquery-3.7.1.min.js
-│  │      │  │      main.js
-│  │      │  │      Randomscript.js
-│  │      │  │
-│  │      │  └─uploads
-│  │      └─templates
-│  │              board.html
-│  │              detail.html
-│  │              edit.html
-│  │              find.html
-│  │              login.html
-│  │              main.html
-│  │              Randomimage.html
-│  │              register.html
-│  │              write.html
-│  │
-│  └─tmp
-│      ├─compileJava
-│      │  │  previous-compilation-data.bin
-│      │  │
-│      │  └─compileTransaction
-│      │      ├─backup-dir
-│      │      └─stash-dir
-│      │              BoardController.class.uniqueId8
-│      │              BoardDTO$BoardDTOBuilder.class.uniqueId11
-│      │              BoardDTO.class.uniqueId6
-│      │              BoardService.class.uniqueId1
-│      │              BoardServiceImpl.class.uniqueId2
-│      │              LoginSucessH.class.uniqueId4
-│      │              MemberController.class.uniqueId9
-│      │              MemberDTO$MemberDTOBuilder.class.uniqueId0
-│      │              MemberDTO.class.uniqueId5
-│      │              MemberService.class.uniqueId7
-│      │              MemberServiceImpl.class.uniqueId3
-│      │              SecurityConfig.class.uniqueId10
-│      │
-│      └─test
-├─gradle
-│  └─wrapper
-│          gradle-wrapper.jar
-│          gradle-wrapper.properties
-│
-├─out
-│  ├─production
-│  │  ├─classes
-│  │  │  ├─com
-│  │  │  │  └─example
-│  │  │  │      └─project
-│  │  │  │          │  ProjectApplication.class
-│  │  │  │          │
-│  │  │  │          ├─config
-│  │  │  │          │      SecurityConfig.class
-│  │  │  │          │      WebConfig.class
-│  │  │  │          │
-│  │  │  │          ├─controller
-│  │  │  │          │      BoardController.class
-│  │  │  │          │      CommentController.class
-│  │  │  │          │      MemberController.class
-│  │  │  │          │
-│  │  │  │          ├─dto
-│  │  │  │          │      BoardDTO$BoardDTOBuilder.class
-│  │  │  │          │      BoardDTO.class
-│  │  │  │          │      CommentRequestDTO$CommentRequestDTOBuilder.class
-│  │  │  │          │      CommentRequestDTO.class
-│  │  │  │          │      CommentResponseDTO$CommentResponseDTOBuilder.class
-│  │  │  │          │      CommentResponseDTO.class
-│  │  │  │          │      MemberDTO$MemberDTOBuilder.class
-│  │  │  │          │      MemberDTO.class
-│  │  │  │          │      PageRequestDTO$PageRequestDTOBuilder.class
-│  │  │  │          │      PageRequestDTO.class
-│  │  │  │          │      PageResultDTO.class
-│  │  │  │          │      ReCommentRequestDTO$ReCommentRequestDTOBuilder.class
-│  │  │  │          │      ReCommentRequestDTO.class
-│  │  │  │          │      ReCommentResponseDTO$ReCommentResponseDTOBuilder.class
-│  │  │  │          │      ReCommentResponseDTO.class
-│  │  │  │          │
-│  │  │  │          ├─entity
-│  │  │  │          │      BaseEntity.class
-│  │  │  │          │      Board$BoardBuilder.class
-│  │  │  │          │      Board.class
-│  │  │  │          │      BoardLike.class
-│  │  │  │          │      Comment$CommentBuilder.class
-│  │  │  │          │      Comment.class
-│  │  │  │          │      Member$MemberBuilder.class
-│  │  │  │          │      Member.class
-│  │  │  │          │      ReComment$ReCommentBuilder.class
-│  │  │  │          │      ReComment.class
-│  │  │  │          │      Role.class
-│  │  │  │          │
-│  │  │  │          ├─repository
-│  │  │  │          │      BoardLikeRepository.class
-│  │  │  │          │      BoardRepository.class
-│  │  │  │          │      CommentRepository.class
-│  │  │  │          │      MemberRepository.class
-│  │  │  │          │      ReCommentRepository.class
-│  │  │  │          │
-│  │  │  │          ├─sec
-│  │  │  │          │      FileStorageUtil.class
-│  │  │  │          │      LoginFailureH.class
-│  │  │  │          │      LoginSucessH.class
-│  │  │  │          │      MemberDetails.class
-│  │  │  │          │      MemberDetailsService.class
-│  │  │  │          │
-│  │  │  │          └─service
-│  │  │  │                  BoardLikeService.class
-│  │  │  │                  BoardLikeServiceImpl.class
-│  │  │  │                  BoardService.class
-│  │  │  │                  BoardServiceImpl.class
-│  │  │  │                  CommentService.class
-│  │  │  │                  CommentServiceImpl.class
-│  │  │  │                  MemberService.class
-│  │  │  │                  MemberServiceImpl.class
-│  │  │  │                  ReCommentService.class
-│  │  │  │                  ReCommentServiceImpl.class
-│  │  │  │
-│  │  │  └─generated
-│  │  └─resources
-│  │      │  application.properties
-│  │      │
-│  │      ├─static
-│  │      │  ├─css
-│  │      │  │      board.css
-│  │      │  │      detail.css
-│  │      │  │      edit.css
-│  │      │  │      error.css
-│  │      │  │      find.css
-│  │      │  │      main.css
-│  │      │  │      Randomstyle.css
-│  │      │  │      register.css
-│  │      │  │      style.css
-│  │      │  │      write.css
-│  │      │  │
-│  │      │  ├─images
-│  │      │  │      animal1.jpeg
-│  │      │  │      animal2.jpeg
-│  │      │  │      animal3.jpeg
-│  │      │  │      animal4.jpeg
-│  │      │  │      animal5.jpeg
-│  │      │  │      animal6.jpeg
-│  │      │  │      camera.png
-│  │      │  │      cameraIcon.png
-│  │      │  │      city1.jpeg
-│  │      │  │      city2.png
-│  │      │  │      city3.jpeg
-│  │      │  │      city4.jpeg
-│  │      │  │      city5.jpeg
-│  │      │  │      city6.jpeg
-│  │      │  │      dog.jpeg
-│  │      │  │      dog2.jpeg
-│  │      │  │      dog3.jpeg
-│  │      │  │      fire.png
-│  │      │  │      flower1.jpeg
-│  │      │  │      flower2.jpeg
-│  │      │  │      flower3.jpeg
-│  │      │  │      flower4.jpeg
-│  │      │  │      flower5.png
-│  │      │  │      flower6.jpeg
-│  │      │  │      icons8-돋보기-48.png
-│  │      │  │      icons8-사용자-100.png
-│  │      │  │      nature1.jpeg
-│  │      │  │      nature2.png
-│  │      │  │      nature3.jpeg
-│  │      │  │      nature4.png
-│  │      │  │      nature5.jpeg
-│  │      │  │      nature6.jpeg
-│  │      │  │      newicon.png
-│  │      │  │      소개video.mp4
-│  │      │  │
-│  │      │  └─js
-│  │      │          board.js
-│  │      │          comment.js
-│  │      │          find.js
-│  │      │          jquery-3.7.1.min.js
-│  │      │          main.js
-│  │      │          Randomscript.js
-│  │      │
-│  │      └─templates
-│  │              board.html
-│  │              detail.html
-│  │              edit.html
-│  │              find.html
-│  │              login.html
-│  │              main.html
-│  │              Randomimage.html
-│  │              register.html
-│  │              write.html
-│  │
-│  └─test
-│      └─classes
-│          └─com
-│              └─example
-│                  └─project
-│                          BoardApplicationTests.class
-│                          BoardRepositoryTest.class
-│                          ProjectApplicationTests.class
-│
-└─src
-    ├─main
-    │  ├─generated
-    │  ├─java
-    │  │  └─com
-    │  │      └─example
-    │  │          └─project
-    │  │              │  ProjectApplication.java
-    │  │              │
-    │  │              ├─config
-    │  │              │      SecurityConfig.java
-    │  │              │      WebConfig.java
-    │  │              │
-    │  │              ├─controller
-    │  │              │      BoardController.java
-    │  │              │      CommentController.java
-    │  │              │      MemberController.java
-    │  │              │
-    │  │              ├─dto
-    │  │              │      BoardDTO.java
-    │  │              │      CommentRequestDTO.java
-    │  │              │      CommentResponseDTO.java
-    │  │              │      MemberDTO.java
-    │  │              │      PageRequestDTO.java
-    │  │              │      PageResultDTO.java
-    │  │              │      ReCommentRequestDTO.java
-    │  │              │      ReCommentResponseDTO.java
-    │  │              │
-    │  │              ├─entity
-    │  │              │      BaseEntity.java
-    │  │              │      Board.java
-    │  │              │      BoardLike.java
-    │  │              │      Comment.java
-    │  │              │      Member.java
-    │  │              │      ReComment.java
-    │  │              │      Role.java
-    │  │              │
-    │  │              ├─repository
-    │  │              │      BoardLikeRepository.java
-    │  │              │      BoardRepository.java
-    │  │              │      CommentRepository.java
-    │  │              │      MemberRepository.java
-    │  │              │      ReCommentRepository.java
-    │  │              │
-    │  │              ├─sec
-    │  │              │      FileStorageUtil.java
-    │  │              │      LoginFailureH.java
-    │  │              │      LoginSucessH.java
-    │  │              │      MemberDetails.java
-    │  │              │      MemberDetailsService.java
-    │  │              │
-    │  │              └─service
-    │  │                      BoardLikeService.java
-    │  │                      BoardLikeServiceImpl.java
-    │  │                      BoardService.java
-    │  │                      BoardServiceImpl.java
-    │  │                      CommentService.java
-    │  │                      CommentServiceImpl.java
-    │  │                      MemberService.java
-    │  │                      MemberServiceImpl.java
-    │  │                      ReCommentService.java
-    │  │                      ReCommentServiceImpl.java
+└─photomania_project
+    │  .gitattributes
+    │  .gitignore
+    │  build.gradle
+    │  gradlew
+    │  gradlew.bat
+    │  HELP.md
+    │  Procfile
+    │  settings.gradle
+    │  system.properties
+    │  
+    ├─.gradle
+    │  │  file-system.probe
+    │  │  
+    │  ├─8.11.1
+    │  │  │  gc.properties
+    │  │  │  
+    │  │  ├─checksums
+    │  │  │      checksums.lock
+    │  │  │      md5-checksums.bin
+    │  │  │      sha1-checksums.bin
+    │  │  │      
+    │  │  ├─executionHistory
+    │  │  │      executionHistory.bin
+    │  │  │      executionHistory.lock
+    │  │  │      
+    │  │  ├─expanded
+    │  │  ├─fileChanges
+    │  │  │      last-build.bin
+    │  │  │
+    │  │  ├─fileHashes
+    │  │  │      fileHashes.bin
+    │  │  │      fileHashes.lock
+    │  │  │      resourceHashesCache.bin
+    │  │  │
+    │  │  └─vcsMetadata
+    │  ├─buildOutputCleanup
+    │  │      buildOutputCleanup.lock
+    │  │      cache.properties
+    │  │      outputFiles.bin
     │  │
-    │  └─resources
-    │      │  application.properties
-    │      │
-    │      ├─static
-    │      │  ├─css
-    │      │  │      board.css
-    │      │  │      detail.css
-    │      │  │      edit.css
-    │      │  │      error.css
-    │      │  │      find.css
-    │      │  │      main.css
-    │      │  │      Randomstyle.css
-    │      │  │      register.css
-    │      │  │      style.css
-    │      │  │      write.css
-    │      │  │
-    │      │  ├─images
-    │      │  │      animal1.jpeg
-    │      │  │      animal2.jpeg
-    │      │  │      animal3.jpeg
-    │      │  │      animal4.jpeg
-    │      │  │      animal5.jpeg
-    │      │  │      animal6.jpeg
-    │      │  │      camera.png
-    │      │  │      cameraIcon.png
-    │      │  │      city1.jpeg
-    │      │  │      city2.png
-    │      │  │      city3.jpeg
-    │      │  │      city4.jpeg
-    │      │  │      city5.jpeg
-    │      │  │      city6.jpeg
-    │      │  │      dog.jpeg
-    │      │  │      dog2.jpeg
-    │      │  │      dog3.jpeg
-    │      │  │      fire.png
-    │      │  │      flower1.jpeg
-    │      │  │      flower2.jpeg
-    │      │  │      flower3.jpeg
-    │      │  │      flower4.jpeg
-    │      │  │      flower5.png
-    │      │  │      flower6.jpeg
-    │      │  │      icons8-돋보기-48.png
-    │      │  │      icons8-사용자-100.png
-    │      │  │      nature1.jpeg
-    │      │  │      nature2.png
-    │      │  │      nature3.jpeg
-    │      │  │      nature4.png
-    │      │  │      nature5.jpeg
-    │      │  │      nature6.jpeg
-    │      │  │      newicon.png
-    │      │  │      소개video.mp4
-    │      │  │
-    │      │  ├─js
-    │      │  │      board.js
-    │      │  │      comment.js
-    │      │  │      find.js
-    │      │  │      jquery-3.7.1.min.js
-    │      │  │      main.js
-    │      │  │      Randomscript.js
-    │      │  │
-    │      │  └─uploads
-    │      └─templates
-    │              board.html
-    │              detail.html
-    │              edit.html
-    │              find.html
-    │              login.html
-    │              main.html
-    │              Randomimage.html
-    │              register.html
+    │  └─vcs-1
+    │          gc.properties
     │
-    └─test
-        ├─generated_tests
-        └─java
-            └─com
-                └─example
-                            BoardApplicationTests.java
-                            BoardRepositoryTest.java
-                            ProjectApplicationTests.java
-
-PS C:\Users\MASTER\Documents\GitHub\OpenAPI-Project\photomania_project> tree /f photomania_project
-폴더 PATH의 목록입니다.
-볼륨 일련 번호가 000000B0 0ABE:6C7D입니다.
-C:\USERS\MASTER\DOCUMENTS\GITHUB\OPENAPI-PROJECT\PHOTOMANIA_PROJECT\PHOTOMANIA_PROJECT
-잘못된 경로 - \USERS\MASTER\DOCUMENTS\GITHUB\OPENAPI-PROJECT\PHOTOMANIA_PROJECT\PHOTOMANIA_PROJECT
-
-에 하위 폴더가 없습니다.
-PS C:\Users\MASTER\Documents\GitHub\OpenAPI-Project\photomania_project> tree /f
-폴더 PATH의 목록입니다.
-볼륨 일련 번호는 0ABE-6C7D입니다.
-C:.
-│  .gitattributes
-│  .gitignore
-│  build.gradle
-│  gradlew
-│  gradlew.bat
-│  HELP.md
-│  Procfile
-│  settings.gradle
-│  system.properties
-│
-├─.gradle
-│  │  file-system.probe
-│  │
-│  ├─8.11.1
-│  │  │  gc.properties
-│  │  │
-│  │  ├─checksums
-│  │  │      checksums.lock
-│  │  │      md5-checksums.bin
-│  │  │      sha1-checksums.bin
-│  │  │
-│  │  ├─executionHistory
-│  │  │      executionHistory.bin
-│  │  │      executionHistory.lock
-│  │  │
-│  │  ├─expanded
-│  │  ├─fileChanges
-│  │  │      last-build.bin
-│  │  │
-│  │  ├─fileHashes
-│  │  │      fileHashes.bin
-│  │  │      fileHashes.lock
-│  │  │      resourceHashesCache.bin
-│  │  │
-│  │  └─vcsMetadata
-│  ├─buildOutputCleanup
-│  │      buildOutputCleanup.lock
-│  │      cache.properties
-│  │      outputFiles.bin
-│  │
-│  └─vcs-1
-│          gc.properties
-│
-├─.idea
-│  │  .gitignore
-│  │  .name
-│  │  compiler.xml
-│  │  gradle.xml
-│  │  jarRepositories.xml
-│  │  misc.xml
-│  │  modules.xml
-│  │  photomania_project (1) -.iml
-│  │  project - 복사본 (3).iml
-│  │  uiDesigner.xml
-│  │  vcs.xml
-│  │  workspace.xml
-│  │
-│  ├─inspectionProfiles
-│  │      Project_Default.xml
-│  │
-│  └─modules
-│          PhotoMania.main.iml
-│          PhotoMania.test.iml
-│
-├─bin
-│  ├─generated-sources
-│  │  └─annotations
-│  └─generated-test-sources
-│      └─annotations
-├─build
-│  ├─classes
-│  │  └─java
-│  │      └─main
-│  │          └─com
-│  │              └─example
-│  │                  └─project
-│  │                      │  ProjectApplication.class
-│  │                      │
-│  │                      ├─config
-│  │                      │      SecurityConfig.class
-│  │                      │      WebConfig.class
-│  │                      │
-│  │                      ├─controller
-│  │                      │      BoardController.class
-│  │                      │      CommentController.class
-│  │                      │      MemberController.class
-│  │                      │
-│  │                      ├─dto
-│  │                      │      BoardDTO$BoardDTOBuilder.class
-│  │                      │      BoardDTO.class
-│  │                      │      CommentRequestDTO$CommentRequestDTOBuilder.class
-│  │                      │      CommentRequestDTO.class
-│  │                      │      CommentResponseDTO$CommentResponseDTOBuilder.class
-│  │                      │      CommentResponseDTO.class
-│  │                      │      MemberDTO$MemberDTOBuilder.class
-│  │                      │      MemberDTO.class
-│  │                      │      PageRequestDTO$PageRequestDTOBuilder.class
-│  │                      │      PageRequestDTO.class
-│  │                      │      PageResultDTO.class
-│  │                      │      ReCommentRequestDTO$ReCommentRequestDTOBuilder.class
-│  │                      │      ReCommentRequestDTO.class
-│  │                      │      ReCommentResponseDTO$ReCommentResponseDTOBuilder.class
-│  │                      │      ReCommentResponseDTO.class
-│  │                      │
-│  │                      ├─entity
-│  │                      │      BaseEntity.class
-│  │                      │      Board$BoardBuilder.class
-│  │                      │      Board.class
-│  │                      │      BoardLike.class
-│  │                      │      Comment$CommentBuilder.class
-│  │                      │      Comment.class
-│  │                      │      Member$MemberBuilder.class
-│  │                      │      Member.class
-│  │                      │      ReComment$ReCommentBuilder.class
-│  │                      │      ReComment.class
-│  │                      │      Role.class
-│  │                      │
-│  │                      ├─repository
-│  │                      │      BoardLikeRepository.class
-│  │                      │      BoardRepository.class
-│  │                      │      CommentRepository.class
-│  │                      │      MemberRepository.class
-│  │                      │      ReCommentRepository.class
-│  │                      │
-│  │                      ├─sec
-│  │                      │      FileStorageUtil.class
-│  │                      │      LoginFailureH.class
-│  │                      │      LoginSucessH.class
-│  │                      │      MemberDetails.class
-│  │                      │      MemberDetailsService.class
-│  │                      │
-│  │                      └─service
-│  │                              BoardLikeService.class
-│  │                              BoardLikeServiceImpl.class
-│  │                              BoardService.class
-│  │                              BoardServiceImpl.class
-│  │                              CommentService.class
-│  │                              CommentServiceImpl.class
-│  │                              MemberService.class
-│  │                              MemberServiceImpl.class
-│  │                              ReCommentService.class
-│  │                              ReCommentServiceImpl.class
-│  │
-│  ├─generated
-│  │  └─sources
-│  │      ├─annotationProcessor
-│  │      │  └─java
-│  │      │      ├─main
-│  │      │      └─test
-│  │      │          └─generated_tests
-│  │      └─headers
-│  │          └─java
-│  │              ├─main
-│  │              └─test
-│  ├─reports
-│  │  └─problems
-│  │          problems-report.html
-│  │
-│  ├─resources
-│  │  └─main
-│  │      │  application.properties
-│  │      │
-│  │      ├─static
-│  │      │  ├─css
-│  │      │  │      board.css
-│  │      │  │      detail.css
-│  │      │  │      edit.css
-│  │      │  │      error.css
-│  │      │  │      find.css
-│  │      │  │      main.css
-│  │      │  │      Randomstyle.css
-│  │      │  │      register.css
-│  │      │  │      style.css
-│  │      │  │      write.css
-│  │      │  │
-│  │      │  ├─images
-│  │      │  │      animal1.jpeg
-│  │      │  │      animal2.jpeg
-│  │      │  │      animal3.jpeg
-│  │      │  │      animal4.jpeg
-│  │      │  │      animal5.jpeg
-│  │      │  │      animal6.jpeg
-│  │      │  │      camera.png
-│  │      │  │      cameraIcon.png
-│  │      │  │      city1.jpeg
-│  │      │  │      city2.png
-│  │      │  │      city3.jpeg
-│  │      │  │      city4.jpeg
-│  │      │  │      city5.jpeg
-│  │      │  │      city6.jpeg
-│  │      │  │      dog.jpeg
-│  │      │  │      dog2.jpeg
-│  │      │  │      dog3.jpeg
-│  │      │  │      fire.png
-│  │      │  │      flower1.jpeg
-│  │      │  │      flower2.jpeg
-│  │      │  │      flower3.jpeg
-│  │      │  │      flower4.jpeg
-│  │      │  │      flower5.png
-│  │      │  │      flower6.jpeg
-│  │      │  │      icons8-돋보기-48.png
-│  │      │  │      icons8-사용자-100.png
-│  │      │  │      nature1.jpeg
-│  │      │  │      nature2.png
-│  │      │  │      nature3.jpeg
-│  │      │  │      nature4.png
-│  │      │  │      nature5.jpeg
-│  │      │  │      nature6.jpeg
-│  │      │  │      newicon.png
-│  │      │  │      소개video.mp4
-│  │      │  │
-│  │      │  ├─js
-│  │      │  │      board.js
-│  │      │  │      comment.js
-│  │      │  │      find.js
-│  │      │  │      jquery-3.7.1.min.js
-│  │      │  │      main.js
-│  │      │  │      Randomscript.js
-│  │      │  │
-│  │      │  └─uploads
-│  │      └─templates
-│  │              board.html
-│  │              detail.html
-│  │              edit.html
-│  │              find.html
-│  │              login.html
-│  │              main.html
-│  │              Randomimage.html
-│  │              register.html
-│  │              write.html
-│  │
-│  └─tmp
-│      ├─compileJava
-│      │  │  previous-compilation-data.bin
-│      │  │
-│      │  └─compileTransaction
-│      │      ├─backup-dir
-│      │      └─stash-dir
-│      │              BoardController.class.uniqueId8
-│      │              BoardDTO$BoardDTOBuilder.class.uniqueId11
-│      │              BoardDTO.class.uniqueId6
-│      │              BoardService.class.uniqueId1
-│      │              BoardServiceImpl.class.uniqueId2
-│      │              LoginSucessH.class.uniqueId4
-│      │              MemberController.class.uniqueId9
-│      │              MemberDTO$MemberDTOBuilder.class.uniqueId0
-│      │              MemberDTO.class.uniqueId5
-│      │              MemberService.class.uniqueId7
-│      │              MemberServiceImpl.class.uniqueId3
-│      │              SecurityConfig.class.uniqueId10
-│      │
-│      └─test
-├─gradle
-│  └─wrapper
-│          gradle-wrapper.jar
-│          gradle-wrapper.properties
-│
-├─out
-│  ├─production
-│  │  ├─classes
-│  │  │  ├─com
-│  │  │  │  └─example
-│  │  │  │      └─project
-│  │  │  │          │  ProjectApplication.class
-│  │  │  │          │
-│  │  │  │          ├─config
-│  │  │  │          │      SecurityConfig.class
-│  │  │  │          │      WebConfig.class
-│  │  │  │          │
-│  │  │  │          ├─controller
-│  │  │  │          │      BoardController.class
-│  │  │  │          │      CommentController.class
-│  │  │  │          │      MemberController.class
-│  │  │  │          │
-│  │  │  │          ├─dto
-│  │  │  │          │      BoardDTO$BoardDTOBuilder.class
-│  │  │  │          │      BoardDTO.class
-│  │  │  │          │      CommentRequestDTO$CommentRequestDTOBuilder.class
-│  │  │  │          │      CommentRequestDTO.class
-│  │  │  │          │      CommentResponseDTO$CommentResponseDTOBuilder.class
-│  │  │  │          │      CommentResponseDTO.class
-│  │  │  │          │      MemberDTO$MemberDTOBuilder.class
-│  │  │  │          │      MemberDTO.class
-│  │  │  │          │      PageRequestDTO$PageRequestDTOBuilder.class
-│  │  │  │          │      PageRequestDTO.class
-│  │  │  │          │      PageResultDTO.class
-│  │  │  │          │      ReCommentRequestDTO$ReCommentRequestDTOBuilder.class
-│  │  │  │          │      ReCommentRequestDTO.class
-│  │  │  │          │      ReCommentResponseDTO$ReCommentResponseDTOBuilder.class
-│  │  │  │          │      ReCommentResponseDTO.class
-│  │  │  │          │
-│  │  │  │          ├─entity
-│  │  │  │          │      BaseEntity.class
-│  │  │  │          │      Board$BoardBuilder.class
-│  │  │  │          │      Board.class
-│  │  │  │          │      BoardLike.class
-│  │  │  │          │      Comment$CommentBuilder.class
-│  │  │  │          │      Comment.class
-│  │  │  │          │      Member$MemberBuilder.class
-│  │  │  │          │      Member.class
-│  │  │  │          │      ReComment$ReCommentBuilder.class
-│  │  │  │          │      ReComment.class
-│  │  │  │          │      Role.class
-│  │  │  │          │
-│  │  │  │          ├─repository
-│  │  │  │          │      BoardLikeRepository.class
-│  │  │  │          │      BoardRepository.class
-│  │  │  │          │      CommentRepository.class
-│  │  │  │          │      MemberRepository.class
-│  │  │  │          │      ReCommentRepository.class
-│  │  │  │          │
-│  │  │  │          ├─sec
-│  │  │  │          │      FileStorageUtil.class
-│  │  │  │          │      LoginFailureH.class
-│  │  │  │          │      LoginSucessH.class
-│  │  │  │          │      MemberDetails.class
-│  │  │  │          │      MemberDetailsService.class
-│  │  │  │          │
-│  │  │  │          └─service
-│  │  │  │                  BoardLikeService.class
-│  │  │  │                  BoardLikeServiceImpl.class
-│  │  │  │                  BoardService.class
-│  │  │  │                  BoardServiceImpl.class
-│  │  │  │                  CommentService.class
-│  │  │  │                  CommentServiceImpl.class
-│  │  │  │                  MemberService.class
-│  │  │  │                  MemberServiceImpl.class
-│  │  │  │                  ReCommentService.class
-│  │  │  │                  ReCommentServiceImpl.class
-│  │  │  │
-│  │  │  └─generated
-│  │  └─resources
-│  │      │  application.properties
-│  │      │
-│  │      ├─static
-│  │      │  ├─css
-│  │      │  │      board.css
-│  │      │  │      detail.css
-│  │      │  │      edit.css
-│  │      │  │      error.css
-│  │      │  │      find.css
-│  │      │  │      main.css
-│  │      │  │      Randomstyle.css
-│  │      │  │      register.css
-│  │      │  │      style.css
-│  │      │  │      write.css
-│  │      │  │
-│  │      │  ├─images
-│  │      │  │      animal1.jpeg
-│  │      │  │      animal2.jpeg
-│  │      │  │      animal3.jpeg
-│  │      │  │      animal4.jpeg
-│  │      │  │      animal5.jpeg
-│  │      │  │      animal6.jpeg
-│  │      │  │      camera.png
-│  │      │  │      cameraIcon.png
-│  │      │  │      city1.jpeg
-│  │      │  │      city2.png
-│  │      │  │      city3.jpeg
-│  │      │  │      city4.jpeg
-│  │      │  │      city5.jpeg
-│  │      │  │      city6.jpeg
-│  │      │  │      dog.jpeg
-│  │      │  │      dog2.jpeg
-│  │      │  │      dog3.jpeg
-│  │      │  │      fire.png
-│  │      │  │      flower1.jpeg
-│  │      │  │      flower2.jpeg
-│  │      │  │      flower3.jpeg
-│  │      │  │      flower4.jpeg
-│  │      │  │      flower5.png
-│  │      │  │      flower6.jpeg
-│  │      │  │      icons8-돋보기-48.png
-│  │      │  │      icons8-사용자-100.png
-│  │      │  │      nature1.jpeg
-│  │      │  │      nature2.png
-│  │      │  │      nature3.jpeg
-│  │      │  │      nature4.png
-│  │      │  │      nature5.jpeg
-│  │      │  │      nature6.jpeg
-│  │      │  │      newicon.png
-│  │      │  │      소개video.mp4
-│  │      │  │
-│  │      │  └─js
-│  │      │          board.js
-│  │      │          comment.js
-│  │      │          find.js
-│  │      │          jquery-3.7.1.min.js
-│  │      │          main.js
-│  │      │          Randomscript.js
-│  │      │
-│  │      └─templates
-│  │              board.html
-│  │              detail.html
-│  │              edit.html
-│  │              find.html
-│  │              login.html
-│  │              main.html
-│  │              Randomimage.html
-│  │              register.html
-│  │              write.html
-│  │
-│  └─test
-│      └─classes
-│          └─com
-│              └─example
-│                  └─project
-│                          BoardApplicationTests.class
-│                          BoardRepositoryTest.class
-│                          ProjectApplicationTests.class
-│
-└─src
-    ├─main
-    │  ├─generated
-    │  ├─java
-    │  │  └─com
-    │  │      └─example
-    │  │          └─project
-    │  │              │  ProjectApplication.java
-    │  │              │
-    │  │              ├─config
-    │  │              │      SecurityConfig.java
-    │  │              │      WebConfig.java
-    │  │              │
-    │  │              ├─controller
-    │  │              │      BoardController.java
-    │  │              │      CommentController.java
-    │  │              │      MemberController.java
-    │  │              │
-    │  │              ├─dto
-    │  │              │      BoardDTO.java
-    │  │              │      CommentRequestDTO.java
-    │  │              │      CommentResponseDTO.java
-    │  │              │      MemberDTO.java
-    │  │              │      PageRequestDTO.java
-    │  │              │      PageResultDTO.java
-    │  │              │      ReCommentRequestDTO.java
-    │  │              │      ReCommentResponseDTO.java
-    │  │              │
-    │  │              ├─entity
-    │  │              │      BaseEntity.java
-    │  │              │      Board.java
-    │  │              │      BoardLike.java
-    │  │              │      Comment.java
-    │  │              │      Member.java
-    │  │              │      ReComment.java
-    │  │              │      Role.java
-    │  │              │
-    │  │              ├─repository
-    │  │              │      BoardLikeRepository.java
-    │  │              │      BoardRepository.java
-    │  │              │      CommentRepository.java
-    │  │              │      MemberRepository.java
-    │  │              │      ReCommentRepository.java
-    │  │              │
-    │  │              ├─sec
-    │  │              │      FileStorageUtil.java
-    │  │              │      LoginFailureH.java
-    │  │              │      LoginSucessH.java
-    │  │              │      MemberDetails.java
-    │  │              │      MemberDetailsService.java
-    │  │              │
-    │  │              └─service
-    │  │                      BoardLikeService.java
-    │  │                      BoardLikeServiceImpl.java
-    │  │                      BoardService.java
-    │  │                      BoardServiceImpl.java
-    │  │                      CommentService.java
-    │  │                      CommentServiceImpl.java
-    │  │                      MemberService.java
-    │  │                      MemberServiceImpl.java
-    │  │                      ReCommentService.java
-    │  │                      ReCommentServiceImpl.java
+    ├─.idea
+    │  │  .gitignore
+    │  │  .name
+    │  │  compiler.xml
+    │  │  gradle.xml
+    │  │  jarRepositories.xml
+    │  │  misc.xml
+    │  │  modules.xml
+    │  │  photomania_project (1) -.iml
+    │  │  project - 복사본 (3).iml
+    │  │  uiDesigner.xml
+    │  │  vcs.xml
+    │  │  workspace.xml
     │  │
-    │  └─resources
-    │      │  application.properties
-    │      │
-    │      ├─static
-    │      │  ├─css
-    │      │  │      board.css
-    │      │  │      detail.css
-    │      │  │      edit.css
-    │      │  │      error.css
-    │      │  │      find.css
-    │      │  │      main.css
-    │      │  │      Randomstyle.css
-    │      │  │      register.css
-    │      │  │      style.css
-    │      │  │      write.css
-    │      │  │
-    │      │  ├─images
-    │      │  │      animal1.jpeg
-    │      │  │      animal2.jpeg
-    │      │  │      animal3.jpeg
-    │      │  │      animal4.jpeg
-    │      │  │      animal5.jpeg
-    │      │  │      animal6.jpeg
-    │      │  │      camera.png
-    │      │  │      cameraIcon.png
-    │      │  │      city1.jpeg
-    │      │  │      city2.png
-    │      │  │      city3.jpeg
-    │      │  │      city4.jpeg
-    │      │  │      city5.jpeg
-    │      │  │      city6.jpeg
-    │      │  │      dog.jpeg
-    │      │  │      dog2.jpeg
-    │      │  │      dog3.jpeg
-    │      │  │      fire.png
-    │      │  │      flower1.jpeg
-    │      │  │      flower2.jpeg
-    │      │  │      flower3.jpeg
-    │      │  │      flower4.jpeg
-    │      │  │      flower5.png
-    │      │  │      flower6.jpeg
-    │      │  │      icons8-돋보기-48.png
-    │      │  │      icons8-사용자-100.png
-    │      │  │      nature1.jpeg
-    │      │  │      nature2.png
-    │      │  │      nature3.jpeg
-    │      │  │      nature4.png
-    │      │  │      nature5.jpeg
-    │      │  │      nature6.jpeg
-    │      │  │      newicon.png
-    │      │  │      소개video.mp4
-    │      │  │
-    │      │  ├─js
-    │      │  │      board.js
-    │      │  │      comment.js
-    │      │  │      find.js
-    │      │  │      jquery-3.7.1.min.js
-    │      │  │      main.js
-    │      │  │      Randomscript.js
-    │      │  │
-    │      │  └─uploads
-    │      └─templates
-    │              board.html
-    │              detail.html
-    │              edit.html
-    │              find.html
-    │              login.html
-    │              main.html
-    │              Randomimage.html
-    │              register.html
-    │              write.html
+    │  ├─inspectionProfiles
+    │  │      Project_Default.xml
+    │  │
+    │  └─modules
+    │          PhotoMania.test.iml
     │
-    └─test
-        ├─generated_tests
-        └─java
-            └─com
-                └─example
-                    └─project
-                            BoardApplicationTests.java
-                            BoardRepositoryTest.java
-                            ProjectApplicationTests.java
-
-
-
+    ├─bin
+    │  ├─generated-sources
+    │  │  └─annotations
+    │  └─generated-test-sources
+    │      └─annotations
+    ├─build
+    │  ├─classes
+    │  │  └─java
+    │  │      └─main
+    │  │          └─com
+    │  │              └─example
+    │  │                  └─project
+    │  │                      │  ProjectApplication.class
+    │  │                      │
+    │  │                      ├─config
+    │  │                      │      SecurityConfig.class
+    │  │                      │      WebConfig.class
+    │  │                      │
+    │  │                      ├─controller
+    │  │                      │      BoardController.class
+    │  │                      │      CommentController.class
+    │  │                      │      MemberController.class
+    │  │                      │
+    │  │                      ├─dto
+    │  │                      │      BoardDTO$BoardDTOBuilder.class
+    │  │                      │      BoardDTO.class
+    │  │                      │      CommentRequestDTO$CommentRequestDTOBuilder.class
+    │  │                      │      CommentRequestDTO.class
+    │  │                      │      CommentResponseDTO$CommentResponseDTOBuilder.class
+    │  │                      │      CommentResponseDTO.class
+    │  │                      │      MemberDTO$MemberDTOBuilder.class
+    │  │                      │      MemberDTO.class
+    │  │                      │      PageRequestDTO$PageRequestDTOBuilder.class
+    │  │                      │      PageRequestDTO.class
+    │  │                      │      PageResultDTO.class
+    │  │                      │      ReCommentRequestDTO$ReCommentRequestDTOBuilder.class
+    │  │                      │      ReCommentRequestDTO.class
+    │  │                      │      ReCommentResponseDTO$ReCommentResponseDTOBuilder.class
+    │  │                      │      ReCommentResponseDTO.class
+    │  │                      │
+    │  │                      ├─entity
+    │  │                      │      BaseEntity.class
+    │  │                      │      Board$BoardBuilder.class
+    │  │                      │      Board.class
+    │  │                      │      BoardLike.class
+    │  │                      │      Comment$CommentBuilder.class
+    │  │                      │      Comment.class
+    │  │                      │      Member$MemberBuilder.class
+    │  │                      │      Member.class
+    │  │                      │      ReComment$ReCommentBuilder.class
+    │  │                      │      ReComment.class
+    │  │                      │      Role.class
+    │  │                      │
+    │  │                      ├─repository
+    │  │                      │      BoardLikeRepository.class
+    │  │                      │      BoardRepository.class
+    │  │                      │      CommentRepository.class
+    │  │                      │      MemberRepository.class
+    │  │                      │      ReCommentRepository.class
+    │  │                      │
+    │  │                      ├─sec
+    │  │                      │      FileStorageUtil.class
+    │  │                      │      LoginFailureH.class
+    │  │                      │      LoginSucessH.class
+    │  │                      │      MemberDetails.class
+    │  │                      │      MemberDetailsService.class
+    │  │                      │
+    │  │                      └─service
+    │  │                              BoardLikeService.class
+    │  │                              BoardLikeServiceImpl.class
+    │  │                              BoardService.class
+    │  │                              BoardServiceImpl.class
+    │  │                              CommentService.class
+    │  │                              CommentServiceImpl.class
+    │  │                              MemberService.class
+    │  │                              MemberServiceImpl.class
+    │  │                              ReCommentService.class
+    │  │                              ReCommentServiceImpl.class
+    │  │
+    │  ├─generated
+    │  │  └─sources
+    │  │      ├─annotationProcessor
+    │  │      │  └─java
+    │  │      │      ├─main
+    │  │      │      └─test
+    │  │      │          └─generated_tests
+    │  │      └─headers
+    │  │          └─java
+    │  │              ├─main
+    │  │              └─test
+    │  ├─reports
+    │  │  └─problems
+    │  │          problems-report.html
+    │  │
+    │  ├─resources
+    │  │  └─main
+    │  │      │  application.properties
+    │  │      │
+    │  │      ├─static
+    │  │      │  ├─css
+    │  │      │  │      board.css
+    │  │      │  │      detail.css
+    │  │      │  │      edit.css
+    │  │      │  │      error.css
+    │  │      │  │      find.css
+    │  │      │  │      main.css
+    │  │      │  │      Randomstyle.css
+    │  │      │  │      register.css
+    │  │      │  │      style.css
+    │  │      │  │      write.css
+    │  │      │  │
+    │  │      │  ├─images
+    │  │      │  │      animal1.jpeg
+    │  │      │  │      animal2.jpeg
+    │  │      │  │      animal3.jpeg
+    │  │      │  │      animal4.jpeg
+    │  │      │  │      animal5.jpeg
+    │  │      │  │      animal6.jpeg
+    │  │      │  │      camera.png
+    │  │      │  │      cameraIcon.png
+    │  │      │  │      city1.jpeg
+    │  │      │  │      city2.png
+    │  │      │  │      city3.jpeg
+    │  │      │  │      city4.jpeg
+    │  │      │  │      city5.jpeg
+    │  │      │  │      city6.jpeg
+    │  │      │  │      dog.jpeg
+    │  │      │  │      dog2.jpeg
+    │  │      │  │      dog3.jpeg
+    │  │      │  │      fire.png
+    │  │      │  │      flower1.jpeg
+    │  │      │  │      flower2.jpeg
+    │  │      │  │      flower3.jpeg
+    │  │      │  │      flower4.jpeg
+    │  │      │  │      flower5.png
+    │  │      │  │      flower6.jpeg
+    │  │      │  │      icons8-돋보기-48.png
+    │  │      │  │      icons8-사용자-100.png
+    │  │      │  │      nature1.jpeg
+    │  │      │  │      nature2.png
+    │  │      │  │      nature3.jpeg
+    │  │      │  │      nature4.png
+    │  │      │  │      nature5.jpeg
+    │  │      │  │      nature6.jpeg
+    │  │      │  │      newicon.png
+    │  │      │  │      소개video.mp4
+    │  │      │  │
+    │  │      │  ├─js
+    │  │      │  │      board.js
+    │  │      │  │      comment.js
+    │  │      │  │      find.js
+    │  │      │  │      jquery-3.7.1.min.js
+    │  │      │  │      main.js
+    │  │      │  │      Randomscript.js
+    │  │      │  │
+    │  │      │  └─uploads
+    │  │      └─templates
+    │  │              board.html
+    │  │              detail.html
+    │  │              edit.html
+    │  │              find.html
+    │  │              login.html
+    │  │              main.html
+    │  │              Randomimage.html
+    │  │              register.html
+    │  │              write.html
+    │  │
+    │  └─tmp
+    │      ├─compileJava
+    │      │  │  previous-compilation-data.bin
+    │      │  │
+    │      │  └─compileTransaction
+    │      │      ├─backup-dir
+    │      │      └─stash-dir
+    │      │              BoardController.class.uniqueId8
+    │      │              BoardDTO$BoardDTOBuilder.class.uniqueId11
+    │      │              BoardDTO.class.uniqueId6
+    │      │              BoardService.class.uniqueId1
+    │      │              BoardServiceImpl.class.uniqueId2
+    │      │              LoginSucessH.class.uniqueId4
+    │      │              MemberController.class.uniqueId9
+    │      │              MemberDTO$MemberDTOBuilder.class.uniqueId0
+    │      │              MemberDTO.class.uniqueId5
+    │      │              MemberService.class.uniqueId7
+    │      │              MemberServiceImpl.class.uniqueId3
+    │      │              SecurityConfig.class.uniqueId10
+    │      │
+    │      └─test
+    ├─gradle
+    │  └─wrapper
+    │          gradle-wrapper.jar
+    │          gradle-wrapper.properties
+    │
+    ├─out
+    │  ├─production
+    │  │  ├─classes
+    │  │  │  ├─com
+    │  │  │  │  └─example
+    │  │  │  │      └─project
+    │  │  │  │          │  ProjectApplication.class
+    │  │  │  │          │
+    │  │  │  │          ├─config
+    │  │  │  │          │      SecurityConfig.class
+    │  │  │  │          │      WebConfig.class
+    │  │  │  │          │
+    │  │  │  │          ├─controller
+    │  │  │  │          │      BoardController.class
+    │  │  │  │          │      CommentController.class
+    │  │  │  │          │      MemberController.class
+    │  │  │  │          │
+    │  │  │  │          ├─dto
+    │  │  │  │          │      BoardDTO$BoardDTOBuilder.class
+    │  │  │  │          │      BoardDTO.class
+    │  │  │  │          │      CommentRequestDTO$CommentRequestDTOBuilder.class
+    │  │  │  │          │      CommentRequestDTO.class
+    │  │  │  │          │      CommentResponseDTO$CommentResponseDTOBuilder.class
+    │  │  │  │          │      CommentResponseDTO.class
+    │  │  │  │          │      MemberDTO$MemberDTOBuilder.class
+    │  │  │  │          │      MemberDTO.class
+    │  │  │  │          │      PageRequestDTO$PageRequestDTOBuilder.class
+    │  │  │  │          │      PageRequestDTO.class
+    │  │  │  │          │      PageResultDTO.class
+    │  │  │  │          │      ReCommentRequestDTO$ReCommentRequestDTOBuilder.class
+    │  │  │  │          │      ReCommentRequestDTO.class
+    │  │  │  │          │      ReCommentResponseDTO$ReCommentResponseDTOBuilder.class
+    │  │  │  │          │      ReCommentResponseDTO.class
+    │  │  │  │          │
+    │  │  │  │          ├─entity
+    │  │  │  │          │      BaseEntity.class
+    │  │  │  │          │      Board$BoardBuilder.class
+    │  │  │  │          │      Board.class
+    │  │  │  │          │      BoardLike.class
+    │  │  │  │          │      Comment$CommentBuilder.class
+    │  │  │  │          │      Comment.class
+    │  │  │  │          │      Member$MemberBuilder.class
+    │  │  │  │          │      Member.class
+    │  │  │  │          │      ReComment$ReCommentBuilder.class
+    │  │  │  │          │      ReComment.class
+    │  │  │  │          │      Role.class
+    │  │  │  │          │
+    │  │  │  │          ├─repository
+    │  │  │  │          │      BoardLikeRepository.class
+    │  │  │  │          │      BoardRepository.class
+    │  │  │  │          │      CommentRepository.class
+    │  │  │  │          │      MemberRepository.class
+    │  │  │  │          │      ReCommentRepository.class
+    │  │  │  │          │
+    │  │  │  │          ├─sec
+    │  │  │  │          │      FileStorageUtil.class
+    │  │  │  │          │      LoginFailureH.class
+    │  │  │  │          │      LoginSucessH.class
+    │  │  │  │          │      MemberDetails.class
+    │  │  │  │          │      MemberDetailsService.class
+    │  │  │  │          │
+    │  │  │  │          └─service
+    │  │  │  │                  BoardLikeService.class
+    │  │  │  │                  BoardLikeServiceImpl.class
+    │  │  │  │                  BoardService.class
+    │  │  │  │                  BoardServiceImpl.class
+    │  │  │  │                  CommentService.class
+    │  │  │  │                  CommentServiceImpl.class
+    │  │  │  │                  MemberService.class
+    │  │  │  │                  MemberServiceImpl.class
+    │  │  │  │                  ReCommentService.class
+    │  │  │  │                  ReCommentServiceImpl.class
+    │  │  │  │
+    │  │  │  └─generated
+    │  │  └─resources
+    │  │      │  application.properties
+    │  │      │
+    │  │      ├─static
+    │  │      │  ├─css
+    │  │      │  │      board.css
+    │  │      │  │      detail.css
+    │  │      │  │      edit.css
+    │  │      │  │      error.css
+    │  │      │  │      find.css
+    │  │      │  │      main.css
+    │  │      │  │      Randomstyle.css
+    │  │      │  │      register.css
+    │  │      │  │      style.css
+    │  │      │  │      write.css
+    │  │      │  │
+    │  │      │  ├─images
+    │  │      │  │      animal1.jpeg
+    │  │      │  │      animal2.jpeg
+    │  │      │  │      animal3.jpeg
+    │  │      │  │      animal4.jpeg
+    │  │      │  │      animal5.jpeg
+    │  │      │  │      animal6.jpeg
+    │  │      │  │      camera.png
+    │  │      │  │      cameraIcon.png
+    │  │      │  │      city1.jpeg
+    │  │      │  │      city2.png
+    │  │      │  │      city3.jpeg
+    │  │      │  │      city4.jpeg
+    │  │      │  │      city5.jpeg
+    │  │      │  │      city6.jpeg
+    │  │      │  │      dog.jpeg
+    │  │      │  │      dog2.jpeg
+    │  │      │  │      dog3.jpeg
+    │  │      │  │      fire.png
+    │  │      │  │      flower1.jpeg
+    │  │      │  │      flower2.jpeg
+    │  │      │  │      flower3.jpeg
+    │  │      │  │      flower4.jpeg
+    │  │      │  │      flower5.png
+    │  │      │  │      flower6.jpeg
+    │  │      │  │      icons8-돋보기-48.png
+    │  │      │  │      icons8-사용자-100.png
+    │  │      │  │      nature1.jpeg
+    │  │      │  │      nature2.png
+    │  │      │  │      nature3.jpeg
+    │  │      │  │      nature4.png
+    │  │      │  │      nature5.jpeg
+    │  │      │  │      nature6.jpeg
+    │  │      │  │      newicon.png
+    │  │      │  │      소개video.mp4
+    │  │      │  │
+    │  │      │  └─js
+    │  │      │          board.js
+    │  │      │          comment.js
+    │  │      │          find.js
+    │  │      │          jquery-3.7.1.min.js
+    │  │      │          main.js
+    │  │      │          Randomscript.js
+    │  │      │
+    │  │      └─templates
+    │  │              board.html
+    │  │              detail.html
+    │  │              edit.html
+    │  │              find.html
+    │  │              login.html
+    │  │              main.html
+    │  │              Randomimage.html
+    │  │              register.html
+    │  │              write.html
+    │  │
+    │  └─test
+    │      └─classes
+    │          └─com
+    │              └─example
+    │                  └─project
+    │                          BoardApplicationTests.class
+    │                          BoardRepositoryTest.class
+    │                          ProjectApplicationTests.class
+    │
+    └─src
+        ├─main
+        │  ├─generated
+        │  ├─java
+        │  │  └─com
+        │  │      └─example
+        │  │          └─project
+        │  │              │  ProjectApplication.java
+        │  │              │
+        │  │              ├─config
+        │  │              │      SecurityConfig.java
+        │  │              │      WebConfig.java
+        │  │              │
+        │  │              ├─controller
+        │  │              │      BoardController.java
+        │  │              │      CommentController.java
+        │  │              │      MemberController.java
+        │  │              │
+        │  │              ├─dto
+        │  │              │      BoardDTO.java
+        │  │              │      CommentRequestDTO.java
+        │  │              │      CommentResponseDTO.java
+        │  │              │      MemberDTO.java
+        │  │              │      PageRequestDTO.java
+        │  │              │      PageResultDTO.java
+        │  │              │      ReCommentRequestDTO.java
+        │  │              │      ReCommentResponseDTO.java
+        │  │              │
+        │  │              ├─entity
+        │  │              │      BaseEntity.java
+        │  │              │      Board.java
+        │  │              │      BoardLike.java
+        │  │              │      Comment.java
+        │  │              │      Member.java
+        │  │              │      ReComment.java
+        │  │              │      Role.java
+        │  │              │
+        │  │              ├─repository
+        │  │              │      BoardLikeRepository.java
+        │  │              │      BoardRepository.java
+        │  │              │      CommentRepository.java
+        │  │              │      MemberRepository.java
+        │  │              │      ReCommentRepository.java
+        │  │              │
+        │  │              ├─sec
+        │  │              │      FileStorageUtil.java
+        │  │              │      LoginFailureH.java
+        │  │              │      LoginSucessH.java
+        │  │              │      MemberDetails.java
+        │  │              │      MemberDetailsService.java
+        │  │              │
+        │  │              └─service
+        │  │                      BoardLikeService.java
+        │  │                      BoardLikeServiceImpl.java
+        │  │                      BoardService.java
+        │  │                      BoardServiceImpl.java
+        │  │                      CommentService.java
+        │  │                      CommentServiceImpl.java
+        │  │                      MemberService.java
+        │  │                      MemberServiceImpl.java
+        │  │                      ReCommentService.java
+        │  │                      ReCommentServiceImpl.java
+        │  │
+        │  └─resources
+        │      │  application.properties
+        │      │
+        │      ├─static
+        │      │  ├─css
+        │      │  │      board.css
+        │      │  │      detail.css
+        │      │  │      edit.css
+        │      │  │      error.css
+        │      │  │      find.css
+        │      │  │      main.css
+        │      │  │      Randomstyle.css
+        │      │  │      register.css
+        │      │  │      style.css
+        │      │  │      write.css
+        │      │  │
+        │      │  ├─images
+        │      │  │      animal1.jpeg
+        │      │  │      animal2.jpeg
+        │      │  │      animal3.jpeg
+        │      │  │      animal4.jpeg
+        │      │  │      animal5.jpeg
+        │      │  │      animal6.jpeg
+        │      │  │      camera.png
+        │      │  │      cameraIcon.png
+        │      │  │      city1.jpeg
+        │      │  │      city2.png
+        │      │  │      city3.jpeg
+        │      │  │      city4.jpeg
+        │      │  │      city5.jpeg
+        │      │  │      city6.jpeg
+        │      │  │      dog.jpeg
+        │      │  │      dog2.jpeg
+        │      │  │      dog3.jpeg
+        │      │  │      fire.png
+        │      │  │      flower1.jpeg
+        │      │  │      flower2.jpeg
+        │      │  │      flower3.jpeg
+        │      │  │      flower4.jpeg
+        │      │  │      flower5.png
+        │      │  │      flower6.jpeg
+        │      │  │      icons8-돋보기-48.png
+        │      │  │      icons8-사용자-100.png
+        │      │  │      nature1.jpeg
+        │      │  │      nature2.png
+        │      │  │      nature3.jpeg
+        │      │  │      nature4.png
+        │      │  │      nature5.jpeg
+        │      │  │      nature6.jpeg
+        │      │  │      newicon.png
+        │      │  │      소개video.mp4
+        │      │  │
+        │      │  ├─js
+        │      │  │      board.js
+        │      │  │      comment.js
+        │      │  │      find.js
+        │      │  │      jquery-3.7.1.min.js
+        │      │  │      main.js
+        │      │  │      Randomscript.js
+        │      │  │
+        │      │  └─uploads
+        │      └─templates
+        │              board.html
+        │              detail.html
+        │              edit.html
+        │              find.html
+        │              login.html
+        │              main.html
+        │              Randomimage.html
+        │              register.html
+        │              write.html
+        │
+        └─test
+            ├─generated_tests
+            └─java
+                └─com
+                    └─example
+                        └─project
+                                BoardApplicationTests.java
+                                BoardRepositoryTest.java
+                                ProjectApplicationTests.java
 ## 데모
 **[메인 화면]** ( 로고를 클릭시, 메인페이지로 돌아가도록 구현. )
 ![main](https://github.com/user-attachments/assets/2c6af742-4466-4b7c-bf63-7f719d7227c7)
