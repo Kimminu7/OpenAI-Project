@@ -20,6 +20,7 @@
 ![구조도](https://github.com/user-attachments/assets/d5ba8d5c-3588-4fec-8c35-a249931d02a9)
 
 ## 프로젝트 구조 
+```plaintext
 └─photomania_project
     │  .gitattributes
     │  .gitignore
@@ -575,6 +576,7 @@
                                 BoardApplicationTests.java
                                 BoardRepositoryTest.java
                                 ProjectApplicationTests.java
+```
 ## 데모
 **[메인 화면]** ( 로고를 클릭시, 메인페이지로 돌아가도록 구현. )
 ![main](https://github.com/user-attachments/assets/2c6af742-4466-4b7c-bf63-7f719d7227c7)
