@@ -577,6 +577,10 @@
                                 BoardRepositoryTest.java
                                 ProjectApplicationTests.java
 ```
+## ERD 다이어그램 
+![ERD 다이어그램(photomania)](https://github.com/user-attachments/assets/a4ff093c-9564-49b7-9043-7c704bb013a0)
+
+
 ## 데모
 **[메인 화면]** ( 로고를 클릭시, 메인페이지로 돌아가도록 구현. )
 ![main](https://github.com/user-attachments/assets/2c6af742-4466-4b7c-bf63-7f719d7227c7)
